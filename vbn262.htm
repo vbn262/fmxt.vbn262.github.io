@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="vbn262官方网站 - 视频平台">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     :root {
       --nav-bg: white;
@@ -15,8 +17,8 @@
       --dark-card-bg: rgba(30, 30, 30, 0.9);
       --border-color: #e4e6eb;
       --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      --bili-text-color: #333; /* 新增：模拟哔哩哔哩的文字主色 */
-      --bili-link-color: #007AFF; /* 新增：模拟哔哩哔哩的链接颜色 */
+      --bili-text-color: #333;
+      --bili-link-color: #007AFF;
     }
 
     body {
@@ -60,8 +62,7 @@
       padding: 8px 15px;
       text-decoration: none;
       color: var(--text-color);
-      transition: all 0.3s;
-      position: relative;
+      transition: color 0.3s, transform 0.3s;
     }
 
     .nav-item.active {
@@ -177,6 +178,8 @@
       box-shadow: var(--shadow);
       border-radius: 8px;
       min-width: 150px;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     .dropdown-menu a {
@@ -216,14 +219,12 @@
     }
 
     @media (max-width: 768px) {
-      .bottom-nav {
-        z-index: 99px;
-        max-width: 100%;
-        transform: translateX(0);
+     .bottom-nav {
+        z-index: 99;
         height: 52px;
       }
 
-      .nav-item i {
+     .nav-item i {
         font-size: 1rem;
       }
     }
@@ -233,11 +234,11 @@
       flex-wrap: wrap;
       justify-content: space-around;
       padding: 20px;
-      gap: 10px; /* 添加卡片之间的间距 */
+      gap: 10px;
     }
 
     .profile-card {
-      width: calc(33.33% - 20px); /* 让卡片在一行显示3个，调整宽度和间距 */
+      width: calc(33.33% - 20px);
       background: var(--card-bg);
       border-radius: 10px;
       padding: 20px;
@@ -247,23 +248,23 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      transition: background-color 0.3s; /* 新增：卡片背景色过渡效果 */
+      transition: background-color 0.3s;
     }
 
     .profile-card:hover {
-      background-color: #eaeaea; /* 新增：卡片鼠标悬停时的背景色变化 */
+      background-color: #eaeaea;
     }
 
     .profile-card i {
-      font-size: 2rem; /* 增大图标尺寸 */
+      font-size: 2rem;
       margin-bottom: 10px;
-      color: var(--bili-link-color); /* 新增：图标颜色 */
+      color: var(--bili-link-color);
     }
 
     .profile-card p {
       margin: 0;
-      font-size: 0.9rem; /* 调整文字大小 */
-      color: var(--bili-text-color); /* 新增：文字颜色 */
+      font-size: 0.9rem;
+      color: var(--bili-text-color);
     }
 
     .profile-header {
@@ -271,7 +272,7 @@
       align-items: center;
       justify-content: space-around;
       padding: 20px;
-      border-bottom: 1px solid var(--border-color); /* 新增：底部横线 */
+      border-bottom: 1px solid var(--border-color);
     }
 
     .profile-avatar {
@@ -333,42 +334,12 @@
       color: white;
       width: 100%;
     }
-    /* 新增菜单样式 */
-    .menu-icon {
-          font-size: 24px;
-          cursor: pointer;
-      }
-
-     .dropdown-menu {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          background-color: white;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          border-radius: 4px;
-          max-width: 380px;
-          max-height: 400px; /* 添加固定高度 */
-          overflow-y: auto; /* 启用垂直滚动条 */
-      }
-
-     .dropdown-menu a {
-          display: block;
-          padding: 10px 15px;
-          text-decoration: none;
-          color: #333;
-          transition: background-color 0.3s;
-      }
-
-     .dropdown-menu a:hover {
-          background-color: #f4f4f9;
-      }
   </style>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
   <header class="header">
-    <i class="menu-icon fas fa-bars" onclick="toggleDropdownMenu()"></i>
+    <i class="menu-icon fas fa-bars" onclick="toggleDropdownMenu()">.</i>
     <div class="dropdown-menu" id="dropdown-menu">
       <div>我喜欢的网站</div>
       <a href="https://www.4399.com/" target="_blank">4399小游戏</a>
@@ -385,6 +356,7 @@
       <a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a>
       <a href="https://www.doubao.com/chat/" target="_blank">豆包</a>
     </div>
+    <div><a href="https://tv.cctv.com/" target="_blank" title="直播">📺直播</a></div>
     <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
   </header>
   <nav class="bottom-nav" aria-label="Main navigation">
@@ -392,7 +364,6 @@
       <i class="fas fa-home"></i>
       <span>Home</span>
     </a>
-    <div><a href="https://tv.cctv.com/" target="_blank" title="直播">📺直播</a></div>
     <a href="#profile" class="nav-item">
       <i class="fas fa-user"></i>
       <span>I</span>
@@ -400,31 +371,26 @@
   </nav>
   <section id="home" class="content active">
     <div class="card live-section">
-      <div class="text-slider">
-        <div style="border-bottom: 1px solid #000;">
-          <div><h1>网页说明</h1></div>
-          <div>我要做和</div>
-          <div>抖音 | 微博 | 哔哩哔哩</div>
-          <div>一样的软件和网页</div>
-          <img src="4587.jpg" alt="占位图片" style="width: 400px;height: 400px;" loading="lazy">
-          <a href="https://space.bilibili.com/1414517639" target="_blank"><h1>vbn262网页制作找我</h1></a>
-          <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank">我的抖音</a>
-        </div>
-        <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft | Mods ResourcePacks Shaders</h1></a>
-        <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
-        <h3>
-          <a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank">Forge</a>
-          <a href="https://fabricmc.net/" target="_blank">Fabric</a>
-          <a href="https://quiltmc.org/en/" target="_blank">QuiltMC</a>
-        </h3>
-        <a href="https://www.mcmod.cn/" target="_blank"><h3>MC百科</h3></a>
-        <a href="https://texture-packs.com/" target="_blank"><h3>Minecraft Texture Packs</h3></a>
-        <a href="https://bbsmc.net/" target="_blank"><h3>BBSM</h3></a>
-        <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForgeh</h3></a>
-      </div>
+      <div><h1>网页说明</h1></div>
+      <div>我要做和</div>
+      <div>抖音 | 微博 | 哔哩哔哩</div>
+      <div>一样的软件和网页</div>
+      <img src="4587.jpg"style="width: 400px;height: 400px;"loading="lazy">
+      <a href="https://space.bilibili.com/1414517639" target="_blank"><h1>vbn262网页制作找我</h1></a>
+      <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank">我的抖音</a>
+      <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft | Mods ResourcePacks Shaders</h1></a>
+      <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
+      <h3>
+        <a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank">Forge</a>
+        <a href="https://fabricmc.net/" target="_blank">Fabric</a>
+        <a href="https://quiltmc.org/en/" target="_blank">QuiltMC</a>
+      </h3>
+      <a href="https://www.mcmod.cn/" target="_blank"><h3>MC百科</h3></a>
+      <a href="https://texture-packs.com/" target="_blank"><h3>Minecraft Texture Packs</h3></a>
+      <a href="https://bbsmc.net/" target="_blank"><h3>BBSM</h3></a>
+      <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForgeh</h3></a>
     </div>
   </section>
-
   <div id="agreement-modal" class="modal">
     <div class="modal-content">
       <h2>网页协议</h2>
@@ -490,13 +456,11 @@
       const phone = document.getElementById('phone').value;
       const code = document.getElementById('code').value;
       const errorMessage = document.getElementById('login-error');
-
       if (!phone ||!code) {
         errorMessage.style.display = 'block';
         errorMessage.textContent = '手机号和验证码不能为空';
         return;
       }
-
       // 这里可以添加实际的登录逻辑
       alert('登录成功');
     };
@@ -547,4 +511,5 @@
     });
   </script>
 </body>
+
 </html>
