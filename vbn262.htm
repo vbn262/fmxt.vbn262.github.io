@@ -2,293 +2,340 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="vbn262官方网站 - 视频平台开发">
-    <style>
-      /* 全局样式 */
-      body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          background-color: #f4f4f9;
-          color: #333;
-          margin: 0;
-          padding: 0;
-          padding-top: 70px;
-          text-align: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="zb.vbn262官方网站 - 视频平台">
+  <style>
+    :root {
+      --nav-bg: white;
+      --active-color: #1877f2;
+      --text-color: #606770;
+      --content-max-width: 800px;
+      --bg-color: #f0f2f5;
+      --card-bg: #f5f6f7;
+      --dark-card-bg: rgba(30, 30, 30, 0.9);
+      --border-color: #e4e6eb;
+      --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      --bili-text-color: #333; /* 新增：模拟哔哩哔哩的文字主色 */
+      --bili-link-color: #007AFF; /* 新增：模拟哔哩哔哩的链接颜色 */
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-color);
+      color: #1c1e21;
+      margin: 0;
+      padding: 0;
+      padding-top: 70px;
+      text-align: center;
+    }
+
+    .content {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding-bottom: calc(56px + env(safe-area-inset-bottom));
+      display: none;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 10000;
+      bottom: 0;
+      width: 100%;
+      height: 56px;
+      background: var(--nav-bg);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 15px;
+      text-decoration: none;
+      color: var(--text-color);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-item.active {
+      color: var(--active-color);
+      transform: translateY(-4px);
+    }
+
+    .nav-item.active::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      width: 6px;
+      height: 6px;
+      background: var(--active-color);
+      border-radius: 50%;
+    }
+
+    .nav-item i {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .nav-item span {
+      font-size: 0.8rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      margin: 24px auto;
+      border-radius: 16px;
+      max-width: var(--content-max-width);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
+    }
+
+    .card.dark-mode {
+      background: var(--dark-card-bg);
+      color: #fff;
+    }
+
+    .btn {
+      display: block;
+      width: 60%;
+      margin: 20px auto;
+      padding: 14px;
+      background: var(--active-color);
+      color: white;
+      border-radius: 28px;
+      border: none;
+      transition: background 0.3s;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #1566d1;
+    }
+
+    .btn:disabled {
+      background: #ccc!important;
+      cursor: not-allowed;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+      font-size: 1rem;
+    }
+
+    .input-field::placeholder {
+      color: #adb1b8;
+      font-style: normal;
+    }
+
+    .input-field:focus {
+      border-color: var(--active-color);
+      outline: none;
+    }
+
+    .header {
+      z-index: 1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+      background: var(--nav-bg);
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      min-width: 150px;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: var(--text-color);
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f5f6f7;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      width: 90%;
+      max-width: 400px;
+      padding: 24px;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 768px) {
+      .bottom-nav {
+        z-index: 99px;
+        max-width: 100%;
+        transform: translateX(0);
+        height: 52px;
       }
 
-      :root {
-          --nav-bg: rgba(255, 255, 255, 0.95);
-          --active-color: #ff6b6b;
-          --text-color: #666;
-          --content-max-width: 800px;
+      .nav-item i {
+        font-size: 1rem;
       }
+    }
 
-     .content {
-          max-width: var(--content-max-width);
-          margin: 0 auto;
-          padding-bottom: calc(56px + env(safe-area-inset-bottom));
-      }
+    .profile-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+      gap: 10px; /* 添加卡片之间的间距 */
+    }
 
-     .bottom-nav {
-          position: fixed;
-          z-index: 10;
-          bottom: 0;
-          width: 100%;
-          height: 56px;
-          background: var(--nav-bg);
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-      }
+    .profile-card {
+      width: calc(33.33% - 20px); /* 让卡片在一行显示3个，调整宽度和间距 */
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: background-color 0.3s; /* 新增：卡片背景色过渡效果 */
+    }
 
-     .nav-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 8px 15px;
-          text-decoration: none;
-          color: var(--text-color);
-          transition: all 0.3s;
-          position: relative;
-      }
+    .profile-card:hover {
+      background-color: #eaeaea; /* 新增：卡片鼠标悬停时的背景色变化 */
+    }
 
-     .nav-item.active {
-          color: var(--active-color);
-          transform: translateY(-6px);
-      }
+    .profile-card i {
+      font-size: 2rem; /* 增大图标尺寸 */
+      margin-bottom: 10px;
+      color: var(--bili-link-color); /* 新增：图标颜色 */
+    }
 
-     .nav-item.active::after {
-          content: "";
-          position: absolute;
-          bottom: -8px;
-          width: 4px;
-          height: 4px;
-          background: var(--active-color);
-          border-radius: 50%;
-      }
+    .profile-card p {
+      margin: 0;
+      font-size: 0.9rem; /* 调整文字大小 */
+      color: var(--bili-text-color); /* 新增：文字颜色 */
+    }
 
-     .nav-item i {
-          font-size: 1.4rem;
-          margin-bottom: 2px;
-      }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color); /* 新增：底部横线 */
+    }
 
-     .nav-item span {
-          font-size: 0.85rem;
-      }
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #ccc;
+      overflow: hidden;
+    }
 
-     .profile-container {
-          background: #fff;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-      }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-     .login-btn {
-          display: block;
-          width: 60%;
-          margin: 20px auto;
-          padding: 12px;
-          background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-          color: white;
-          border-radius: 25px;
-          border: none;
-          transition: background 0.3s;
-      }
+    .profile-info {
+      text-align: center;
+    }
 
-     .login-btn:hover {
-          background: linear-gradient(135deg, #ff5252, #ff7070);
-      }
+    .profile-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
 
-     .user-header {
-          display: flex;
-          align-items: center;
-          padding: 15px;
-          background: #f8f9fa;
-          border-radius: 12px;
-      }
+    .profile-stats-item {
+      text-align: center;
+    }
 
-     .user-avatar {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          margin-right: 15px;
-      }
+    .profile-stats-item span {
+      font-size: 1.2rem;
+      color: var(--bili-text-color);
+    }
 
-     .user-menu {
-          margin-top: 20px;
-      }
+    .profile-stats-item p {
+      font-size: 0.8rem;
+      color: var(--text-color);
+    }
 
-     .menu-item {
-          display: block;
-          padding: 15px;
-          color: #666;
-          border-bottom: 1px solid #eee;
-          transition: background 0.2s;
-      }
+    .profile-bottom {
+      padding: 20px;
+    }
 
-     .menu-item:hover {
-          background: #f4f4f9;
-      }
+    .text-slider {
+      position: relative;
+    }
 
-     .modal {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          z-index: 1000;
-      }
+    .text-slider img {
+      width: 100%;
+      height: auto;
+    }
 
-     .modal-content {
-          background: white;
-          width: 90%;
-          max-width: 400px;
-          padding: 20px;
-          border-radius: 12px;
-          position: relative;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      }
-
-      button {
-          cursor: pointer;
-      }
-
-      button:disabled {
-          background: #ccc!important;
-          cursor: not-allowed;
-      }
-
-     .live-section {
-          margin-bottom: 20px;
-          padding: 15px;
-          background: #fff;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-     .live-section h2 {
-          margin-top: 0;
-          color: #333;
-      }
-
-     .live-section iframe {
-          display: block;
-          margin-bottom: 10px;
-          width: 100%;
-          max-width: 640px;
-          height: 360px;
-          border-radius: 8px;
-          border: none;
-      }
-
-      input[type="text"],
-      input[type="password"] {
-          width: 100%;
-          padding: 12px;
-          margin-bottom: 15px;
-          border: 1px solid #ddd;
-          border-radius: 8px;
-          box-sizing: border-box;
-          transition: border-color 0.3s;
-      }
-
-      input[type="text"]:focus,
-      input[type="password"]:focus {
-          border-color: var(--active-color);
-          outline: none;
-      }
-
-      /* 头部栏 */
-     .header {
-          z-index: 100;
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          padding: 10px 20px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      /* 抖音风格头部栏元素 */
-     .live-button {
-          color: white;
-          font-size: 20px;
-          cursor: pointer;
-      }
-
-      /* 卡片样式 */
-     .card {
-          background: rgb(255, 193, 225, 0.9);
-          margin: 20px auto;
-          border-radius: 15px;
-          max-width: 800px;
-          position: relative;
-          overflow: hidden;
-      }
-
-     .card::before {
-          content: '';
-          position: absolute;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          transform: scale(0);
-          pointer-events: none;
-      }
-
-     .card:hover::after {
-          left: 100%;
-      }
-
-     .card:hover::before {
-          transform: scale(1);
-      }
-
-     .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-      }
-
-     .card.dark-mode {
-          background: rgba(30, 30, 30, 0.9);
-          color: #fff;
-      }
-
-     .card img {
-          border-radius: 10px;
-          max-width: 100%;
-          height: auto;
-      }
-
-      /* 响应式设计 */
-      @media (max-width: 768px) {
-         .bottom-nav {
-              z-index: 99px;
-              max-width: 100%;
-              transform: translateX(0);
-          }
-
-         .bottom-nav {
-              height: 52px;
-          }
-
-         .nav-item i {
-              font-size: 1.2rem;
-          }
-      }
-
-      /* 新增菜单样式 */
-     .menu-icon {
+    .slider-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      width: 100%;
+    }
+    /* 新增菜单样式 */
+    .menu-icon {
           font-size: 24px;
           cursor: pointer;
       }
@@ -318,18 +365,13 @@
           background-color: #f4f4f9;
       }
   </style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
   <header class="header">
     <i class="menu-icon fas fa-bars" onclick="toggleDropdownMenu()"></i>
-    <div class="dropdown-menu" id="dropdown-menu"style="overflow-y: auto;">
-      <img src="4587.jpg" alt="头像"style="width: 99px;height: 99px;" loading="lazy">
-      <div style="border-bottom: 1px solid #000;">
-          <h1>网站内容可以发布但不能商用</h1><h1>第一次做网站做的不好</h1><h1>vbn262是我第一个网站</h1>
-          <a href="https://space.bilibili.com/1414517639" target="_blank">我的哔哩哔哩</a>
-          <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank">我的抖音</a>
-      </div>
+    <div class="dropdown-menu" id="dropdown-menu">
       <a href="https://www.4399.com/" target="_blank">4399小游戏</a>
       <a href="http://aola.100bt.com/" target="_blank">奥拉星</a>
       <a href="http://aoqi.100bt.com/" target="_blank">奥奇传说</a>
@@ -344,53 +386,50 @@
       <a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a>
       <a href="https://www.doubao.com/chat/" target="_blank">豆包</a>
       <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft | Mods SesourcePacks Shaders</h1></a>
-      <a href="https://www.mcmod.cn/" target="_blank"><h2>MC百科</h2></a>
-      <a href="https://texture-packs.com/" target="_blank"><h2>Minecraft Texture Packs</h2></a>
-      <a href="https://bbsmc.net/" target="_blank"><h2>BBSM</h2></a>
-      <a href="https://www.curseforge.com/" target="_blank"><h2>CurseForgeh</h2></a>
-      <a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank"><h2>Forge</h2></a>
-      <a href="https://fabricmc.net/" target="_blank"><h2>Fabric</h2></a>
-      <a href="https://quiltmc.org/en/" target="_blank"><h2>QuiltMC</h2></a>
-      <a href="https://hmcl.huangyuhui.net/" target="_blank"><h2>HMCL</h2></a>
-      <a href="https://afdian.com/p/0164034c016c11ebafcb52540025c377" target="_blank"><h2>PCL2</h2></a>
-      <a href="https://www.labymod.net/zh_Hans" target="_blank"><h2>LabyMod</h2></a>
-      <a href="https://xmcl.app/zh/" target="_blank"><h2>XMCL</h2></a>
-      <a href="https://multimc.org/" target="_blank"><h2>MultiMC</h2></a>
-      <a href="https://prismlauncher.org/" target="_blank"><h2>Prism Launcher</h2></a>
-      <a href="https://atlauncher.com/" target="_blank"><h2>ATLauncher</h2></a>
-      <a href="https://www.bakaxl.com/" target="_blank"><h2>BakaXL</h2></a>
-      <a href="https://www.technicpack.net/" target="_blank"><h2>Technic Pack</h2></a>
-      <a href="https://gdlauncher.com/" target="_blank"><h2>GDLauncher</h2></a>
-      
-  </div>
-  <button onclick="showAgreementModal()">查看网页协议</button>
-  <a href="" target="">下载 | 刷新</a>
+    </div>
+    <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
+    <a href="#" onclick="refreshPage()" title="刷新">刷新</a>
   </header>
   <nav class="bottom-nav" aria-label="Main navigation">
     <a href="#home" class="nav-item active" aria-current="page">
       <i class="fas fa-home"></i>
       <span>首页</span>
     </a>
-    <a href="#live" class="nav-item">
-      <i class="fas fa-video"></i> <!-- 更改为视频图标，更符合直播含义 -->
-      <span>直播</span>
-    </a>
+    <div><a href="https://tv.cctv.com/" target="_blank" title="直播">📺直播</a></div>
     <a href="#profile" class="nav-item">
       <i class="fas fa-user"></i>
       <span>我的</span>
     </a>
   </nav>
-  <section id="home" class="content">
-    <div class="live-section">
-      <a href="https://space.bilibili.com/1414517639" target="_blank">vbn262 | 网页制作找我</a>
-      <p>全球人可参与网页制作</p>
-    </div>
-  </section>
-  <section id="live" class="content" style="display: none;">
-    <div class="live-section">
-      <a href="https://tv.cctv.com/" target="_blank">📺 cctv直播</a>
-      <!-- 这里替换为实际的直播源地址 -->
-      <iframe src="https://www.example.com/live" frameborder="0" alt="直播内容"></iframe>
+  <section id="home" class="content active">
+    <div class="card live-section">
+      <div class="text-slider">
+        <div><h1>网页说明</h1></div>
+        <div>我要做和</div>
+        <div>抖音</div>
+        <div>微博</div>
+        <div>哔哩哔哩</div>
+        <div>一样的软件和网页</div>
+        <img src="4587.jpg" alt="占位图片" style="width: 400px;height: 400px;" loading="lazy">
+        <a href="https://space.bilibili.com/1414517639" target="_blank"><h1>vbn262网页制作找我</h1></a>
+        <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank">我的抖音</a>
+        <div style="border-bottom: 1px solid #000;">
+          <h1>网站内容可以发布但不能商用</h1><h1>第一次做网站做的不好</h1><h1>vbn262是我第一个网站</h1>
+        </div>
+        <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft | Mods ResourcePacks Shaders</h1></a>
+        <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
+        <h2>
+          <a href="https://www.mcmod.cn/" target="_blank">MC百科</a>
+          <a href="https://texture-packs.com/" target="_blank"><h2>Minecraft Texture Packs</a>
+          <a href="https://bbsmc.net/" target="_blank">BBSM</a>
+          <a href="https://www.curseforge.com/" target="_blank">CurseForgeh</a>
+        </h2>
+        <h2>
+          <a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank">Forge</a>
+          <a href="https://fabricmc.net/" target="_blank">Fabric</a>
+          <a href="https://quiltmc.org/en/" target="_blank">QuiltMC</a>
+        </h2>
+      </div>
     </div>
   </section>
 
@@ -400,78 +439,119 @@
       <p>1. 用户在使用本网站服务时，必须遵守相关法律法规。</p>
       <p>2. 用户不得利用本网站服务进行任何违法或侵权行为。</p>
       <p>协议更新中</p>
-      <button onclick="closeAgreementModal()">关闭</button>
+      <button class="btn" onclick="closeAgreementModal()">关闭</button>
     </div>
   </div>
-  <section id="profile" class="content" style="display: none;">
-    <div class="login-section">
-      <p id="login-error" class="error-message"></p>
-      <input type="text" id="username" placeholder="用户名" />
-      <input type="password" id="password" placeholder="密码" />
-      <button onclick="login()">登录</button>
+  <section id="profile" class="content">
+    <div class="card live-section">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <img src="https://dummyimage.com/80x80/000/fff" alt="用户头像">
+        </div>
+        <div class="profile-info">
+          <h2>用户名</h2>
+          <div class="profile-stats">
+            <div class="profile-stats-item">
+              <span>100</span>
+              <p>关注</p>
+            </div>
+            <div class="profile-stats-item">
+              <span>200</span>
+              <p>粉丝</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-cards">
+        <div class="profile-card">
+          <i class="fas fa-video"></i>
+          <p>历史记录</p>
+        </div>
+        <div class="profile-card">
+          <i class="fas fa-video"></i>
+          <p>关注列表</p>
+        </div>
+        <div class="profile-card">
+          <i class="fas fa-video"></i>
+          <p>作品</p>
+        </div>
+        <div class="profile-card">
+          <i class="fas fa-heart"></i>
+          <p>喜欢</p>
+        </div>
+        <div class="profile-card">
+          <i class="fas fa-award"></i>
+          <p>粉丝</p>
+        </div>
+        <div class="profile-card">
+          <i class="fas fa-cog"></i>
+          <p>设置</p>
+        </div>
+      </div>
+      <div class="profile-bottom">
+        <button class="btn">反馈问题</button>
+      </div>
     </div>
   </section>
   <script>
     const login = () => {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      const phone = document.getElementById('phone').value;
+      const code = document.getElementById('code').value;
       const errorMessage = document.getElementById('login-error');
 
-      if (username === 'admin' && password === '123456') {
-        alert('登录成功');
-      } else {
+      if (!phone ||!code) {
         errorMessage.style.display = 'block';
-        errorMessage.textContent = '用户名或密码错误';
+        errorMessage.textContent = '手机号和验证码不能为空';
+        return;
       }
+
+      // 这里可以添加实际的登录逻辑
+      alert('登录成功');
     };
 
-    function showAgreementModal() {
+    const showAgreementModal = () => {
       document.getElementById('agreement-modal').style.display = 'block';
-    }
+    };
 
-    function closeAgreementModal() {
+    const closeAgreementModal = () => {
       document.getElementById('agreement-modal').style.display = 'none';
-    }
+    };
 
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('active');
-    }
-
-    function toggleDropdownMenu() {
+    const toggleDropdownMenu = () => {
       const dropdownMenu = document.getElementById('dropdown-menu');
       dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';
-    }
+    };
+
+    const refreshPage = () => {
+      window.location.reload();
+    };
+
+    const getCode = () => {
+      const phone = document.getElementById('phone').value;
+      if (!phone) {
+        alert('请输入手机号');
+        return;
+      }
+      // 这里可以添加获取验证码的逻辑
+      alert('验证码已发送，请查收');
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
       const navItems = document.querySelectorAll('.nav-item');
       navItems.forEach(item => {
-        item.addEventListener('click', function (e) {
+        item.addEventListener('click', (e) => {
           e.preventDefault();
-          const href = this.getAttribute('href');
+          const href = item.getAttribute('href');
           const contents = document.querySelectorAll('.content');
-          contents.forEach(c => c.style.display = 'none');
+          contents.forEach(c => c.classList.remove('active'));
           const targetTab = document.querySelector(href);
           if (targetTab) {
-            targetTab.style.display = 'block';
+            targetTab.classList.add('active');
           }
           navItems.forEach(i => i.classList.remove('active'));
-          this.classList.add('active');
+          item.classList.add('active');
         });
       });
-
-      const liveSection = document.querySelector('.live-section');
-      if (liveSection) {
-        const liveIframe = liveSection.querySelector('iframe');
-        if (liveIframe) {
-          liveIframe.addEventListener('error', () => {
-            const errorMessage = document.createElement('p');
-            errorMessage.textContent = '无法加载直播内容，请检查链接或网络。';
-            errorMessage.style.color ='red';
-            liveSection.appendChild(errorMessage);
-          });
-        }
-      }
     });
   </script>
 </body>
