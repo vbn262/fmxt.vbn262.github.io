@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="vbn262官方网站 - 视频平台">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     :root {
       --nav-bg: white;
@@ -151,19 +151,19 @@
 
     .header {
       z-index: 1;
-      position: fixed;
       top: -20px;
       left: 0;
       right: 0;
-      padding: 12px 24px;
+      padding: 20px 40px 0 9px;
       display: flex;
-      justify-content: space-between;
+      position: fixed;
       align-items: center;
-      box-shadow: var(--shadow);
-      background: var(--nav-bg);
+      justify-content: space-between;
+      background: #eee;
     }
-
+    
     .menu-icon {
+      
       font-size: 24px;
       cursor: pointer;
     }
@@ -356,20 +356,32 @@
       <a href="https://www.doubao.com/chat/" target="_blank">豆包</a>
     </div>
     <div><a href="https://tv.cctv.com/" target="_blank" title="直播">📺直播</a></div>
-    <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
   </header>
   <nav class="bottom-nav" aria-label="Main navigation">
-    <a href="#home" class="nav-item active" aria-current="page">
+    <a href="#home"class="nav-item active" aria-current="page">
       <i class="fas fa-home"></i>
       <span>Home</span>
     </a>
-    <a href="#profile" class="nav-item">
+    <a href="#set"class="nav-item">
+      <i class="fas fa-set"></i>
+      <span>set</span>
+    </a>
+    <a href="#profile"class="nav-item">
       <i class="fas fa-user"></i>
       <span>I</span>
     </a>
   </nav>
+  <div id="agreement-modal" class="modal">
+    <div class="modal-content">
+      <h2>网页协议</h2>
+      <p>1. 用户在使用本网站服务时，必须遵守相关法律法规。</p>
+      <p>2. 用户不得利用本网站服务进行任何违法或侵权行为。</p>
+      <p>协议更新中</p>
+      <button class="btn" onclick="closeAgreementModal()">关闭</button>
+    </div>
+  </div>
   <section id="home" class="content active">
-    <div class="card live-section">
+    <div class="card">
       <div><h1>网页说明</h1></div>
       <div>我要做和</div>
       <div>抖音 | 微博 | 哔哩哔哩</div>
@@ -390,14 +402,8 @@
       <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForgeh</h3></a>
     </div>
   </section>
-  <div id="agreement-modal" class="modal">
-    <div class="modal-content">
-      <h2>网页协议</h2>
-      <p>1. 用户在使用本网站服务时，必须遵守相关法律法规。</p>
-      <p>2. 用户不得利用本网站服务进行任何违法或侵权行为。</p>
-      <p>协议更新中</p>
-      <button class="btn" onclick="closeAgreementModal()">关闭</button>
-    </div>
+  <div id="set" class="content active">
+    <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
   </div>
   <section id="profile" class="content">
     <div class="card live-section">
@@ -450,6 +456,51 @@
       </div>
     </div>
   </section>
+  <script>
+  const showAgreementModal = () => document.getElementById('agreement-modal').style.display = 'block';
+  const closeAgreementModal = () => document.getElementById('agreement-modal').style.display = 'none';
+  const toggleDropdownMenu = () => {
+  const dropdownMenu = document.getElementById('dropdown-menu');
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = item.getAttribute('href');
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(c => c.classList.remove('active'));
+        const targetTab = document.querySelector(href);
+        if (targetTab) {
+          targetTab.classList.add('active');
+        }
+        navItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('点击了导航项'); // 添加调试语句
+            const href = item.getAttribute('href');
+            console.log('href的值:', href); // 输出href的值
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(c => c.classList.remove('active'));
+            const targetTab = document.querySelector(href);
+            console.log('targetTab:', targetTab); // 输出目标元素
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            navItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+        });
+    });
+});
+  </script>
   <script>
     const login = () => {
       const phone = document.getElementById('phone').value;
@@ -511,4 +562,6 @@
   </script>
 </body>
 
+</html>
+</body>
 </html>
