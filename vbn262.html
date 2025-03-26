@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="vbn262官方网站 - 视频平台">
+  <!-- 头部添加Font Awesome图标库 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
       --nav-bg: white;
@@ -29,30 +31,18 @@
       text-align: center;
     }
 
-    .content {
-      max-width: var(--content-max-width);
-      margin: 0 auto;
-      padding-bottom: calc(56px + env(safe-area-inset-bottom));
-      display: none;
-    }
-
-    .content.active {
-      display: block;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      z-index: 9;
-      bottom: 9px;
-      width: 100%;
-      height: 56px;
-      background: var(--nav-bg);
+    .header {
+      z-index: 1;
+      top: -20px;
+      left: 0;
+      right: 0;
+      padding: 20px 40px 0 9px;
       display: flex;
-      justify-content: space-around;
+      position: fixed;
       align-items: center;
-      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      justify-content: space-between;
+      background: #eee;
     }
-
     .nav-item {
       display: flex;
       flex-direction: column;
@@ -61,11 +51,6 @@
       text-decoration: none;
       color: var(--text-color);
       transition: color 0.3s, transform 0.3s;
-    }
-
-    .nav-item.active {
-      color: var(--active-color);
-      transform: translateY(-4px);
     }
 
     .nav-item.active::after {
@@ -83,8 +68,15 @@
       margin-bottom: 4px;
     }
 
-    .nav-item span {
-      font-size: 0.8rem;
+    .content {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding-bottom: calc(56px + env(safe-area-inset-bottom));
+      display: none;
+    }
+
+    .content.active {
+      display: block;
     }
 
     .card {
@@ -147,22 +139,8 @@
       border-color: var(--active-color);
       outline: none;
     }
-
-    .header {
-      z-index: 1;
-      top: -20px;
-      left: 0;
-      right: 0;
-      padding: 20px 40px 0 9px;
-      display: flex;
-      position: fixed;
-      align-items: center;
-      justify-content: space-between;
-      background: #eee;
-    }
     
     .menu-icon {
-      
       font-size: 24px;
       cursor: pointer;
     }
@@ -175,8 +153,8 @@
       background-color: white;
       box-shadow: var(--shadow);
       border-radius: 8px;
-      min-width: 150px;
-      max-height: 400px;
+      min-width: auto;
+      max-height: auto;
       overflow-y: auto;
     }
 
@@ -207,7 +185,9 @@
       background: white;
       border-radius: 16px;
       box-shadow: var(--shadow);
-      width: 90%;
+      width: auto;
+      max-height: 80vh;
+      overflow-y: auto;
       max-width: 400px;
       padding: 24px;
       position: relative;
@@ -217,14 +197,6 @@
     }
 
     @media (max-width: 768px) {
-     .bottom-nav {
-        z-index: 99;
-        height: 52px;
-      }
-
-     .nav-item i {
-        font-size: 1rem;
-      }
     }
 
     .profile-cards {
@@ -336,7 +308,7 @@
 </head>
 <body>
   <header class="header">
-    <i class="menu-icon fas fa-bars" onclick="toggleDropdownMenu()">-</i>
+    <i class="menu-icon" onclick="toggleDropdownMenu()">-</i>
     <div class="dropdown-menu" id="dropdown-menu">
       <div>我喜欢的网站</div>
       <a href="https://www.4399.com/" target="_blank">4399小游戏</a>
@@ -376,19 +348,21 @@
       <p>1. 用户在使用本网站服务时，必须遵守相关法律法规。</p>
       <p>2. 用户不得利用本网站服务进行任何违法或侵权行为。</p>
       <p>协议更新中</p>
+      <!-- 添加同意按钮 -->
+       <button class="btn" onclick="acceptAgreement()">同意并继续</button>
       <button class="btn" onclick="closeAgreementModal()">关闭</button>
     </div>
   </div>
   <div id="home" class="content active">
     <div class="card">
-      <div><h1>网页说明</h1></div>
+      <div style="border-bottom:1px solid #000;"><h1>网页说明</h1></div>
       <div>我要做和</div>
       <div>抖音 | 微博 | 哔哩哔哩</div>
       <div>一样的软件和网页</div>
-      <div><a href="https://tv.cctv.com/" target="_blank" title="直播">📺直播</a></div>
       <img src="4587.jpg" style="width: 400px;height: 400px;" loading="lazy">
       <a href="https://space.bilibili.com/1414517639" target="_blank"><h1>vbn262网页制作找我</h1></a>
       <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank">我的抖音</a>
+      <a href="https://tv.cctv.com/" target="_blank" title="直播">CCTV</a>
       <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft | Mods ResourcePacks Shaders</h1></a>
       <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
       <h3>
@@ -457,12 +431,30 @@
     </div>
   </div>
   <script>
-  const showAgreementModal = () => document.getElementById('agreement-modal').style.display = 'block';
-  const closeAgreementModal = () => document.getElementById('agreement-modal').style.display = 'none';
+  // 切换下拉菜单显示状态
   const toggleDropdownMenu = () => {
   const dropdownMenu = document.getElementById('dropdown-menu');
-    dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';
-  };
+  dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';
+};
+  </script>
+  <script>
+    // 提前获取模态框元素
+const agreementModal = document.getElementById('agreement-modal');
+// 显示协议模态框
+const showAgreementModal = () => agreementModal.style.display = 'block';
+// 关闭协议模态框
+const closeAgreementModal = () => agreementModal.style.display = 'none';
+// 存储用户同意状态
+const acceptAgreement = () => {
+    localStorage.setItem('agreementAccepted', 'true');
+    closeAgreementModal();
+};
+// 页面加载时检查是否已同意协议
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
+});
+  </script>
+  <script>
   document.addEventListener('DOMContentLoaded', () => {
       const navItems = document.querySelectorAll('.nav-item');
       navItems.forEach(item => {
@@ -482,32 +474,79 @@
     });
   </script>
   <script>
-    const login = () => {
-      const phone = document.getElementById('phone').value;
-      const code = document.getElementById('code').value;
-      const errorMessage = document.getElementById('login-error');
-      if (!phone ||!code) {
-        errorMessage.style.display = 'block';
-        errorMessage.textContent = '手机号和验证码不能为空';
+    // 存储验证码
+let verificationCode = null;
+// 倒计时时间（秒）
+let countdown = 60;
+let timer;
+
+// 提前查询并存储需要的 DOM 元素
+const phoneInput = document.getElementById('phone');
+const codeInput = document.getElementById('code');
+const errorMessage = document.getElementById('login-error');
+const getCodeBtn = document.querySelector('.get-code-btn');
+const navItems = document.querySelectorAll('.nav-item');
+const contentElements = document.querySelectorAll('.content');
+const liveSection = document.querySelector('.live-section');
+
+// 手机号登录函数
+const phoneLogin = () => {
+    const phone = phoneInput.value;
+    const code = codeInput.value;
+    if (!phone ||!code) {
+        showError('请完整填写手机号和验证码');
         return;
-      }
-      // 这里可以添加实际的登录逻辑
-      alert('登录成功');
-    };
+    }
+    if (code === verificationCode) {
+        alert('登录成功');
+    } else {
+        showError('手机号或验证码错误');
+    }
+};
 
-    const refreshPage = () => {
-      window.location.reload();
-    };
-
-    const getCode = () => {
-      const phone = document.getElementById('phone').value;
-      if (!phone) {
+// 获取验证码函数
+const getCode = () => {
+    const phone = phoneInput.value;
+    if (!phone) {
         alert('请输入手机号');
         return;
-      }
-      // 这里可以添加获取验证码的逻辑
-      alert('验证码已发送，请查收');
-    };
+    }
+    verificationCode = String(100000 + Math.floor(Math.random() * 900000));
+    console.log(`验证码: ${verificationCode}`); // 实际应用中应通过短信发送
+    startCountdown();
+};
+
+// 显示错误信息函数
+const showError = (message) => {
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
+};
+
+// 开始倒计时函数
+const startCountdown = () => {
+    getCodeBtn.disabled = true;
+    getCodeBtn.textContent = `${countdown}s后重新获取`;
+    timer = setInterval(() => {
+        countdown--;
+        getCodeBtn.textContent = `${countdown}s后重新获取`;
+        if (countdown <= 0) {
+            clearInterval(timer);
+            getCodeBtn.disabled = false;
+            getCodeBtn.textContent = '获取验证码';
+            countdown = 60;
+        }
+    }, 1000);
+};
+
+// 隐藏所有.content 元素的函数
+const hideAllContent = () => {
+    contentElements.forEach(c => c.style.display = 'none');
+};
+
+// 页面卸载时清除定时器
+window.addEventListener('beforeunload', () => {
+    clearInterval(timer);
+});
   </script>
 </body>
 </html>
