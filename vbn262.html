@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,8 +42,8 @@
 
     .bottom-nav {
       position: fixed;
-      z-index: 10000;
-      bottom: 0;
+      z-index: 9;
+      bottom: 9px;
       width: 100%;
       height: 56px;
       background: var(--nav-bg);
@@ -335,10 +334,9 @@
     }
   </style>
 </head>
-
 <body>
   <header class="header">
-    <i class="menu-icon fas fa-bars" onclick="toggleDropdownMenu()">.</i>
+    <i class="menu-icon fas fa-bars" onclick="toggleDropdownMenu()">-</i>
     <div class="dropdown-menu" id="dropdown-menu">
       <div>我喜欢的网站</div>
       <a href="https://www.4399.com/" target="_blank">4399小游戏</a>
@@ -355,22 +353,23 @@
       <a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a>
       <a href="https://www.doubao.com/chat/" target="_blank">豆包</a>
     </div>
-    <div><a href="https://tv.cctv.com/" target="_blank" title="直播">📺直播</a></div>
+    </div>
+    <div>
+      <a href="#home" class="nav-item active" aria-current="page">
+        <span>Home</span>
+      </a>
+    </div>
+    <div>
+      <a href="#set" class="nav-item">
+        <span>set</span>
+      </a>
+    </div>
+    <div>
+      <a href="#profile" class="nav-item">
+        <span>I</span>
+      </a>
+    </div>
   </header>
-  <nav class="bottom-nav" aria-label="Main navigation">
-    <a href="#home"class="nav-item active" aria-current="page">
-      <i class="fas fa-home"></i>
-      <span>Home</span>
-    </a>
-    <a href="#set"class="nav-item">
-      <i class="fas fa-set"></i>
-      <span>set</span>
-    </a>
-    <a href="#profile"class="nav-item">
-      <i class="fas fa-user"></i>
-      <span>I</span>
-    </a>
-  </nav>
   <div id="agreement-modal" class="modal">
     <div class="modal-content">
       <h2>网页协议</h2>
@@ -380,13 +379,14 @@
       <button class="btn" onclick="closeAgreementModal()">关闭</button>
     </div>
   </div>
-  <section id="home" class="content active">
+  <div id="home" class="content active">
     <div class="card">
       <div><h1>网页说明</h1></div>
       <div>我要做和</div>
       <div>抖音 | 微博 | 哔哩哔哩</div>
       <div>一样的软件和网页</div>
-      <img src="4587.jpg"style="width: 400px;height: 400px;"loading="lazy">
+      <div><a href="https://tv.cctv.com/" target="_blank" title="直播">📺直播</a></div>
+      <img src="4587.jpg" style="width: 400px;height: 400px;" loading="lazy">
       <a href="https://space.bilibili.com/1414517639" target="_blank"><h1>vbn262网页制作找我</h1></a>
       <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank">我的抖音</a>
       <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft | Mods ResourcePacks Shaders</h1></a>
@@ -399,13 +399,13 @@
       <a href="https://www.mcmod.cn/" target="_blank"><h3>MC百科</h3></a>
       <a href="https://texture-packs.com/" target="_blank"><h3>Minecraft Texture Packs</h3></a>
       <a href="https://bbsmc.net/" target="_blank"><h3>BBSM</h3></a>
-      <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForgeh</h3></a>
+      <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForge</h3></a>
     </div>
-  </section>
-  <div id="set" class="content active">
+  </div>
+  <div id="set" class="content">
     <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
   </div>
-  <section id="profile" class="content">
+  <div id="profile" class="content">
     <div class="card live-section">
       <div class="profile-header">
         <div class="profile-avatar">
@@ -455,7 +455,7 @@
         <button class="btn">反馈问题</button>
       </div>
     </div>
-  </section>
+  </div>
   <script>
   const showAgreementModal = () => document.getElementById('agreement-modal').style.display = 'block';
   const closeAgreementModal = () => document.getElementById('agreement-modal').style.display = 'none';
@@ -464,42 +464,22 @@
     dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';
   };
   document.addEventListener('DOMContentLoaded', () => {
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.preventDefault();
-        const href = item.getAttribute('href');
-        const contents = document.querySelectorAll('.content');
-        contents.forEach(c => c.classList.remove('active'));
-        const targetTab = document.querySelector(href);
-        if (targetTab) {
-          targetTab.classList.add('active');
-        }
-        navItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = item.getAttribute('href');
+          const contents = document.querySelectorAll('.content');
+          contents.forEach(c => c.classList.remove('active'));
+          const targetTab = document.querySelector(href);
+          if (targetTab) {
+            targetTab.classList.add('active');
+          }
+          navItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        });
       });
     });
-  });
-  document.addEventListener('DOMContentLoaded', () => {
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('点击了导航项'); // 添加调试语句
-            const href = item.getAttribute('href');
-            console.log('href的值:', href); // 输出href的值
-            const contents = document.querySelectorAll('.content');
-            contents.forEach(c => c.classList.remove('active'));
-            const targetTab = document.querySelector(href);
-            console.log('targetTab:', targetTab); // 输出目标元素
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
-            navItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-        });
-    });
-});
   </script>
   <script>
     const login = () => {
@@ -528,27 +508,6 @@
       // 这里可以添加获取验证码的逻辑
       alert('验证码已发送，请查收');
     };
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const navItems = document.querySelectorAll('.nav-item');
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          const href = item.getAttribute('href');
-          const contents = document.querySelectorAll('.content');
-          contents.forEach(c => c.classList.remove('active'));
-          const targetTab = document.querySelector(href);
-          if (targetTab) {
-            targetTab.classList.add('active');
-          }
-          navItems.forEach(i => i.classList.remove('active'));
-          item.classList.add('active');
-        });
-      });
-    });
   </script>
-</body>
-
-</html>
 </body>
 </html>
