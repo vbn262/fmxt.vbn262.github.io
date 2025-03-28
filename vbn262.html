@@ -286,6 +286,16 @@
       padding: 20px;
     }
 
+    .profile-action {
+      color: var(--text-color);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+    }
+    .profile-action:hover {
+      color: var(--active-color);
+    }
+
     .text-slider {
       position: relative;
     }
@@ -350,6 +360,13 @@
       <!-- 添加同意按钮 -->
        <button class="btn" onclick="acceptAgreement()">同意并继续</button>
       <button class="btn" onclick="closeAgreementModal()">关闭</button>
+      <div class="set-item">
+        <label>语言设置</label>
+        <select>
+          <option value="zh-CN">简体中文</option>
+          <option value="en">English</option>
+        </select>
+      </div>
     </div>
   </div>
   <div id="home" class="content active">
@@ -376,57 +393,55 @@
   <div id="set" class="content">
     <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
   </div>
-  <div id="profile" class="content">
+  <section id="profile" class="content">
     <div class="card live-section">
+      <!-- 个人信息头部 -->
       <div class="profile-header">
         <div class="profile-avatar">
           <img src="https://dummyimage.com/80x80/000/fff" alt="用户头像">
         </div>
         <div class="profile-info">
           <h2>用户名</h2>
+          <p class="profile-bio">这里可以写一些个人简介，比如兴趣爱好、个人特长等。</p>
           <div class="profile-stats">
             <div class="profile-stats-item">
-              <span>100</span>
-              <p>关注</p>
+              <i class="fas fa-users">关注列表</i>
             </div>
             <div class="profile-stats-item">
-              <span>200</span>
-              <p>粉丝</p>
+              <i class="fas fa-user-friends">粉丝</i>
             </div>
           </div>
         </div>
+        <div class="profile-header">
+          <a href="#history" class="profile-action">
+            <i class="fas fa-clock"></i> 历史记录
+          </a>
+          <a href="#settings" class="profile-action">
+            <i class="fas fa-cog"></i> 设置
+          </a>
+        </div>
       </div>
+      <!-- 功能卡片区域 -->
       <div class="profile-cards">
         <div class="profile-card">
-          <i class="fas fa-video"></i>
-          <p>历史记录</p>
-        </div>
-        <div class="profile-card">
-          <i class="fas fa-video"></i>
-          <p>关注列表</p>
-        </div>
-        <div class="profile-card">
-          <i class="fas fa-video"></i>
+          <i class="fas fa-folder"></i>
           <p>作品</p>
         </div>
         <div class="profile-card">
-          <i class="fas fa-heart"></i>
+          <i class="fas fa-thumbs-up"></i>
           <p>喜欢</p>
         </div>
         <div class="profile-card">
-          <i class="fas fa-award"></i>
-          <p>粉丝</p>
-        </div>
-        <div class="profile-card">
-          <i class="fas fa-cog"></i>
-          <p>设置</p>
+          <i class="fas fa-collect"></i>
+          <p>收藏</p>
         </div>
       </div>
+      <!-- 反馈按钮区域 -->
       <div class="profile-bottom">
         <button class="btn">反馈问题</button>
       </div>
     </div>
-  </div>
+  </section>
   <script>
   // 切换下拉菜单显示状态
   const toggleDropdownMenu = () => {
