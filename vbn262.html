@@ -585,26 +585,7 @@
         return;
       }
     }
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-          item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const href = item.getAttribute('href');
-            const contents = document.querySelectorAll('.content');
-            contents.forEach(c => c.classList.remove('active'));
-            const targetTab = document.querySelector(href);
-            if (targetTab) {
-              targetTab.classList.add('active');
-            }
-            navItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-          });
-        });
-      });
-      // 存储验证码
+  // 存储验证码
   let verificationCode = null;
   // 倒计时时间（秒）
   let countdown = 60;
@@ -757,7 +738,7 @@
       showError(error.message);
     }
   }
-    </script>
+  </script>
   <script>
   // 切换下拉菜单显示状态
   const toggleDropdownMenu = () => {
