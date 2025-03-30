@@ -519,11 +519,20 @@
       });
     });
 
+    // 协议处理
+    const agreementModal = document.getElementById('agreement-modal');
+    const showAgreementModal = () => agreementModal.style.display = 'block';
+    const closeAgreementModal = () => agreementModal.style.display = 'none';
+    const acceptAgreement = () => {
+      localStorage.setItem('agreementAccepted', 'true');
+      closeAgreementModal();
+    };
+
     // 导航切换
     document.addEventListener('DOMContentLoaded', () => {
       if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
       
-      const navItems = document.querySelectorAll('.nav-item');('.nav-item1');
+      const navItems = document.querySelectorAll('.nav-item');
       navItems.forEach(item => {
         item.addEventListener('click', (e) => {
           e.preventDefault();
@@ -537,6 +546,7 @@
           handleTabSwitch(target);
         });
       });
+
       // 检查登录状态
       isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
       if (isLoggedIn) {
@@ -577,6 +587,67 @@
       handleTabSwitch('profile');
     };
 
+    // 退出登录
+    const logout = () => {
+      isLoggedIn = false;
+      localStorage.removeItem('userLoggedIn');
+      handleTabSwitch('home');
+    };
+  </script>
+  <script>
+    // 模态框关闭处理
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal') || e.target.classList.contains('close')) {
+          e.target.closest('.modal').style.display = 'none';
+        }
+      });
+    });
+
+    // 导航切换
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
+      
+      const navItems = document.querySelectorAll('.nav-item');('.nav-item1');
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = item.getAttribute('href').substring(1);
+          
+          if (target === 'profile' && !isLoggedIn) {
+            showLoginModal();
+            return;
+          }
+
+          handleTabSwitch(target);
+        });
+      });
+      // 检查登录状态
+      isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+      if (isLoggedIn) {
+        handleTabSwitch('profile');
+      }
+    });
+
+    const sendVerifyCode = () => {
+      alert('验证码已发送，请查收');
+    };
+
+    const handleLogin = () => {
+      const phone = document.getElementById('phone').value;
+      const code = document.getElementById('verify-code').value;
+      
+      if (!phone || !code) {
+        alert('请填写完整信息');
+        return;
+      }
+
+      isLoggedIn = true;
+      localStorage.setItem('userLoggedIn', 'true');
+      closeLoginModal();
+      handleTabSwitch('profile');
+    };
+
     // 添加密码验证
     function handleLogin() {
       const password = document.getElementById('password').value;
@@ -586,13 +657,6 @@
         return;
       }
     }
-
-    // 退出登录
-    const logout = () => {
-      isLoggedIn = false;
-      localStorage.removeItem('userLoggedIn');
-      handleTabSwitch('home');
-    };
   </script>
   <script>
   // 切换下拉菜单显示状态
@@ -602,17 +666,6 @@
 };
   </script>
   <script>
-    // 提前获取模态框元素
-const agreementModal = document.getElementById('agreement-modal');
-// 显示协议模态框
-const showAgreementModal = () => agreementModal.style.display = 'block';
-// 关闭协议模态框
-const closeAgreementModal = () => agreementModal.style.display = 'none';
-// 存储用户同意状态
-const acceptAgreement = () => {
-    localStorage.setItem('agreementAccepted', 'true');
-    closeAgreementModal();
-};
 // 页面加载时检查是否已同意协议
 document.addEventListener('DOMContentLoaded', () => {
     if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
