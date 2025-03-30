@@ -42,11 +42,22 @@
       justify-content: space-between;
       background: #eee;
     }
+
+    .header1 {
+      z-index: 1;
+      width: 100%;
+      bottom: 0;
+      display: flex;
+      position: fixed;
+      background: #eee;
+      justify-content: space-between;
+    }
+
     .nav-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 8px 15px;
+      padding: 8px 99px;
       text-decoration: none;
       color: var(--text-color);
       transition: color 0.3s, transform 0.3s;
@@ -152,8 +163,8 @@
       background-color: white;
       box-shadow: var(--shadow);
       border-radius: 8px;
-      min-width: auto;
-      max-height: auto;
+      min-width: 100%;
+      max-height: 50vh;
       overflow-y: auto;
     }
 
@@ -196,6 +207,7 @@
     }
 
     @media (max-width: 768px) {
+      .nav-item { padding: 8px 20px; }
     }
 
     .profile-cards {
@@ -363,7 +375,13 @@
       <a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a>
       <a href="https://www.doubao.com/chat/" target="_blank">豆包</a>
     </div>
+    <div>
+      <a href="#profile"class="nav-item">
+        <span>I</span>
+      </a>
     </div>
+  </header>
+  <header class="header1">
     <div>
       <a href="#home" class="nav-item active" aria-current="page">
         <span>ONE</span>
@@ -375,8 +393,8 @@
       </a>
     </div>
     <div>
-      <a href="#profile" class="nav-item">
-        <span>I</span>
+      <a href="#download" class="nav-item">
+        <span>DOWNLOAD</span>
       </a>
     </div>
   </header>
@@ -401,8 +419,7 @@
       <p>1. 用户在使用本网站服务时，必须遵守相关法律法规。</p>
       <p>2. 用户不得利用本网站服务进行任何违法或侵权行为。</p>
       <p>协议更新中</p>
-      <!-- 添加同意按钮 -->
-       <button class="btn" onclick="acceptAgreement()">同意并继续</button>
+      <button class="btn" onclick="acceptAgreement()">同意并继续</button>
       <button class="btn" onclick="closeAgreementModal()">关闭</button>
       <div class="set-item">
         <label>语言设置</label>
@@ -506,7 +523,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
       
-      const navItems = document.querySelectorAll('.nav-item');
+      const navItems = document.querySelectorAll('.nav-item');('.nav-item1');
       navItems.forEach(item => {
         item.addEventListener('click', (e) => {
           e.preventDefault();
@@ -559,6 +576,16 @@
       closeLoginModal();
       handleTabSwitch('profile');
     };
+
+    // 添加密码验证
+    function handleLogin() {
+      const password = document.getElementById('password').value;
+      // 密码强度验证
+      if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password)) {
+        showError('密码需包含大小写字母和数字，至少8位');
+        return;
+      }
+    }
 
     // 退出登录
     const logout = () => {
