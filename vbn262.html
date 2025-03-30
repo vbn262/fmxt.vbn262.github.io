@@ -39,7 +39,7 @@
       display: flex;
       position: fixed;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
       background: #eee;
     }
 
@@ -50,7 +50,7 @@
       display: flex;
       position: fixed;
       background: #eee;
-      justify-content: space-between;
+      justify-content: space-around;
     }
 
     .nav-item {
@@ -79,9 +79,9 @@
     }
 
     .content {
-      max-width: var(--content-max-width);
+      max-width: 1000px;
       margin: 0 auto;
-      padding-bottom: calc(56px + env(safe-area-inset-bottom));
+      padding-bottom: 0;
       display: none;
     }
 
@@ -93,11 +93,9 @@
       background: var(--card-bg);
       margin: 24px auto;
       border-radius: 16px;
-      max-width: var(--content-max-width);
       position: relative;
-      overflow: hidden;
       box-shadow: var(--shadow);
-      transition: all 0.3s;
+      padding: 16px;
     }
 
     .card.dark-mode {
@@ -107,14 +105,13 @@
 
     .btn {
       display: block;
-      width: 60%;
+      width: 90%;
       margin: 20px auto;
       padding: 14px;
       background: var(--active-color);
       color: white;
       border-radius: 28px;
       border: none;
-      transition: background 0.3s;
       font-size: 1rem;
       box-shadow: var(--shadow);
       cursor: pointer;
@@ -212,24 +209,15 @@
 
     .profile-cards {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 20px;
-      gap: 10px;
+      border-bottom:1px solid #eee;
     }
 
     .profile-card {
-      width: calc(33.33% - 20px);
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
+      width: calc(33.33%);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      transition: background-color 0.3s;
     }
 
     .profile-card:hover {
@@ -237,31 +225,29 @@
     }
 
     .profile-card i {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 20px;
       color: var(--bili-link-color);
     }
 
     .profile-card p {
-      margin: 0;
       font-size: 0.9rem;
       color: var(--bili-text-color);
     }
 
     .profile-header {
       display: flex;
+      margin: 20px;
       align-items: center;
       justify-content: space-around;
-      padding: 20px;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid #eee;
+      flex-direction: row;
     }
 
     .profile-avatar {
       width: 80px;
       height: 80px;
-      border-radius: 50%;
+      border-radius: 0;
       background-color: #ccc;
-      overflow: hidden;
     }
 
     .profile-avatar img {
@@ -301,8 +287,6 @@
     .profile-action {
       color: var(--text-color);
       text-decoration: none;
-      margin-left: 20px;
-      font-size: 0.9rem;
     }
     .profile-action:hover {
       color: var(--active-color);
@@ -325,35 +309,6 @@
       color: white;
       width: 100%;
     }
-    .login-form {
-  margin-top: 30px;
-  padding: 20px;
-  border-top: 1px solid var(--border-color);
-}
-
-.verify-container {
-  display: flex;
-  gap: 15px;
-}
-
-.login-tip {
-  text-align: center;
-  color: var(--text-color);
-  font-size: 0.9rem;
-  margin-top: 15px;
-}
-
-.login-tip a {
-  color: var(--active-color);
-  text-decoration: none;
-}
-    /* 页脚样式 */
-    footer {
-      background: #fff;
-      padding: 30px;
-      text-align: center;
-      border-top: 1px solid #eee;
-    }
   </style>
 </head>
 <body>
@@ -371,6 +326,7 @@
         <span>I</span>
       </a>
     </div>
+    <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
   </header>
   <header class="header1">
     <div>
@@ -432,33 +388,27 @@
     </div>
   </div>
   <div id="set" class="content">
-    <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
-    <div class="card">
-      <a href="https://www.4399.com/" target="_blank"><h3>4399小游戏</h3></a>
-      <a href="http://aola.100bt.com/" target="_blank"><h3>奥拉星</h3></a>
-      <a href="http://aoqi.100bt.com/" target="_blank"><h3>奥奇传说</h3></a>
-      <a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam"><h3>Steam</h3></a>
-      <a href="https://flingtrainer.com/" target="_blank"><h3>Fling Trainer</h3></a>
-      <a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab"><h3>Minecraft</h3></a>
-      <a href="https://pvp.qq.com/" target="_blank"><h3>王者荣耀</h3></a>
-      <a href="https://rocom.qq.com/" target="_blank"><h3>洛克王国</h3></a>
-      <a href="https://tv.cctv.com/" target="_blank"><h3>CCTV</h3></a>
-      <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
-      <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
-      <a href="https://www.weilongshipin.com/" target="_blank"><h3>卫龙</h3></a>
-      <a href="http://www.xiaoxiaofood.cn/" target="_blank"><h3>笑辣辣</h3></a>
-      <a href="https://chat.deepseek.com/" target="_blank"><h3>DeepSeek</h3></a>
-      <a href="https://www.doubao.com/chat/" target="_blank"><h3>豆包</h3></a>
-    </div>
+    <a href="https://www.4399.com/" target="_blank"><h3>4399小游戏</h3></a>
+    <a href="http://aola.100bt.com/" target="_blank"><h3>奥拉星</h3></a>
+    <a href="http://aoqi.100bt.com/" target="_blank"><h3>奥奇传说</h3></a>
+    <a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam"><h3>Steam</h3></a>
+    <a href="https://flingtrainer.com/" target="_blank"><h3>Fling Trainer</h3></a>
+    <a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab"><h3>Minecraft</h3></a>
+    <a href="https://pvp.qq.com/" target="_blank"><h3>王者荣耀</h3></a>
+    <a href="https://rocom.qq.com/" target="_blank"><h3>洛克王国</h3></a>
+    <a href="https://tv.cctv.com/" target="_blank"><h3>CCTV</h3></a>
+    <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
+    <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
+    <a href="https://www.weilongshipin.com/" target="_blank"><h3>卫龙</h3></a>
+    <a href="http://www.xiaoxiaofood.cn/" target="_blank"><h3>笑辣辣</h3></a>
+    <a href="https://chat.deepseek.com/" target="_blank"><h3>DeepSeek</h3></a>
+    <a href="https://www.doubao.com/chat/" target="_blank"><h3>豆包</h3></a>
   </div>
   <section id="profile" class="content">
-    <div class="card live-section">
+    <div class="card">
       <!-- 个人信息头部 -->
       <div class="profile-header">
         <div class="profile-info">
-          <div class="profile-avatar"></div>
-          <h2>用户名</h2>
-          <p class="profile-bio">这里可以写一些个人简介，比如兴趣爱好、个人特长等。</p>
           <div class="profile-stats">
             <div class="profile-stats-item">
               <i class="fas fa-users">关注列表</i>
@@ -467,6 +417,9 @@
               <i class="fas fa-user-friends">粉丝</i>
             </div>
           </div>
+          <div class="profile-avatar"></div>
+          <h2>用户名</h2>
+          <p class="profile-bio">这里可以写一些个人简介，比如兴趣爱好、个人特长等。</p>
         </div>
         <div class="profile-header">
           <a href="#history" class="profile-action">
@@ -498,7 +451,7 @@
       </div>
     </div>
   </section>
-  <footer>
+  <footer style="background: #fff;padding: 30px;text-align: center;border-top: 1px solid #eee;">
     <a href="https://space.bilibili.com/1414517639" target="_blank" class="social-icon fab fa-bilibili"></a>
     <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a>
     <a href="https://www.weibo.com" target="_blank" class="social-icon fab fa-weibo"></a>
