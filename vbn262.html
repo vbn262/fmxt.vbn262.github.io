@@ -350,7 +350,7 @@
     /* 页脚样式 */
     footer {
       background: #fff;
-      padding: 20px;
+      padding: 30px;
       text-align: center;
       border-top: 1px solid #eee;
     }
@@ -360,20 +360,7 @@
   <header class="header">
     <i class="menu-icon" onclick="toggleDropdownMenu()">vbn262</i>
     <div class="dropdown-menu" id="dropdown-menu">
-      <div>我喜欢的网站</div>
-      <a href="https://www.4399.com/" target="_blank">4399小游戏</a>
-      <a href="http://aola.100bt.com/" target="_blank">奥拉星</a>
-      <a href="http://aoqi.100bt.com/" target="_blank">奥奇传说</a>
-      <a href="https://store.steampowered.com/" target="_blank">Steam</a>
-      <a href="https://flingtrainer.com/" target="_blank">Fling Trainer</a>
-      <a href="https://tv.cctv.com/" target="_blank">CCTV</a>
-      <a href="https://www.minecraft.net/zh-hans" target="_blank">Minecraft</a>
-      <a href="https://pvp.qq.com/" target="_blank">王者荣耀</a>
-      <a href="https://rocom.qq.com/" target="_blank">洛克王国</a>
-      <a href="https://www.weilongshipin.com/" target="_blank">卫龙</a>
-      <a href="http://www.xiaoxiaofood.cn/" target="_blank">笑辣辣</a>
-      <a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a>
-      <a href="https://www.doubao.com/chat/" target="_blank">豆包</a>
+      
     </div>
     <div>
       <a href="#profile"class="nav-item">
@@ -389,7 +376,7 @@
     </div>
     <div>
       <a href="#set" class="nav-item">
-        <span>SET</span>
+        <div>vbn262喜欢的网站</div>
       </a>
     </div>
     <div>
@@ -415,6 +402,7 @@
   </div>
   <div id="agreement-modal" class="modal">
     <div class="modal-content">
+      <span class="close" onclick="closeAgreementModal()">&times;</span>
       <h2>网页协议</h2>
       <p>1. 用户在使用本网站服务时，必须遵守相关法律法规。</p>
       <p>2. 用户不得利用本网站服务进行任何违法或侵权行为。</p>
@@ -449,6 +437,23 @@
   </div>
   <div id="set" class="content">
     <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
+    <div class="card">
+      <a href="https://www.4399.com/" target="_blank"><h3>4399小游戏</h3></a>
+      <a href="http://aola.100bt.com/" target="_blank"><h3>奥拉星</h3></a>
+      <a href="http://aoqi.100bt.com/" target="_blank"><h3>奥奇传说</h3></a>
+      <a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam"><h3>Steam</h3></a>
+      <a href="https://flingtrainer.com/" target="_blank"><h3>Fling Trainer</h3></a>
+      <a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab"><h3>Minecraft</h3></a>
+      <a href="https://pvp.qq.com/" target="_blank"><h3>王者荣耀</h3></a>
+      <a href="https://rocom.qq.com/" target="_blank"><h3>洛克王国</h3></a>
+      <a href="https://tv.cctv.com/" target="_blank"><h3>CCTV</h3></a>
+      <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
+      <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
+      <a href="https://www.weilongshipin.com/" target="_blank"><h3>卫龙</h3></a>
+      <a href="http://www.xiaoxiaofood.cn/" target="_blank"><h3>笑辣辣</h3></a>
+      <a href="https://chat.deepseek.com/" target="_blank"><h3>DeepSeek</h3></a>
+      <a href="https://www.doubao.com/chat/" target="_blank"><h3>豆包</h3></a>
+    </div>
   </div>
   <section id="profile" class="content">
     <div class="card live-section">
@@ -498,11 +503,9 @@
     </div>
   </section>
   <footer>
-    <div class="social-icons">
-      <a href="https://space.bilibili.com/1414517639" target="_blank" class="social-icon fab fa-bilibili"></a>
-      <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a>
-      <a href="https://www.weibo.com" target="_blank" class="social-icon fab fa-weibo"></a>
-    </div>
+    <a href="https://space.bilibili.com/1414517639" target="_blank" class="social-icon fab fa-bilibili"></a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a>
+    <a href="https://www.weibo.com" target="_blank" class="social-icon fab fa-weibo"></a>
     <p>&copy; 2025 vbn262 版权所有</p>
   </footer>
   <script>
