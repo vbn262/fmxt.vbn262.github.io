@@ -28,6 +28,7 @@
       padding: 0;
       padding-top: 70px;
       text-align: center;
+      overscroll-behavior: contain;
     }
 
     .header {
@@ -60,7 +61,6 @@
       padding: 8px 99px;
       text-decoration: none;
       color: var(--text-color);
-      transition: color 0.3s, transform 0.3s;
     }
 
     .nav-item.active::after {
@@ -203,9 +203,48 @@
       transform: translate(-50%, -50%);
     }
 
-    @media (max-width: 768px) {
-      .nav-item { padding: 8px 20px; }
+    @media (max-width: 1024px) {
+      .header1 {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+      }
+      .nav-item { padding: 8px 10px; }
     }
+    /* 顶部导航响应式调整 */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+    justify-content: space-between;
+  }
+  
+  .header1 {
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    padding: 8px 12px;
+  }
+
+  .nav-item span {
+    font-size: 0.8rem;
+  }
+}
+/* 卡片内容优化 */
+@media (max-width: 768px) {
+  .card {
+    padding: 12px;
+    margin: 12px auto;
+  }
+
+  .profile-card {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+}
 
     .profile-cards {
       display: flex;
@@ -374,7 +413,24 @@
     <div class="card">
       <div style="border-bottom:1px solid #000;"><h1>网页说明</h1></div>
       <div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
-      <div><img src="4587.jpg" style="width: 400px;height: 400px;" loading="lazy"></div>
+      <div><img src="4587.jpg" style="width: 100%; height: 100%;" loading="lazy"></div>
+<script>
+  const lazyImages = document.querySelectorAll('img.lazy');
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        observer.unobserve(img);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  lazyImages.forEach(img => {
+    observer.observe(img);
+  });
+</script>
       <h1><a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili">vbn262网页制作找我</a></h1>
       <h1><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a></h1>
       <a href="https://tv.cctv.com/" target="_blank" title="直播">CCTV</a>
@@ -388,22 +444,21 @@
     </div>
   </div>
   <div id="set" class="content">
-    <a href="https://www.4399.com/" target="_blank" class="icon-link"><h3>4399小游戏</h3></a>
-    <a href="http://aola.100bt.com/" target="_blank" class="icon-link"><h3>奥拉星</h3></a>
-    <a href="http://aoqi.100bt.com/" target="_blank" class="icon-link"><h3>奥奇传说</h3></a>
-    <a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam icon-link"><h3>Steam</h3></a>
-    <a href="https://flingtrainer.com/" target="_blank" class="icon-link"><h3>Fling Trainer</h3></a>
-    <a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab icon-link"><h3>Minecraft</h3></a>
-    <a href="https://pvp.qq.com/" target="_blank" class="icon-link"><h3>王者荣耀</h3></a>
-    <a href="https://rocom.qq.com/" target="_blank" class="icon-link"><h3>洛克王国</h3></a>
-    <a href="https://tv.cctv.com/" target="_blank" class="icon-link"><h3>CCTV</h3></a>
+    <a href="https://www.4399.com/" target="_blank"><h3>4399小游戏</h3></a>
+    <a href="http://aola.100bt.com/" target="_blank"><h3>奥拉星</h3></a>
+    <a href="http://aoqi.100bt.com/" target="_blank"><h3>奥奇传说</h3></a>
+    <a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam"><h3>Steam</h3></a>
+    <a href="https://flingtrainer.com/" target="_blank"><h3>Fling Trainer</h3></a>
+    <a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab"><h3>Minecraft</h3></a>
+    <a href="https://pvp.qq.com/" target="_blank"><h3>王者荣耀</h3></a>
+    <a href="https://rocom.qq.com/" target="_blank"><h3>洛克王国</h3></a>
+    <a href="https://tv.cctv.com/" target="_blank"><h3>CCTV</h3></a>
     <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
     <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
-    <a href="https://www.weilongshipin.com/" target="_blank" class="icon-link"><h3>卫龙</h3></a>
-    <a href="http://www.xiaoxiaofood.cn/" target="_blank" class="icon-link"><h3>笑辣辣</h3></a>
-    <a href="https://chat.deepseek.com/" target="_blank" class="icon-link"><h3>DeepSeek</h3></a>
-    <a href="https://www.doubao.com/chat/" target="_blank" class="icon-link"><h3>豆包</h3></a>
-    <style>.icon-link {display: inline-block;margin: 8px;padding: 10px 15px;border-radius: 5px;color: #333;background-color: #f5f5f5;}</style>
+    <a href="https://www.weilongshipin.com/" target="_blank"><h3>卫龙</h3></a>
+    <a href="http://www.xiaoxiaofood.cn/" target="_blank"><h3>笑辣辣</h3></a>
+    <a href="https://chat.deepseek.com/" target="_blank"><h3>DeepSeek</h3></a>
+    <a href="https://www.doubao.com/chat/" target="_blank"><h3>豆包</h3></a>
   </div>
   <section id="profile" class="content">
     <div class="card">
@@ -586,159 +641,6 @@
         return;
       }
     }
-  // 存储验证码
-  let verificationCode = null;
-  // 倒计时时间（秒）
-  let countdown = 60;
-  let timer;
-  // 提前查询并存储需要的 DOM 元素
-  const phoneInput = document.getElementById('phone');
-  const codeInput = document.getElementById('code');
-  const errorMessage = document.getElementById('login-error');
-  const getCodeBtn = document.querySelector('.get-code-btn');
-  const navItems = document.querySelectorAll('.nav-item');
-  const contentElements = document.querySelectorAll('.content');
-  const liveSection = document.querySelector('.live-section');
-  // 手机号登录函数
-  const phoneLogin = () => {
-      const phone = phoneInput.value;
-      const code = codeInput.value;
-      if (!phone ||!code) {
-          showError('请完整填写手机号和验证码');
-          return;
-      }
-      if (code === verificationCode) {
-          alert('登录成功');
-      } else {
-          showError('手机号或验证码错误');
-      }
-  };
-  // 获取验证码函数
-  const getCode = () => {
-      const phone = phoneInput.value;
-      if (!phone) {
-          alert('请输入手机号');
-          return;
-      }
-      verificationCode = String(100000 + Math.floor(Math.random() * 900000));
-      console.log(`验证码: ${verificationCode}`); // 实际应用中应通过短信发送
-      startCountdown();
-  };
-  // 显示错误信息函数
-  const showError = (message) => {
-      errorMessage.textContent = message;
-      errorMessage.style.display = 'block';
-  };
-  // 开始倒计时函数
-  const startCountdown = () => {
-      getCodeBtn.disabled = true;
-      getCodeBtn.textContent = `${countdown}s后重新获取`;
-      timer = setInterval(() => {
-          countdown--;
-          getCodeBtn.textContent = `${countdown}s后重新获取`;
-          if (countdown <= 0) {
-              clearInterval(timer);
-              getCodeBtn.disabled = false;
-              getCodeBtn.textContent = '获取验证码';
-              countdown = 60;
-          }
-      }, 1000);
-  };
-  // 隐藏所有.content 元素的函数
-  const hideAllContent = () => {
-      contentElements.forEach(c => c.style.display = 'none');
-  };
-  // 页面卸载时清除定时器
-  window.addEventListener('beforeunload', () => {
-      clearInterval(timer);
-  });
-  // 验证码相关变量
-  function sendVerifyCode() {
-    const phone = document.getElementById('phone').value;
-    const verifyBtn = document.getElementById('get-verify');
-    // 手机号格式验证
-    if (!/^1[3-9]\d{9}$/.test(phone)) {
-      showError('请输入正确的手机号');
-      return;
-    }
-    // 生成验证码
-    verifyCode = generateVerifyCode();
-    localStorage.setItem('verifyCode', verifyCode);
-    localStorage.setItem('verifyPhone', phone);
-    // 启动倒计时
-    verifyBtn.disabled = true;
-    verifyBtn.textContent = `${countdown}秒后重试`;
-    const timer = setInterval(() => {
-      countdown--;
-      verifyBtn.textContent = `${countdown}秒后重试`;
-      if (countdown <= 0) {
-        clearInterval(timer);
-        verifyBtn.disabled = false;
-        verifyBtn.textContent = '获取验证码';
-        countdown = 60;
-      }
-    }, 1000);
-    // 模拟发送短信
-    setTimeout(() => {
-      showSuccess('验证码已发送至您的手机');
-    }, 1500);
-  }
-  function handleLogin() {
-    const inputCode = document.getElementById('verify-code').value;
-    const storedCode = localStorage.getItem('verifyCode');
-    const phone = localStorage.getItem('verifyPhone');
-    if (!inputCode || inputCode !== storedCode) {
-      showError('验证码错误或已过期');
-      return;
-    }
-    // 模拟登录成功
-    localStorage.setItem('userPhone', phone);
-    showSuccess('登录成功！');
-    setTimeout(() => {
-      window.location.href = '#home';
-    }, 1000);
-  }
-  function generateVerifyCode() {
-    // 生成6位数字验证码
-    return Math.random().toString().slice(2, 8);
-  }
-  function showError(message) {
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.textContent = message;
-    errorDiv.style.color = 'red';
-    errorDiv.style.textAlign = 'center';
-    errorDiv.style.margin = '10px 0';
-    document.querySelector('.login-form').prepend(errorDiv);
-    setTimeout(() => {
-      errorDiv.remove();
-    }, 3000);
-  }
-  function showSuccess(message) {
-    const successDiv = document.createElement('div');
-    successDiv.className = 'success-message';
-    successDiv.textContent = message;
-    successDiv.style.color = 'green';
-    successDiv.style.textAlign = 'center';
-    successDiv.style.margin = '10px 0';
-    document.querySelector('.login-form').prepend(successDiv);
-    setTimeout(() => {
-      successDiv.remove();
-    }, 2000);
-  }
-  // 真实发送验证码接口示例
-  async function sendRealVerifyCode(phone) {
-    try {
-      const response = await fetch('/api/send-verify', {
-        method: 'POST',
-        body: JSON.stringify({ phone })
-      });
-      const data = await response.json();
-      if (!data.success) throw new Error(data.message);
-    } catch (error) {
-      showError(error.message);
-    }
-  }
   </script>
   <script>
   // 切换下拉菜单显示状态
@@ -752,6 +654,180 @@
 document.addEventListener('DOMContentLoaded', () => {
     if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
 });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = item.getAttribute('href');
+          const contents = document.querySelectorAll('.content');
+          contents.forEach(c => c.classList.remove('active'));
+          const targetTab = document.querySelector(href);
+          if (targetTab) {
+            targetTab.classList.add('active');
+          }
+          navItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        });
+      });
+    });
+  </script>
+  <script>
+    // 存储验证码
+let verificationCode = null;
+// 倒计时时间（秒）
+let countdown = 60;
+let timer;
+// 提前查询并存储需要的 DOM 元素
+const phoneInput = document.getElementById('phone');
+const codeInput = document.getElementById('code');
+const errorMessage = document.getElementById('login-error');
+const getCodeBtn = document.querySelector('.get-code-btn');
+const navItems = document.querySelectorAll('.nav-item');
+const contentElements = document.querySelectorAll('.content');
+const liveSection = document.querySelector('.live-section');
+// 手机号登录函数
+const phoneLogin = () => {
+    const phone = phoneInput.value;
+    const code = codeInput.value;
+    if (!phone ||!code) {
+        showError('请完整填写手机号和验证码');
+        return;
+    }
+    if (code === verificationCode) {
+        alert('登录成功');
+    } else {
+        showError('手机号或验证码错误');
+    }
+};
+// 获取验证码函数
+const getCode = () => {
+    const phone = phoneInput.value;
+    if (!phone) {
+        alert('请输入手机号');
+        return;
+    }
+    verificationCode = String(100000 + Math.floor(Math.random() * 900000));
+    console.log(`验证码: ${verificationCode}`); // 实际应用中应通过短信发送
+    startCountdown();
+};
+// 显示错误信息函数
+const showError = (message) => {
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
+};
+// 开始倒计时函数
+const startCountdown = () => {
+    getCodeBtn.disabled = true;
+    getCodeBtn.textContent = `${countdown}s后重新获取`;
+    timer = setInterval(() => {
+        countdown--;
+        getCodeBtn.textContent = `${countdown}s后重新获取`;
+        if (countdown <= 0) {
+            clearInterval(timer);
+            getCodeBtn.disabled = false;
+            getCodeBtn.textContent = '获取验证码';
+            countdown = 60;
+        }
+    }, 1000);
+};
+// 隐藏所有.content 元素的函数
+const hideAllContent = () => {
+    contentElements.forEach(c => c.style.display = 'none');
+};
+// 页面卸载时清除定时器
+window.addEventListener('beforeunload', () => {
+    clearInterval(timer);
+});
+// 验证码相关变量
+function sendVerifyCode() {
+  const phone = document.getElementById('phone').value;
+  const verifyBtn = document.getElementById('get-verify');
+  // 手机号格式验证
+  if (!/^1[3-9]\d{9}$/.test(phone)) {
+    showError('请输入正确的手机号');
+    return;
+  }
+  // 生成验证码
+  verifyCode = generateVerifyCode();
+  localStorage.setItem('verifyCode', verifyCode);
+  localStorage.setItem('verifyPhone', phone);
+  // 启动倒计时
+  verifyBtn.disabled = true;
+  verifyBtn.textContent = `${countdown}秒后重试`;
+  const timer = setInterval(() => {
+    countdown--;
+    verifyBtn.textContent = `${countdown}秒后重试`;
+    if (countdown <= 0) {
+      clearInterval(timer);
+      verifyBtn.disabled = false;
+      verifyBtn.textContent = '获取验证码';
+      countdown = 60;
+    }
+  }, 1000);
+  // 模拟发送短信
+  setTimeout(() => {
+    showSuccess('验证码已发送至您的手机');
+  }, 1500);
+}
+function handleLogin() {
+  const inputCode = document.getElementById('verify-code').value;
+  const storedCode = localStorage.getItem('verifyCode');
+  const phone = localStorage.getItem('verifyPhone');
+  if (!inputCode || inputCode !== storedCode) {
+    showError('验证码错误或已过期');
+    return;
+  }
+  // 模拟登录成功
+  localStorage.setItem('userPhone', phone);
+  showSuccess('登录成功！');
+  setTimeout(() => {
+    window.location.href = '#home';
+  }, 1000);
+}
+function generateVerifyCode() {
+  // 生成6位数字验证码
+  return Math.random().toString().slice(2, 8);
+}
+function showError(message) {
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'error-message';
+  errorDiv.textContent = message;
+  errorDiv.style.color = 'red';
+  errorDiv.style.textAlign = 'center';
+  errorDiv.style.margin = '10px 0';
+  document.querySelector('.login-form').prepend(errorDiv);
+  setTimeout(() => {
+    errorDiv.remove();
+  }, 3000);
+}
+function showSuccess(message) {
+  const successDiv = document.createElement('div');
+  successDiv.className = 'success-message';
+  successDiv.textContent = message;
+  successDiv.style.color = 'green';
+  successDiv.style.textAlign = 'center';
+  successDiv.style.margin = '10px 0';
+  document.querySelector('.login-form').prepend(successDiv);
+  setTimeout(() => {
+    successDiv.remove();
+  }, 2000);
+}
+// 真实发送验证码接口示例
+async function sendRealVerifyCode(phone) {
+  try {
+    const response = await fetch('/api/send-verify', {
+      method: 'POST',
+      body: JSON.stringify({ phone })
+    });
+    const data = await response.json();
+    if (!data.success) throw new Error(data.message);
+  } catch (error) {
+    showError(error.message);
+  }
+}
   </script>
 </body>
 </html>
