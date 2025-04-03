@@ -203,48 +203,40 @@
       transform: translate(-50%, -50%);
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
+      .header {
+        padding: 10px 20px;
+        justify-content: space-between;
+      }
+
       .header1 {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
         background: white;
-        box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+        justify-content: space-around;
       }
-      .nav-item { padding: 8px 10px; }
+
+      .nav-item {
+        padding: 14px 18px; /* 增大可点击区域 */
+      }
+
+      .nav-item span {
+        font-size: 0.8rem;
+      }
+
+      .card {
+        padding: 12px;
+        margin: 12px auto;
+      }
+
+      .profile-card {
+        padding: 18px 12px; /* 增强触摸反馈 */
+        width: 100%;
+        border-bottom: 1px solid #eee;
+      }
     }
-    /* 顶部导航响应式调整 */
-@media (max-width: 768px) {
-  .header {
-    padding: 10px 20px;
-    justify-content: space-between;
-  }
-  
-  .header1 {
-    justify-content: space-around;
-  }
-
-  .nav-item {
-    padding: 8px 12px;
-  }
-
-  .nav-item span {
-    font-size: 0.8rem;
-  }
-}
-/* 卡片内容优化 */
-@media (max-width: 768px) {
-  .card {
-    padding: 12px;
-    margin: 12px auto;
-  }
-
-  .profile-card {
-    width: 100%;
-    border-bottom: 1px solid #eee;
-  }
-}
 
     .profile-cards {
       display: flex;
@@ -356,91 +348,64 @@
     <div class="dropdown-menu" id="dropdown-menu">
       <a href="">刷新</a>
     </div>
-    <select>
-      <option value="zh-CN">简体中文</option>
-      <option value="en">English</option>
-    </select>
-    <div>
-      <a href="#profile"class="nav-item">
-        <span>I</span>
-      </a>
-    </div>
     <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
+    <div id="agreement-modal" class="modal">
+      <div class="modal-content">
+        <h2>网页协议</h2>
+        <p>用户在使用本网站服务时，必须遵守相关法律法规</p>
+        <p>用户不得利用本网站服务进行任何违法侵权行为</p>
+        <p>协议更新中</p>
+        <button class="btn" onclick="acceptAgreement()">同意并继续</button>
+        <button class="btn" onclick="closeAgreementModal()">关闭</button>
+      </div>
+    </div>
   </header>
   <header class="header1">
     <div>
-      <a href="#home" class="nav-item active" aria-current="page">
-        <span>ONE</span>
-      </a>
+        <a href="#home" class="nav-item active" aria-current="page">
+            <span>ONE</span>
+        </a>
     </div>
     <div>
-      <a href="#set" class="nav-item">
-        <div>vbn262喜欢的网站</div>
-      </a>
+        <a href="#set" class="nav-item">
+            <span>STE</span>
+        </a>
     </div>
     <div>
-      <a href="#download" class="nav-item">
-        <span>DOWNLOAD</span>
+      <a href="#profile" class="nav-item">
+        <span>I</span>
       </a>
     </div>
-  </header>
-  <!-- 登录模态框 -->
-  <div id="login-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeLoginModal()">&times;</span>
-      <h3>登录</h3>
-      <div class="login-form">
-        <input type="tel" id="phone" class="input-field" placeholder="手机号">
-        <div class="verify-container">
-          <input type="text" id="verify-code" class="input-field" placeholder="验证码">
-          <button class="btn" onclick="sendVerifyCode()">获取验证码</button>
-        </div>
-        <button class="btn" onclick="handleLogin()">登录</button>
+    <div id="login-modal" class="modal">
+      <div class="modal-content">
+          <span class="close" onclick="closeLoginModal()">&times;</span>
+          <h3>登录</h3>
+          <div class="login-form">
+              <input type="tel" id="phone" class="input-field" placeholder="手机号">
+              <div class="verify-container">
+                  <input type="text" id="verify-code" class="input-field" placeholder="验证码">
+                  <button class="btn" onclick="sendVerifyCode()">获取验证码</button>
+              </div>
+              <button class="btn" onclick="handleLogin()">登录</button>
+          </div>
       </div>
     </div>
-  </div>
-  <div id="agreement-modal" class="modal">
-    <div class="modal-content">
-      <h2>网页协议</h2>
-      <p>1. 用户在使用本网站服务时，必须遵守相关法律法规。</p>
-      <p>2. 用户不得利用本网站服务进行任何违法或侵权行为。</p>
-      <p>协议更新中</p>
-      <button class="btn" onclick="acceptAgreement()">同意并继续</button>
-      <button class="btn" onclick="closeAgreementModal()">关闭</button>
-    </div>
-  </div>
+  </header>
   <div id="home" class="content active">
     <div class="card">
-      <div style="border-bottom:1px solid #000;"><h1>网页说明</h1></div>
-      <div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
-      <div><img src="4587.jpg" style="width: 100%; height: 100%;" loading="lazy"></div>
-<script>
-  const lazyImages = document.querySelectorAll('img.lazy');
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.remove('lazy');
-        observer.unobserve(img);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  lazyImages.forEach(img => {
-    observer.observe(img);
-  });
-</script>
-      <h1><a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili">vbn262网页制作找我</a></h1>
-      <h1><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a></h1>
-      <a href="https://tv.cctv.com/" target="_blank" title="直播">CCTV</a>
-      <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft</h1></a>
-      <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
-      <h3><a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank">Forge</a><a href="https://fabricmc.net/" target="_blank">Fabric</a><a href="https://quiltmc.org/en/" target="_blank">QuiltMC</a></h3>
-      <a href="https://www.mcmod.cn/" target="_blank"><h3>MC百科</h3></a>
-      <a href="https://texture-packs.com/" target="_blank"><h3>Minecraft Texture Packs</h3></a>
-      <a href="https://bbsmc.net/" target="_blank"><h3>BBSM</h3></a>
-      <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForge</h3></a>
+        <div style="border-bottom:1px solid #000;"><h1>网页说明</h1></div>
+        <div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
+        <div><img src="4587.jpg" style="width: 100%; height: 100%;" loading="lazy"></div>
+        <h1><a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili">vbn262网页制作找我</a></h1>
+        <h1><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a></h1>
+        <a href="https://tv.cctv.com/" target="_blank" title="直播">CCTV</a>
+        <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft</h1></a>
+        <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
+        <h3><a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank">Forge</a><a href="https://fabricmc.net/" target="_blank">Fabric</a><a href="https://quiltmc.org/en/" target="_blank">QuiltMC</a></h3>
+        <a href="https://www.mcmod.cn/" target="_blank"><h3>MC百科</h3></a>
+        <a href="https://texture-packs.com/" target="_blank"><h3>Minecraft Texture Packs</h3></a>
+        <a href="https://bbsmc.net/" target="_blank"><h3>BBSM</h3></a>
+        <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForge</h3></a>
     </div>
   </div>
   <div id="set" class="content">
@@ -453,6 +418,7 @@
     <a href="https://pvp.qq.com/" target="_blank"><h3>王者荣耀</h3></a>
     <a href="https://rocom.qq.com/" target="_blank"><h3>洛克王国</h3></a>
     <a href="https://tv.cctv.com/" target="_blank"><h3>CCTV</h3></a>
+    <h3><a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a></h3>
     <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
     <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
     <a href="https://www.weilongshipin.com/" target="_blank"><h3>卫龙</h3></a>
@@ -462,55 +428,55 @@
   </div>
   <section id="profile" class="content">
     <div class="card">
-      <!-- 个人信息头部 -->
-      <div class="profile-header">
-        <div class="profile-info">
-          <div class="profile-stats">
-            <div class="profile-stats-item">
-              <i class="fas fa-users">关注列表</i>
-            </div>
-            <div class="profile-stats-item">
-              <i class="fas fa-user-friends">粉丝</i>
-            </div>
-          </div>
-          <div class="profile-avatar"></div>
-          <h2>用户名</h2>
-          <p class="profile-bio">这里可以写一些个人简介，比如兴趣爱好、个人特长等。</p>
-        </div>
+        <!-- 个人信息头部 -->
         <div class="profile-header">
-          <a href="#history" class="profile-action">
-            <i class="fas fa-clock"></i> 历史记录
-          </a>
-          <a href="#settings" class="profile-action">
-            <i class="fas fa-cog"></i> 设置
-          </a>
+            <div class="profile-info">
+                <div class="profile-stats">
+                    <div class="profile-stats-item">
+                        <i class="fas fa-users">关注列表</i>
+                    </div>
+                    <div class="profile-stats-item">
+                        <i class="fas fa-user-friends">粉丝</i>
+                    </div>
+                </div>
+                <div class="profile-avatar"></div>
+                <h2>用户名</h2>
+                <p class="profile-bio">这里可以写一些个人简介，比如兴趣爱好、个人特长等。</p>
+            </div>
+            <div class="profile-header">
+                <a href="#history" class="profile-action">
+                    <i class="fas fa-clock"></i> 历史记录
+                </a>
+                <a href="#settings" class="profile-action">
+                    <i class="fas fa-cog"></i> 设置
+                </a>
+            </div>
         </div>
-      </div>
-      <!-- 功能卡片区域 -->
-      <div class="profile-cards">
-        <div class="profile-card">
-          <i class="fas fa-folder"></i>
-          <p>作品</p>
+        <!-- 功能卡片区域 -->
+        <div class="profile-cards">
+            <div class="profile-card">
+                <i class="fas fa-folder"></i>
+                <p>作品</p>
+            </div>
+            <div class="profile-card">
+                <i class="fas fa-thumbs-up"></i>
+                <p>喜欢</p>
+            </div>
+            <div class="profile-card">
+                <i class="fas fa-folder"></i>
+                <p>收藏</p>
+            </div>
         </div>
-        <div class="profile-card">
-          <i class="fas fa-thumbs-up"></i>
-          <p>喜欢</p>
+        <!-- 反馈按钮区域 -->
+        <div class="profile-bottom">
+            <button class="btn">反馈问题</button>
         </div>
-        <div class="profile-card">
-          <i class="fas fa-folder"></i>
-          <p>收藏</p>
-        </div>
-      </div>
-      <!-- 反馈按钮区域 -->
-      <div class="profile-bottom">
-        <button class="btn">反馈问题</button>
-      </div>
     </div>
   </section>
-  <footer style="background: #fff;padding: 30px;text-align: center;border-top: 1px solid #eee;">
-    <a href="https://space.bilibili.com/1414517639" target="_blank" class="social-icon fab fa-bilibili"></a>
-    <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a>
-    <a href="https://www.weibo.com" target="_blank" class="social-icon fab fa-weibo"></a>
+  <footer style="background: #fef;padding: 30px;text-align: center;border-top: 1px solid #eee;">
+    <a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili"></a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="fab fa-tiktok"></a>
+    <a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a>
     <p>&copy; 2025 vbn262 版权所有</p>
   </footer>
   <script>
