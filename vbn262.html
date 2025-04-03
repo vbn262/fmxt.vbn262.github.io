@@ -59,6 +59,9 @@
       text-decoration: none;
       color: var(--text-color);
     }
+    .nav-item i {
+      font-size: 1.8rem; /* 增大图标尺寸 */
+    }
     .nav-item span {
       font-size: 2rem;
     }
@@ -97,7 +100,7 @@
       color: white;
       border-radius: 28px;
       border: none;
-      font-size: 1rem;
+      font-size: 2rem;
       box-shadow: var(--shadow);
       cursor: pointer;
     }
@@ -186,6 +189,7 @@
 
     @media (max-width: 768px) {
       .header {
+        top: -20px;
         padding: 10px 20px;
         justify-content: space-between;
       }
@@ -334,17 +338,17 @@
   <header class="header1">
     <div>
       <a href="#home" class="nav-item active" aria-current="page">
-        <i class="fas"><span>ONE</span></i>
+        <i class="fas fa-home"><span>ONE</span></i>
       </a>
     </div>
     <div>
       <a href="#set" class="nav-item">
-        <i class="fas"><span>SET</span></i>
+        <i class="fas fa-cog"><span>SET</span></i>
       </a>
     </div>
     <div>
       <a href="#profile" class="nav-item">
-        <i class="fas"><span>I</span></i>
+        <i class="fas fa-user"><span>I</span></i>
       </a>
     </div>
     <div id="login-modal" class="modal"><div class="modal-content">点击空白处取消</div></div>
@@ -539,8 +543,7 @@
       localStorage.removeItem('userLoggedIn');
       handleTabSwitch('home');
     };
-  </script>
-  <script>
+
     // 存储验证码
 let verificationCode = null;
 // 倒计时时间（秒）
