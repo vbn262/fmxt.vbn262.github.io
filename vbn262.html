@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="vbn262官方网站 - 视频平台">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="description" content="vbn262官方66 - 视频平台">
   <style>
     :root {
-      --nav-bg: white;
-      --active-color: #1877f2;
-      --text-color: #606770;
       --content-max-width: 800px;
       --bg-color: #f0f2f5;
-      --card-bg: #f5f6f7;
+      --card-bg: #fff;
+      --nav-bg: white;
+      --active-color: rgb(255, 210, 253);
+      --text-color: #606770;
       --dark-card-bg: rgba(30, 30, 30, 0.9);
       --border-color: #e4e6eb;
-      --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       --bili-text-color: #333;
-      --bili-link-color: #007AFF;
     }
 
     body {
@@ -33,10 +30,10 @@
 
     .header {
       z-index: 1;
-      top: -20px;
+      top: 0;
       left: 0;
       right: 0;
-      padding: 20px 40px 0 9px;
+      padding: 9px;
       display: flex;
       position: fixed;
       align-items: center;
@@ -58,24 +55,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 8px 99px;
+      padding: 0 99px;
       text-decoration: none;
       color: var(--text-color);
     }
-
-    .nav-item.active::after {
-      content: "";
-      position: absolute;
-      bottom: -6px;
-      width: 6px;
-      height: 6px;
-      background: var(--active-color);
-      border-radius: 50%;
-    }
-
-    .nav-item i {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
+    .nav-item span {
+      font-size: 2rem;
     }
 
     .content {
@@ -115,10 +100,6 @@
       font-size: 1rem;
       box-shadow: var(--shadow);
       cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #1566d1;
     }
 
     .btn:disabled {
@@ -214,16 +195,17 @@
         bottom: 0;
         left: 0;
         right: 0;
+        padding: 9px 0 9px 0;
         background: #eee;
         justify-content: space-around;
       }
 
       .nav-item {
-        padding: 14px 18px; /* 增大可点击区域 */
+        padding: 0; /* 增大可点击区域 */
       }
 
       .nav-item span {
-        font-size: 0.8rem;
+        font-size: 1.5rem;
       }
 
       .card {
@@ -232,9 +214,7 @@
       }
 
       .profile-card {
-        padding: 18px 12px; /* 增强触摸反馈 */
         width: 100%;
-        border-bottom: 1px solid #eee;
       }
     }
 
@@ -344,58 +324,39 @@
 </head>
 <body>
   <header class="header">
-    <i class="menu-icon" onclick="toggleDropdownMenu()">vbn262</i>
+    <i class="menu-icon" class="fas" onclick="toggleDropdownMenu()"><i class="fas">vbn262</i></i>
+    <script>/*切换下拉菜单显示状态*/const toggleDropdownMenu = () => {const dropdownMenu = document.getElementById('dropdown-menu');dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';};</script>
     <div class="dropdown-menu" id="dropdown-menu">
       <a href="">刷新</a>
-    </div>
-    <button onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button>
-    <div id="agreement-modal" class="modal">
-      <div class="modal-content">
-        <h2>网页协议</h2><p>用户在使用本网站服务时</p><p>必须遵守相关法律法规</p><p>用户不得利用本网站服务</p><p>进行任何违法侵权行为</p>
-        <button class="btn" onclick="acceptAgreement()">同意并继续</button>
-        <button class="btn" onclick="closeAgreementModal()">关闭</button>
-      </div>
+      <a href="">下载</a>
     </div>
   </header>
   <header class="header1">
     <div>
-        <a href="#home" class="nav-item active" aria-current="page">
-            <span>ONE</span>
-        </a>
+      <a href="#home" class="nav-item active" aria-current="page">
+        <i class="fas"><span>ONE</span></i>
+      </a>
     </div>
     <div>
-        <a href="#set" class="nav-item">
-            <span>SET</span>
-        </a>
+      <a href="#set" class="nav-item">
+        <i class="fas"><span>SET</span></i>
+      </a>
     </div>
     <div>
       <a href="#profile" class="nav-item">
-        <span>I</span>
+        <i class="fas"><span>I</span></i>
       </a>
     </div>
-    <div id="login-modal" class="modal">
-      <div class="modal-content">
-          <span class="close" onclick="closeLoginModal()">&times;</span>
-          <h3>登录</h3>
-          <div class="login-form">
-              <input type="tel" id="phone" class="input-field" placeholder="手机号">
-              <div class="verify-container">
-                  <input type="text" id="verify-code" class="input-field" placeholder="验证码">
-                  <button class="btn" onclick="sendVerifyCode()">获取验证码</button>
-              </div>
-              <button class="btn" onclick="handleLogin()">登录</button>
-          </div>
-      </div>
-    </div>
+    <div id="login-modal" class="modal"><div class="modal-content">点击空白处取消</div></div>
   </header>
   <div id="home" class="content active">
-    <div class="card">
+    <div class="card" style="border-bottom:1px solid #000;">
         <div style="border-bottom:1px solid #000;"><h1>网页说明</h1></div>
         <div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
         <div><img src="4587.jpg" style="width: 100%; height: 100%;" loading="lazy"></div>
-        <h1><a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili">vbn262网页制作找我</a></h1>
-        <h1><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="social-icon fab fa-tiktok"></a></h1>
-        <a href="https://tv.cctv.com/" target="_blank" title="直播">CCTV</a>
+
+        <h1><a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" class="fab fa-bilibili">网页制作找我</a></h1>
+        <h1><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="btn" class="social-icon fab fa-tiktok">我的帐号</a></h1>
         <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft</h1></a>
         <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
         <h3><a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank">Forge</a><a href="https://fabricmc.net/" target="_blank">Fabric</a><a href="https://quiltmc.org/en/" target="_blank">QuiltMC</a></h3>
@@ -404,17 +365,15 @@
         <a href="https://bbsmc.net/" target="_blank"><h3>BBSM</h3></a>
         <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForge</h3></a>
     </div>
-  </div>
-  <div id="set" class="content">
-    <a href="https://www.4399.com/" target="_blank"><h3>4399小游戏</h3></a>
+    <a href="https://www.4399.com/" target="_blank" class="fab"><h3>4399小游戏</h3></a>
     <a href="http://aola.100bt.com/" target="_blank"><h3>奥拉星</h3></a>
     <a href="http://aoqi.100bt.com/" target="_blank"><h3>奥奇传说</h3></a>
-    <a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam"><h3>Steam</h3></a>
-    <a href="https://flingtrainer.com/" target="_blank"><h3>Fling Trainer</h3></a>
-    <a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab"><h3>Minecraft</h3></a>
+    <h3><a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam"></a></h3>
+    <h3><a href="https://flingtrainer.com/" target="_blank" class="fab">Fling Trainer</a></h3>
+    <h3><a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab">Minecraft</a></h3>
     <a href="https://pvp.qq.com/" target="_blank"><h3>王者荣耀</h3></a>
     <a href="https://rocom.qq.com/" target="_blank"><h3>洛克王国</h3></a>
-    <a href="https://tv.cctv.com/" target="_blank"><h3>CCTV</h3></a>
+    <h3><a href="https://tv.cctv.com/" target="_blank" class="fab">CCTV</a></h3>
     <h3><a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a></h3>
     <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
     <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
@@ -423,59 +382,66 @@
     <a href="https://chat.deepseek.com/" target="_blank"><h3>DeepSeek</h3></a>
     <a href="https://www.doubao.com/chat/" target="_blank"><h3>豆包</h3></a>
   </div>
+  <div id="set" class="content">
+    <button class="btn" onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button><script>function showAgreementModal() {document.getElementById('agreement-modal').style.display = 'block';}function closeAgreementModal() {document.getElementById('agreement-modal').style.display = 'none';}function acceptAgreement() {alert('协议已接受');closeAgreementModal();}</script>
+    <div id="agreement-modal" class="modal"><div class="modal-content"><h2>网页协议</h2><p>用户在使用本网站服务时</p><p>必须遵守相关法律法规</p><p>用户不得利用本网站服务</p><p>进行任何违法侵权行为</p><button onclick="acceptAgreement()">同意</button><button onclick="closeAgreementModal()">关闭</button></div></div>
+    <a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" >反馈问题</a>
+  </div>
   <section id="profile" class="content">
     <div class="card">
-        <!-- 个人信息头部 -->
-        <div class="profile-header">
-            <div class="profile-info">
-                <div class="profile-stats">
-                    <div class="profile-stats-item">
-                        <i class="fas fa-users">关注列表</i>
-                    </div>
-                    <div class="profile-stats-item">
-                        <i class="fas fa-user-friends">粉丝</i>
-                    </div>
+      <!-- 个人信息头部 -->
+      <div class="profile-header">
+        <div class="profile-info">
+            <div class="profile-stats">
+                <div class="profile-stats-item">
+                    <i class="fas fa-users">关注列表</i>
                 </div>
-                <div class="profile-avatar"></div>
-                <h2>用户名</h2>
-                <p class="profile-bio">这里可以写一些个人简介，比如兴趣爱好、个人特长等。</p>
+                <div class="profile-stats-item">
+                    <i class="fas fa-user-friends">粉丝</i>
+                </div>
             </div>
-            <div class="profile-header">
-                <a href="#history" class="profile-action">
-                    <i class="fas fa-clock"></i> 历史记录
-                </a>
-                <a href="#settings" class="profile-action">
-                    <i class="fas fa-cog"></i> 设置
-                </a>
-            </div>
+            <div class="profile-avatar"></div>
         </div>
-        <!-- 功能卡片区域 -->
-        <div class="profile-cards">
-            <div class="profile-card">
-                <i class="fas fa-folder"></i>
-                <p>作品</p>
-            </div>
-            <div class="profile-card">
-                <i class="fas fa-thumbs-up"></i>
-                <p>喜欢</p>
-            </div>
-            <div class="profile-card">
-                <i class="fas fa-folder"></i>
-                <p>收藏</p>
-            </div>
+        <div class="profile-header">
+          <p class="profile-bio">用户名-这里可以写一些个人简介</p>
         </div>
-        <!-- 反馈按钮区域 -->
-        <div class="profile-bottom">
-            <button class="btn">反馈问题</button>
-        </div>
+      </div>
+    <!-- 功能卡片区域 -->
+    <div class="profile">
+      <button onclick="closed()"><i class="fas">发布视频</i></button>
+      <a href="#history" class="profile-action"><i class="fas fa-clock">历史记录</i></a>
+      <a href="#settings" class="profile-action"><i class="fas fa-cog">设置</i></a>
+    </div>
+    <div class="profile-cards">
+      <div class="profile-card"><i class="fas fa-folder">作品</i></div>
+      <div class="profile-card"><i class="fas fa-thumbs-up">喜欢</i></div>
+      <div class="profile-card"><i class="fas fa-folder">收藏</i></div>
     </div>
   </section>
-  <footer style="background: #fef;padding: 30px;text-align: center;border-top: 1px solid #eee;">
+  <footer style="margin-bottom:99px;text-align:center;border:1px solid rgb(255, 220, 235);background:rgb(255, 238, 255);">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili"></a>
     <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="fab fa-tiktok"></a>
     <a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a>
     <p>&copy; 2025 vbn262 版权所有</p>
   </footer>
+  <script>
+    /*检查是否已同意协议*/
+    document.addEventListener('DOMContentLoaded', () => {if (!localStorage.getItem('agreementAccepted')) showAgreementModal();});
+    document.addEventListener('DOMContentLoaded', () => {
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {e.preventDefault();
+          const href = item.getAttribute('href');
+          const contents = document.querySelectorAll('.content');
+          contents.forEach(c => c.classList.remove('active'));
+          const targetTab = document.querySelector(href);
+          if (targetTab) {targetTab.classList.add('active');}
+          navItems.forEach(i => i.classList.remove('active'));item.classList.add('active');
+        });
+      });
+    });
+  </script>
   <script>
     let isLoggedIn = false;
     const modals = document.querySelectorAll('.modal');
@@ -488,6 +454,7 @@
         }
       });
     });
+
     // 协议处理
     const agreementModal = document.getElementById('agreement-modal');
     const showAgreementModal = () => agreementModal.style.display = 'block';
@@ -496,7 +463,6 @@
       localStorage.setItem('agreementAccepted', 'true');
       closeAgreementModal();
     };
-    // 导航切换
     document.addEventListener('DOMContentLoaded', () => {
       if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
       const navItems = document.querySelectorAll('.nav-item');
@@ -511,21 +477,7 @@
           handleTabSwitch(target);
         });
       });
-      // 检查登录状态
-      isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-      if (isLoggedIn) {
-        handleTabSwitch('profile');
-      }
-    });
-    const handleTabSwitch = (target) => {
-      const contents = document.querySelectorAll('.content');
-      contents.forEach(c => c.classList.remove('active'));
-      document.getElementById(target).classList.add('active');
-      const navItems = document.querySelectorAll('.nav-item');
-      navItems.forEach(n => n.classList.remove('active'));
-      document.querySelector(`[href="#${target}"]`).classList.add('active');
-    };
-    // 登录功能
+      // 登录功能
     const showLoginModal = () => document.getElementById('login-modal').style.display = 'block';
     const closeLoginModal = () => document.getElementById('login-modal').style.display = 'none';
     const sendVerifyCode = () => {
@@ -543,43 +495,20 @@
       closeLoginModal();
       handleTabSwitch('profile');
     };
-    // 退出登录
-    const logout = () => {
-      isLoggedIn = false;
-      localStorage.removeItem('userLoggedIn');
-      handleTabSwitch('home');
-    };
-  </script>
-  <script>
-    // 模态框关闭处理
-    closeBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('modal') || e.target.classList.contains('close')) {
-          e.target.closest('.modal').style.display = 'none';
-        }
-      });
-    });
-    // 导航切换
-    document.addEventListener('DOMContentLoaded', () => {
-      if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
-      const navItems = document.querySelectorAll('.nav-item');('.nav-item1');
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          const target = item.getAttribute('href').substring(1);
-          if (target === 'profile' && !isLoggedIn) {
-            showLoginModal();
-            return;
-          }
-          handleTabSwitch(target);
-        });
-      });
       // 检查登录状态
       isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
       if (isLoggedIn) {
         handleTabSwitch('profile');
       }
     });
+    const handleTabSwitch = (target) => {
+      const contents = document.querySelectorAll('.content');
+      contents.forEach(c => c.classList.remove('active'));
+      document.getElementById(target).classList.add('active');
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(n => n.classList.remove('active'));
+      document.querySelector(`[href="#${target}"]`).classList.add('active');
+    };
     const sendVerifyCode = () => {
       alert('验证码已发送，请查收');
     };
@@ -604,38 +533,12 @@
         return;
       }
     }
-  </script>
-  <script>
-  // 切换下拉菜单显示状态
-  const toggleDropdownMenu = () => {
-  const dropdownMenu = document.getElementById('dropdown-menu');
-  dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';
-};
-  </script>
-  <script>
-// 页面加载时检查是否已同意协议
-document.addEventListener('DOMContentLoaded', () => {
-    if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
-});
-  </script>
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-      const navItems = document.querySelectorAll('.nav-item');
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          const href = item.getAttribute('href');
-          const contents = document.querySelectorAll('.content');
-          contents.forEach(c => c.classList.remove('active'));
-          const targetTab = document.querySelector(href);
-          if (targetTab) {
-            targetTab.classList.add('active');
-          }
-          navItems.forEach(i => i.classList.remove('active'));
-          item.classList.add('active');
-        });
-      });
-    });
+    // 退出登录
+    const logout = () => {
+      isLoggedIn = false;
+      localStorage.removeItem('userLoggedIn');
+      handleTabSwitch('home');
+    };
   </script>
   <script>
     // 存储验证码
