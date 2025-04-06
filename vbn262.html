@@ -27,11 +27,9 @@
 <body>
     <header class="header">
         <div class="header-title"><i class="fas fa-video">vbn262</i></div>
-        <a href="#download" class="nav-item">
-            <span>DOWNLOAD</span>
-        </a>
+        <a href="#download" class="nav-item"><i class="fas"><span>DOWNLOAD</span></i></a>
+        <a href="#profile" class="nav-item"><i class="fas"><span>Log in</span></i></a>
         <div class="header-actions">
-            <i class="fas fa-search" onclick="showSearch()"></i>
             <i class="fas fa-ellipsis-v menu-icon" onclick="toggleDropdownMenu(event)"></i>
             <div class="dropdown-menu" id="dropdown-menu">
               <a href="javascript:location.reload()"><i class="fas fa-sync-alt"></i> 刷新</a>
@@ -41,25 +39,13 @@
               </a>
               <a href="javascript:downloadApp()"><i class="fas fa-download"></i> 下载APP</a>
               <a href="javascript:logout()"><i class="fas fa-sign-out-alt"></i> 退出登录</a>
+              <i class="fas fa-search" onclick="showSearch()"></i>
             </div>
           </div>
     </header>
     <header class="header1">
-        <div>
-            <a href="#home" class="nav-item active" aria-current="page">
-              <i class="fas fa-home"><span>ONE</span></i>
-            </a>
-        </div>
-        <div>
-            <a href="#set" class="nav-item">
-              <i class="fas fa-cog"><span>SET</span></i>
-            </a>
-        </div>
-        <div>
-            <a href="#profile" class="nav-item">
-              <i class="fas fa-user"><span>Log in</span></i>
-            </a>
-          </div>
+        <a href="#home" class="nav-item active" aria-current="page"><i class="fas fa-home"><span>ONE</span></i></a>
+        <a href="#set" class="nav-item"><i class="fas fa-cog"><span>SET</span></i></a>
     </header>
     <div id="agreement-modal" class="modal">
         <div class="modal-content">
@@ -117,6 +103,60 @@
                 <a href="https://www.curseforge.com/" target="_blank"class="btn"style="color: var(--text-color);"><i class="fas fa-download">CurseForge</i></a>
             </ul>
         </div>
+        <div class="card">
+            <!-- 个人信息头部 -->
+            <div class="profile-header">
+              <div class="profile-info">
+                <div class="profile-avatar">
+                  <i class="fas fa-user" style="font-size:2rem; color: var(--text-color);"></i>
+                </div>
+                <p class="profile-bio" id="username-display">用户名 - 这里可以写一些个人简介</p>
+              </div>
+      
+              <div class="profile-stats">
+                <div class="profile-stats-item" onclick="showFollowList()">
+                  <i class="fas fa-users"></i>
+                  <p>关注 <span id="follow-count">123</span></p>
+                </div>
+                <div class="profile-stats-item" onclick="showFansList()">
+                  <i class="fas fa-user-friends"></i>
+                  <p>粉丝 <span id="fans-count">456</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <button onclick="uploadVideo()"style="width: 9%;height: auto;margin: 0px;background: var(--active-color);">
+              <i class="fas fa-video">发布视频</i>
+              </button>   
+              <a href="#history" class="profile-action"><i class="fas fa-clock"></i> 历史记录</a>
+              <a href="#settings" class="profile-action"><i class="fas fa-cog"></i> 设置</a>
+            </div>
+            <div class="profile-bottom"></div>
+          </div>
+          <div class="profile-cards">
+              <div class="profile-card">
+                  <i class="fas fa-folder"></i>
+                  <p>作品</p>
+              </div>
+              <div class="profile-card">
+                  <i class="fas fa-thumbs-up"></i>
+                  <p>喜欢</p>
+              </div>
+              <div class="profile-card">
+                  <i class="fas fa-bookmark"></i>
+                  <p>收藏</p>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div id="set" class="content">
+        <div class="card">
+          <h2 style="margin-bottom:20px; color: var(--text-color);">设置</h2>
+          <button class="btn" onclick="showAgreementModal()"style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button>
+          <button class="btn" onclick="showFeedbackModal()"><a href="https://space.bilibili.com/1414517639" target="_blank"style="color: var(--text-color);"><i class="fas fa-comment"></i> 反馈问题</a></button>
+          <button class="btn" onclick="toggleDarkMode()"style="color: var(--text-color);"><i class="fas fa-moon"></i> 夜间模式</button>
+          <button class="btn" onclick="clearCache()"style="color: var(--text-color);"><i class="fas fa-trash"></i> 清除缓存</button>
+        </div>
         <div class="card" style="border-bottom:1px solid #000; margin-top:20px;">
             <div style="margin-top:20px;">
                 <h3 style="color: var(--bili-text-color);">常用链接</h3>
@@ -135,60 +175,6 @@
                   <a href="https://chat.deepseek.com/" target="_blank"class="btn"style="color: var(--text-color);"><i class="fas fa-robot">DeepSeek</i></a>
                   <a href="https://www.doubao.com/chat/" target="_blank"class="btn"style="color: var(--text-color);"><i class="fas fa-comment">豆包</i></a>
                 </ul>
-            </div>
-        </div>
-    </div>
-    <div id="set" class="content">
-        <div class="card">
-          <h2 style="margin-bottom:20px; color: var(--text-color);">设置</h2>
-          <button class="btn" onclick="showAgreementModal()"style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button>
-          <button class="btn" onclick="showFeedbackModal()"><a href="https://space.bilibili.com/1414517639" target="_blank"style="color: var(--text-color);"><i class="fas fa-comment"></i> 反馈问题</a></button>
-          <button class="btn" onclick="toggleDarkMode()"style="color: var(--text-color);"><i class="fas fa-moon"></i> 夜间模式</button>
-          <button class="btn" onclick="clearCache()"style="color: var(--text-color);"><i class="fas fa-trash"></i> 清除缓存</button>
-        </div>
-        <a href="https://space.bilibili.com/1414517639" target="_blank" class="btn">反馈问题</a>
-        <div class="card">
-          <!-- 个人信息头部 -->
-          <div class="profile-header">
-            <div class="profile-info">
-              <div class="profile-avatar">
-                <i class="fas fa-user" style="font-size:2rem; color: var(--text-color);"></i>
-              </div>
-              <p class="profile-bio" id="username-display">用户名 - 这里可以写一些个人简介</p>
-            </div>
-    
-            <div class="profile-stats">
-              <div class="profile-stats-item" onclick="showFollowList()">
-                <i class="fas fa-users"></i>
-                <p>关注 <span id="follow-count">123</span></p>
-              </div>
-              <div class="profile-stats-item" onclick="showFansList()">
-                <i class="fas fa-user-friends"></i>
-                <p>粉丝 <span id="fans-count">456</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="profile-actions">
-            <button onclick="uploadVideo()"style="width: 9%;height: auto;margin: 0px;background: var(--active-color);">
-            <i class="fas fa-video">发布视频</i>
-            </button>   
-            <a href="#history" class="profile-action"><i class="fas fa-clock"></i> 历史记录</a>
-            <a href="#settings" class="profile-action"><i class="fas fa-cog"></i> 设置</a>
-          </div>
-          <div class="profile-bottom"></div>
-        </div>
-        <div class="profile-cards">
-            <div class="profile-card">
-                <i class="fas fa-folder"></i>
-                <p>作品</p>
-            </div>
-            <div class="profile-card">
-                <i class="fas fa-thumbs-up"></i>
-                <p>喜欢</p>
-            </div>
-            <div class="profile-card">
-                <i class="fas fa-bookmark"></i>
-                <p>收藏</p>
             </div>
         </div>
     </div>
