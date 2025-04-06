@@ -1,167 +1,206 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="vbn262官方66 - 视频平台">
-  <style>
-    :root {
-      --content-max-width: 800px;
-      --bg-color: #f0f2f5;
-      --card-bg: #fff;
-      --nav-bg: white;
-      --active-color: rgb(255, 210, 253);
-      --text-color: #606770;
-      --dark-card-bg: rgba(30, 30, 30, 0.9);
-      --border-color: #e4e6eb;
-      --bili-text-color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="vbn262官方网站 - 视频平台">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+       :root {
+            --nav-bg: white;
+            --active-color: rgb(255, 176, 255);
+            --text-color: #606770;
+            --content-max-width: 800px;
+            --bg-color: #f0f2f5;
+            --card-bg: #f5f6f7;
+            --dark-card-bg: rgba(30, 30, 30, 0.9);
+            --border-color: #e4e6eb;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --bili-text-color: #333;
+            --bili-link-color: #007AFF;
+        }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--bg-color);
-      color: #1c1e21;
-      margin: 0;
-      padding: 0;
-      padding-top: 70px;
-      text-align: center;
-      overscroll-behavior: contain;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .header {
-      z-index: 1;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 9px;
-      display: flex;
-      position: fixed;
-      align-items: center;
-      justify-content: space-around;
-      background: #eee;
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: #1c1e21;
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
+            text-align: center;
+            overscroll-behavior: contain;
+        }
 
-    .header1 {
-      z-index: 1;
-      width: 100%;
-      bottom: 0;
-      display: flex;
-      position: fixed;
-      background: #eee;
-      justify-content: space-around;
-    }
+        .header {
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #eee;
+            box-shadow: var(--shadow);
+        }
 
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 99px;
-      text-decoration: none;
-      color: var(--text-color);
-    }
-    .nav-item i {
-      font-size: 1.8rem; /* 增大图标尺寸 */
-    }
-    .nav-item span {
-      font-size: 2rem;
-    }
+        .header1 i {
+            font-size: 2rem;
+        }
+        
+        .header-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
 
-    .content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding-bottom: 0;
-      display: none;
-    }
+        .header1 {
+            z-index: 1;
+            width: 100%;
+            bottom: 0;
+            display: flex;
+            position: fixed;
+            background: #eee;
+            justify-content: space-around;
+        }
 
-    .content.active {
-      display: block;
-    }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 99px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
 
-    .card {
-      background: var(--card-bg);
-      margin: 24px auto;
-      border-radius: 16px;
-      position: relative;
-      box-shadow: var(--shadow);
-      padding: 16px;
-    }
+        .nav-item.active::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            width: 6px;
+            height: 6px;
+            background: var(--active-color);
+            border-radius: 50%;
+        }
 
-    .card.dark-mode {
-      background: var(--dark-card-bg);
-      color: #fff;
-    }
+        .nav-item span {
+          font-size: 2rem;
+        }
 
-    .btn {
-      display: block;
-      width: 90%;
-      margin: 20px auto;
-      padding: 14px;
-      background: var(--active-color);
-      color: white;
-      border-radius: 28px;
-      border: none;
-      font-size: 2rem;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-    }
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 0;
+            display: none;
+        }
 
-    .btn:disabled {
-      background: #ccc!important;
-      cursor: not-allowed;
-    }
+        .content.active {
+            display: block;
+        }
 
-    .input-field {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 18px;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      box-sizing: border-box;
-      transition: border-color 0.3s;
-      font-size: 1rem;
-    }
+        .card {
+            margin: 24px auto;
+            position: relative;
+            padding: 16px;
+            background: var(--card-bg);
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            text-align: left;
+        }
 
-    .input-field::placeholder {
-      color: #adb1b8;
-      font-style: normal;
-    }
+        .card.dark-mode {
+            background: var(--dark-card-bg);
+            color: #fff;
+        }
 
-    .input-field:focus {
-      border-color: var(--active-color);
-      outline: none;
-    }
-    
-    .menu-icon {
-      font-size: 24px;
-      cursor: pointer;
-    }
+        .btn {
+            display: block;
+            width: 90%;
+            margin: 20px auto;
+            padding: 14px;
+            background: var(--active-color);
+            color: white;
+            border-radius: 28px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
 
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: white;
-      box-shadow: var(--shadow);
-      border-radius: 8px;
-      min-width: 100%;
-      max-height: 50vh;
-      overflow-y: auto;
-    }
+        .btn:hover {
+            background: #1566d1;
+        }
 
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 18px;
-      text-decoration: none;
-      color: var(--text-color);
-      transition: background-color 0.3s;
-    }
+        .btn:disabled {
+            background: #ccc!important;
+            cursor: not-allowed;
+        }
 
-    .dropdown-menu a:hover {
-      background-color: #f5f6f7;
-    }
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            font-size: 1rem;
+        }
 
-    .modal {
+        .input-field::placeholder {
+            color: #adb1b8;
+            font-style: normal;
+        }
+
+        .input-field:focus {
+            border-color: var(--active-color);
+            outline: none;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            min-width: 100%;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f5f6f7;
+        }
+
+        .modal {
       display: none;
       position: fixed;
       top: 0;
@@ -170,533 +209,682 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
       z-index: 1000;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-content {
       background: white;
       border-radius: 16px;
       box-shadow: var(--shadow);
-      width: auto;
-      max-height: 80vh;
-      overflow-y: auto;
+      width: 90%;
       max-width: 400px;
-      padding: 24px;
+      padding: 20px;
       position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      animation: modalFadeIn 0.3s ease;
     }
 
     @media (max-width: 768px) {
-      .header {
-        top: -20px;
-        padding: 10px 20px;
-        justify-content: space-between;
-      }
+        .header {
+            top: 0px;
+                padding: 0 9px;
+                justify-content: space-between;
+            }
 
-      .header1 {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 9px 0 9px 0;
-        background: #eee;
-        justify-content: space-around;
-      }
+            .header1 {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                justify-content: space-around;
+            }
 
-      .nav-item {
-        padding: 0; /* 增大可点击区域 */
-      }
+            .header1 i {
+                font-size: 2rem;
+            }
 
-      .nav-item span {
-        font-size: 1.5rem;
-      }
+            .nav-item {
+                padding: 0 0 9px 0;
+                /* 增大可点击区域 */
+            }
 
-      .card {
-        padding: 12px;
-        margin: 12px auto;
+            .nav-item span {
+                font-size: 1.5rem;
+            }
+
+      .profile-avatar {
+        width: 60px;
+        height: 60px;
       }
 
       .profile-card {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+      }
+
+      .profile-stats-item {
+        padding: 0 10px;
+      }
+      .profile-card {
+        width: 100%;
+      }
+
+      .profile-actions {
+        flex-direction: column;
+      }
+
+      .profile-actions button,
+      .profile-actions a {
         width: 100%;
       }
     }
 
-    .profile-cards {
-      display: flex;
-      border-bottom:1px solid #eee;
-    }
 
-    .profile-card {
-      width: calc(33.33%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+        .profile-cards {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
 
-    .profile-card:hover {
-      background-color: #eaeaea;
-    }
+        .profile-card {
+            width: calc(33.33%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-    .profile-card i {
-      font-size: 20px;
-      color: var(--bili-link-color);
-    }
+        .profile-card:hover {
+            background-color: #eaeaea;
+        }
 
-    .profile-card p {
-      font-size: 0.9rem;
-      color: var(--bili-text-color);
-    }
+        .profile-card i {
+            font-size: 20px;
+            color: var(--bili-link-color);
+        }
 
-    .profile-header {
-      display: flex;
-      margin: 20px;
-      align-items: center;
-      justify-content: space-around;
-      border-bottom: 1px solid #eee;
-      flex-direction: row;
-    }
+        .profile-card p {
+            font-size: 0.9rem;
+            color: var(--bili-text-color);
+        }
 
-    .profile-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 0;
-      background-color: #ccc;
-    }
+        .profile-header {
+            display: flex;
+            margin: 20px;
+            align-items: center;
+            justify-content: space-around;
+            border-bottom: 1px solid #eee;
+            flex-direction: row;
+        }
 
-    .profile-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 0;
+            background-color: #ccc;
+        }
 
-    .profile-info {
-      text-align: center;
-    }
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    .profile-stats {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 10px;
-    }
+        .profile-info {
+            text-align: center;
+        }
 
-    .profile-stats-item {
-      text-align: center;
-    }
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
 
-    .profile-stats-item span {
-      font-size: 1.2rem;
-      color: var(--bili-text-color);
-    }
+        .profile-stats-item {
+            text-align: center;
+        }
 
-    .profile-stats-item p {
-      font-size: 0.8rem;
-      color: var(--text-color);
-    }
+        .profile-stats-item span {
+            font-size: 1.2rem;
+            color: var(--bili-text-color);
+        }
 
-    .profile-bottom {
-      padding: 20px;
-    }
+        .profile-stats-item p {
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
 
-    .profile-action {
-      color: var(--text-color);
-      text-decoration: none;
-    }
-    .profile-action:hover {
-      color: var(--active-color);
-    }
+        .profile-bottom {
+            padding: 20px;
+        }
 
-    .text-slider {
-      position: relative;
-    }
+        .profile-action {
+            color: var(--text-color);
+            text-decoration: none;
+        }
 
-    .text-slider img {
-      width: 100%;
-      height: auto;
-    }
+        .profile-action:hover {
+            color: var(--active-color);
+        }
 
-    .slider-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      width: 100%;
-    }
-  </style>
+        .text-slider {
+            position: relative;
+        }
+
+        .text-slider img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slider-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-  <header class="header">
-    <i class="menu-icon" class="fas" onclick="toggleDropdownMenu()"><i class="fas">vbn262</i></i>
-    <script>/*切换下拉菜单显示状态*/const toggleDropdownMenu = () => {const dropdownMenu = document.getElementById('dropdown-menu');dropdownMenu.style.display = dropdownMenu.style.display === 'block'? 'none' : 'block';};</script>
-    <div class="dropdown-menu" id="dropdown-menu">
-      <a href="">刷新</a>
-      <a href="">下载</a>
-    </div>
-  </header>
-  <header class="header1">
-    <div>
-      <a href="#home" class="nav-item active" aria-current="page">
-        <i class="fas fa-home"><span>ONE</span></i>
-      </a>
-    </div>
-    <div>
-      <a href="#set" class="nav-item">
-        <i class="fas fa-cog"><span>SET</span></i>
-      </a>
-    </div>
-    <div>
-      <a href="#profile" class="nav-item">
-        <i class="fas fa-user"><span>I</span></i>
-      </a>
-    </div>
-    <div id="login-modal" class="modal"><div class="modal-content">点击空白处取消</div></div>
-  </header>
-  <div id="home" class="content active">
-    <div class="card" style="border-bottom:1px solid #000;">
-        <div style="border-bottom:1px solid #000;"><h1>网页说明</h1></div>
-        <div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
-        <div><img src="4587.jpg" style="width: 100%; height: 100%;" loading="lazy"></div>
-
-        <h1><a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" class="fab fa-bilibili">网页制作找我</a></h1>
-        <h1><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="btn" class="social-icon fab fa-tiktok">我的帐号</a></h1>
-        <a href="https://www.minecraft.net/zh-hans" target="_blank"><h1>Minecraft</h1></a>
-        <a href="https://www.mcnav.net/" target="_blank"><h2>MCNav</h2></a>
-        <h3><a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank">Forge</a><a href="https://fabricmc.net/" target="_blank">Fabric</a><a href="https://quiltmc.org/en/" target="_blank">QuiltMC</a></h3>
-        <a href="https://www.mcmod.cn/" target="_blank"><h3>MC百科</h3></a>
-        <a href="https://texture-packs.com/" target="_blank"><h3>Minecraft Texture Packs</h3></a>
-        <a href="https://bbsmc.net/" target="_blank"><h3>BBSM</h3></a>
-        <a href="https://www.curseforge.com/" target="_blank"><h3>CurseForge</h3></a>
-    </div>
-    <a href="https://www.4399.com/" target="_blank" class="fab"><h3>4399小游戏</h3></a>
-    <a href="http://aola.100bt.com/" target="_blank"><h3>奥拉星</h3></a>
-    <a href="http://aoqi.100bt.com/" target="_blank"><h3>奥奇传说</h3></a>
-    <h3><a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam"></a></h3>
-    <h3><a href="https://flingtrainer.com/" target="_blank" class="fab">Fling Trainer</a></h3>
-    <h3><a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab">Minecraft</a></h3>
-    <a href="https://pvp.qq.com/" target="_blank"><h3>王者荣耀</h3></a>
-    <a href="https://rocom.qq.com/" target="_blank"><h3>洛克王国</h3></a>
-    <h3><a href="https://tv.cctv.com/" target="_blank" class="fab">CCTV</a></h3>
-    <h3><a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a></h3>
-    <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
-    <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
-    <a href="https://www.weilongshipin.com/" target="_blank"><h3>卫龙</h3></a>
-    <a href="http://www.xiaoxiaofood.cn/" target="_blank"><h3>笑辣辣</h3></a>
-    <a href="https://chat.deepseek.com/" target="_blank"><h3>DeepSeek</h3></a>
-    <a href="https://www.doubao.com/chat/" target="_blank"><h3>豆包</h3></a>
-  </div>
-  <div id="set" class="content">
-    <button class="btn" onclick="showAgreementModal()" title="查看网页协议">查看网页协议</button><script>function showAgreementModal() {document.getElementById('agreement-modal').style.display = 'block';}function closeAgreementModal() {document.getElementById('agreement-modal').style.display = 'none';}function acceptAgreement() {alert('协议已接受');closeAgreementModal();}</script>
-    <div id="agreement-modal" class="modal"><div class="modal-content"><h2>网页协议</h2><p>用户在使用本网站服务时</p><p>必须遵守相关法律法规</p><p>用户不得利用本网站服务</p><p>进行任何违法侵权行为</p><button onclick="acceptAgreement()">同意</button><button onclick="closeAgreementModal()">关闭</button></div></div>
-    <a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" >反馈问题</a>
-  </div>
-  <section id="profile" class="content">
-    <div class="card">
-      <!-- 个人信息头部 -->
-      <div class="profile-header">
-        <div class="profile-info">
-            <div class="profile-stats">
-                <div class="profile-stats-item">
-                    <i class="fas fa-users">关注列表</i>
-                </div>
-                <div class="profile-stats-item">
-                    <i class="fas fa-user-friends">粉丝</i>
-                </div>
+    <header class="header">
+        <div class="header-title"><i class="fas fa-video">vbn262</i></div>
+        <a href="#download" class="nav-item">
+            <span>DOWNLOAD</span>
+        </a>
+        <div class="header-actions">
+            <i class="fas fa-search" onclick="showSearch()"></i>
+            <i class="fas fa-ellipsis-v menu-icon" onclick="toggleDropdownMenu(event)"></i>
+            <div class="dropdown-menu" id="dropdown-menu">
+              <a href="javascript:location.reload()"><i class="fas fa-sync-alt"></i> 刷新</a>
+              <a href="#set" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>设置</span>
+              </a>
+              <a href="javascript:downloadApp()"><i class="fas fa-download"></i> 下载APP</a>
+              <a href="javascript:logout()"><i class="fas fa-sign-out-alt"></i> 退出登录</a>
             </div>
-            <div class="profile-avatar"></div>
+          </div>
+    </header>
+    <header class="header1">
+        <div>
+            <a href="#home" class="nav-item active" aria-current="page">
+              <i class="fas fa-home"><span>ONE</span></i>
+            </a>
         </div>
-        <div class="profile-header">
-          <p class="profile-bio">用户名-这里可以写一些个人简介</p>
+        <div>
+            <a href="#set" class="nav-item">
+              <i class="fas fa-cog"><span>SET</span></i>
+            </a>
         </div>
-      </div>
-    <!-- 功能卡片区域 -->
-    <div class="profile">
-      <button onclick="closed()"><i class="fas">发布视频</i></button>
-      <a href="#history" class="profile-action"><i class="fas fa-clock">历史记录</i></a>
-      <a href="#settings" class="profile-action"><i class="fas fa-cog">设置</i></a>
+        <div>
+            <a href="#profile" class="nav-item">
+              <i class="fas fa-user"><span>Log in</span></i>
+            </a>
+          </div>
+    </header>
+    <div id="agreement-modal" class="modal">
+        <div class="modal-content">
+          <h2 style="color: var(--bili-text-color);"><i class="fas fa-file-contract"></i> 网页协议</h2>
+          <div style="text-align:left; margin:15px 0; color: var(--text-color);">
+            <p>1. 用户在使用本网站服务时必须遵守相关法律法规</p>
+            <p>2. 用户不得利用本网站服务进行任何违法侵权行为</p>
+            <p>3. 本网站保留随时修改协议的权利</p>
+            <p>4. 用户发布内容需遵守社区规范</p>
+          </div>
+          <div class="modal-actions">
+            <button onclick="acceptAgreement()">同意</button>
+            <button onclick="closeAgreementModal()">关闭</button>
+          </div>
+        </div>
     </div>
-    <div class="profile-cards">
-      <div class="profile-card"><i class="fas fa-folder">作品</i></div>
-      <div class="profile-card"><i class="fas fa-thumbs-up">喜欢</i></div>
-      <div class="profile-card"><i class="fas fa-folder">收藏</i></div>
+   <!-- 登录模态框 -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2 style="color: var(--bili-text-color);"><i class="fas fa-sign-in-alt"></i> 登录</h2>
+            <div id="login-message"></div>
+            <input type="tel" id="phone" class="input-field" placeholder="手机号">
+            <div class="verify-code-container">
+                <input type="text" id="verify-code" class="input-field" placeholder="验证码">
+                <button id="get-verify" onclick="sendVerifyCode()">获取验证码</button>
+            </div>
+            <div class="modal-actions">
+                <button onclick="handleLogin()">登录</button>
+                <button onclick="closeLoginModal()">取消</button>
+            </div>
+        </div>
     </div>
-  </section>
-  <footer style="margin-bottom:99px;text-align:center;border:1px solid rgb(255, 220, 235);background:rgb(255, 238, 255);">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili"></a>
-    <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="fab fa-tiktok"></a>
-    <a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a>
-    <p>&copy; 2025 vbn262 版权所有</p>
-  </footer>
-  <script>
-    /*检查是否已同意协议*/
-    document.addEventListener('DOMContentLoaded', () => {if (!localStorage.getItem('agreementAccepted')) showAgreementModal();});
-    document.addEventListener('DOMContentLoaded', () => {
-      const navItems = document.querySelectorAll('.nav-item');
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {e.preventDefault();
-          const href = item.getAttribute('href');
-          const contents = document.querySelectorAll('.content');
-          contents.forEach(c => c.classList.remove('active'));
-          const targetTab = document.querySelector(href);
-          if (targetTab) {targetTab.classList.add('active');}
-          navItems.forEach(i => i.classList.remove('active'));item.classList.add('active');
+    <div id="home" class="content active">
+        <div class="card" style="border-bottom:1px solid #000;">
+          <div style="border-bottom:1px solid #000;"><h1>网页说明</h1></div>
+          <div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
+          <a href="https://space.bilibili.com/1414517639" target="_blank" class="btn btn-primary">
+            <i class="fab fa-bilibili"></i> 网页制作找我
+          </a>
+          <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI"target="_blank" class="btn">
+            <i class="fab fa-tiktok"></i> 我的抖音账号
+          </a>
+          <div><img src="4587.jpg" style="width: 100%; height: 100%;" loading="lazy"></div>
+        </div>
+        <a href="https://www.minecraft.net/zh-hans" target="_blank"><i class="fas"><h1>Minecraft</h1></i></a>
+        <div style="margin-top:20px; text-align:left;">
+            <h3 style="color: var(--bili-text-color);">常用链接</h3>
+            <ul style="list-style:none; padding-left:0;">
+              <li style="margin:8px 0;"><a href="https://www.mcnav.net/" target="_blank"style="color: var(--text-color);"><i class="fas fa-map"></i> MCNav</a></li>
+              <li style="margin:8px 0;">
+                <a href="https://files.minecraftforge.net/net/minecraftforge/forge/" target="_blank"
+                  style="color: var(--text-color);">Forge</a> |
+                <a href="https://fabricmc.net/" target="_blank" style="color: var(--text-color);">Fabric</a> |
+                <a href="https://quiltmc.org/en/" target="_blank" style="color: var(--text-color);">QuiltMC</a>
+              </li>
+              <li style="margin:8px 0;"><a href="https://www.mcmod.cn/" target="_blank"style="color: var(--text-color);"><i class="fas fa-book"></i> MC百科</a></li>
+              <li style="margin:8px 0;"><a href="https://texture-packs.com/" target="_blank"style="color: var(--text-color);"><i class="fas fa-images"></i> Minecraft Texture Packs</a></li>
+              <li style="margin:8px 0;"><a href="https://bbsmc.net/" target="_blank"style="color: var(--text-color);"><i class="fas fa-users"></i> BBSM</a></li>
+              <li style="margin:8px 0;"><a href="https://www.curseforge.com/" target="_blank"style="color: var(--text-color);"><i class="fas fa-download"></i> CurseForge</a></li>
+            </ul>
+        </div>
+        <div class="card" style="border-bottom:1px solid #000; margin-top:20px;">
+            <h3><a href="https://www.4399.com/" target="_blank" class="fas">4399小游戏</a></h3>
+            <h3><a href="http://aola.100bt.com/" target="_blank" class="fas">奥拉星</a></h3>
+            <h3><a href="http://aoqi.100bt.com/" target="_blank" class="fas">奥奇传说</a></h3>
+            <h3><a href="https://store.steampowered.com/" target="_blank" class="fab fa-steam">Steam</a></h3>
+            <h3><a href="https://flingtrainer.com/" target="_blank" class="fab">Fling Trainer</a></h3>
+            <h3><a href="https://www.minecraft.net/zh-hans" target="_blank" class="fab">Minecraft</a></h3>
+            <h3><a href="https://pvp.qq.com/" target="_blank" class="fas">王者荣耀</a></h3>
+            <h3><a href="https://rocom.qq.com/" target="_blank" class="fas">洛克王国</a></h3>
+            <h3><a href="https://tv.cctv.com/" target="_blank" class="fas">CCTV</a></h3>
+            <h3><a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a></h3>
+            <h3><a href="https://www.bilibili.com/" target="_blank" class="fab fa-bilibili"></a></h3>
+            <h3><a href="https://www.douyin.com/" target="_blank" class="fab fa-tiktok"></a></h3>
+            <h3><a href="https://www.weilongshipin.com/" target="_blank" class="fas">卫龙</a></h3>
+            <h3><a href="http://www.xiaoxiaofood.cn/" target="_blank" class="fas">笑辣辣</a></h3>
+            <h3><a href="https://chat.deepseek.com/" target="_blank" class="fas">DeepSeek</a></h3>
+            <h3><a href="https://www.doubao.com/chat/" target="_blank" class="fas">豆包</a></h3>
+        </div>
+    </div>
+    <div id="set" class="content">
+        <div class="card">
+          <h2 style="margin-bottom:20px; color: var(--bili-text-color);">设置</h2>
+          <button class="btn" onclick="showAgreementModal()">
+            <i class="fas fa-file-alt"></i> 查看网页协议
+          </button>
+          <button class="btn" onclick="showFeedbackModal()">
+            <a href="https://space.bilibili.com/1414517639" target="_blank">
+              <i class="fas fa-comment"></i> 反馈问题
+            </a>
+          </button>
+          <button class="btn" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i> 夜间模式
+          </button>
+          <button class="btn" onclick="clearCache()">
+            <i class="fas fa-trash"></i> 清除缓存
+          </button>
+        </div>
+        <a href="https://space.bilibili.com/1414517639" target="_blank" class="btn">反馈问题</a>
+        <div class="card">
+          <!-- 个人信息头部 -->
+          <div class="profile-header">
+            <div class="profile-info">
+              <div class="profile-avatar">
+                <i class="fas fa-user" style="font-size:2rem; color: var(--text-color);"></i>
+              </div>
+              <p class="profile-bio" id="username-display">用户名 - 这里可以写一些个人简介</p>
+            </div>
+    
+            <div class="profile-stats">
+              <div class="profile-stats-item" onclick="showFollowList()">
+                <i class="fas fa-users"></i>
+                <p>关注 <span id="follow-count">123</span></p>
+              </div>
+              <div class="profile-stats-item" onclick="showFansList()">
+                <i class="fas fa-user-friends"></i>
+                <p>粉丝 <span id="fans-count">456</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <button onclick="uploadVideo()"style="width: 9%;height: auto;margin: 0px;background: var(--active-color);">
+            <i class="fas fa-video">发布视频</i>
+            </button>   
+            <a href="#history" class="profile-action"><i class="fas fa-clock"></i> 历史记录</a>
+            <a href="#settings" class="profile-action"><i class="fas fa-cog"></i> 设置</a>
+          </div>
+          <div class="profile-bottom"></div>
+        </div>
+        <div class="profile-cards">
+            <div class="profile-card">
+                <i class="fas fa-folder"></i>
+                <p>作品</p>
+            </div>
+            <div class="profile-card">
+                <i class="fas fa-thumbs-up"></i>
+                <p>喜欢</p>
+            </div>
+            <div class="profile-card">
+                <i class="fas fa-bookmark"></i>
+                <p>收藏</p>
+            </div>
+        </div>
+    </div>
+    <div id="download" class="content" style="text-align: center;">
+        暂无
+    </div>
+    <footer class="footer" style="background: #fef;margin-bottom: 99px;text-align: center;border: 1px solid rgb(255, 210, 253);">
+        <a href="https://space.bilibili.com/1414517639" target="_blank" class="fab fa-bilibili"></a>
+        <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="fab fa-tiktok"></a>
+        <a href="https://www.weibo.com" target="_blank" class="fab fa-weibo"></a>
+        <p>&copy; 2025 vbn262 版权所有</p>
+    </footer>
+    <script>
+        // 全局状态
+        const appState = {
+            isLoggedIn: localStorage.getItem('userLoggedIn') === 'true',
+            verifyCode: '',
+            countdown: 60,
+            countdownTimer: null,
+            darkMode: false
+        };
+    
+        // DOM加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 检查协议
+            if (!localStorage.getItem('agreementAccepted')) {
+                showAgreementModal();
+            }
+    
+            // 初始化标签页切换
+            initTabSwitcher();
+    
+            // 初始化模态框关闭事件
+            initModalCloseEvents();
+    
+            // 检查暗黑模式
+            checkDarkMode();
         });
-      });
-    });
-  </script>
-  <script>
-    let isLoggedIn = false;
-    const modals = document.querySelectorAll('.modal');
-    const closeBtns = document.querySelectorAll('.close, .modal');
-    // 模态框关闭处理
-    closeBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('modal') || e.target.classList.contains('close')) {
-          e.target.closest('.modal').style.display = 'none';
+    
+        // 初始化标签页切换
+        function initTabSwitcher() {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = item.getAttribute('href').substring(1);
+    
+                    if (target === 'profile' && !appState.isLoggedIn) {
+                        showLoginModal();
+                        return;
+                    }
+    
+                    switchTab(target);
+                });
+            });
         }
-      });
-    });
-
-    // 协议处理
-    const agreementModal = document.getElementById('agreement-modal');
-    const showAgreementModal = () => agreementModal.style.display = 'block';
-    const closeAgreementModal = () => agreementModal.style.display = 'none';
-    const acceptAgreement = () => {
-      localStorage.setItem('agreementAccepted', 'true');
-      closeAgreementModal();
-    };
-    document.addEventListener('DOMContentLoaded', () => {
-      if (!localStorage.getItem('agreementAccepted')) showAgreementModal();
-      const navItems = document.querySelectorAll('.nav-item');
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          const target = item.getAttribute('href').substring(1);
-          if (target === 'profile' && !isLoggedIn) {
-            showLoginModal();
-            return;
-          }
-          handleTabSwitch(target);
-        });
-      });
-      // 登录功能
-    const showLoginModal = () => document.getElementById('login-modal').style.display = 'block';
-    const closeLoginModal = () => document.getElementById('login-modal').style.display = 'none';
-    const sendVerifyCode = () => {
-      alert('验证码已发送，请查收');
-    };
-    const handleLogin = () => {
-      const phone = document.getElementById('phone').value;
-      const code = document.getElementById('verify-code').value;
-      if (!phone || !code) {
-        alert('请填写完整信息');
-        return;
-      }
-      isLoggedIn = true;
-      localStorage.setItem('userLoggedIn', 'true');
-      closeLoginModal();
-      handleTabSwitch('profile');
-    };
-      // 检查登录状态
-      isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-      if (isLoggedIn) {
-        handleTabSwitch('profile');
-      }
-    });
-    const handleTabSwitch = (target) => {
-      const contents = document.querySelectorAll('.content');
-      contents.forEach(c => c.classList.remove('active'));
-      document.getElementById(target).classList.add('active');
-      const navItems = document.querySelectorAll('.nav-item');
-      navItems.forEach(n => n.classList.remove('active'));
-      document.querySelector(`[href="#${target}"]`).classList.add('active');
-    };
-    const sendVerifyCode = () => {
-      alert('验证码已发送，请查收');
-    };
-    const handleLogin = () => {
-      const phone = document.getElementById('phone').value;
-      const code = document.getElementById('verify-code').value;
-      if (!phone || !code) {
-        alert('请填写完整信息');
-        return;
-      }
-      isLoggedIn = true;
-      localStorage.setItem('userLoggedIn', 'true');
-      closeLoginModal();
-      handleTabSwitch('profile');
-    };
-    // 添加密码验证
-    function handleLogin() {
-      const password = document.getElementById('password').value;
-      // 密码强度验证
-      if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password)) {
-        showError('密码需包含大小写字母和数字，至少8位');
-        return;
-      }
-    }
-    // 退出登录
-    const logout = () => {
-      isLoggedIn = false;
-      localStorage.removeItem('userLoggedIn');
-      handleTabSwitch('home');
-    };
-
-    // 存储验证码
-let verificationCode = null;
-// 倒计时时间（秒）
-let countdown = 60;
-let timer;
-// 提前查询并存储需要的 DOM 元素
-const phoneInput = document.getElementById('phone');
-const codeInput = document.getElementById('code');
-const errorMessage = document.getElementById('login-error');
-const getCodeBtn = document.querySelector('.get-code-btn');
-const navItems = document.querySelectorAll('.nav-item');
-const contentElements = document.querySelectorAll('.content');
-const liveSection = document.querySelector('.live-section');
-// 手机号登录函数
-const phoneLogin = () => {
-    const phone = phoneInput.value;
-    const code = codeInput.value;
-    if (!phone ||!code) {
-        showError('请完整填写手机号和验证码');
-        return;
-    }
-    if (code === verificationCode) {
-        alert('登录成功');
-    } else {
-        showError('手机号或验证码错误');
-    }
-};
-// 获取验证码函数
-const getCode = () => {
-    const phone = phoneInput.value;
-    if (!phone) {
-        alert('请输入手机号');
-        return;
-    }
-    verificationCode = String(100000 + Math.floor(Math.random() * 900000));
-    console.log(`验证码: ${verificationCode}`); // 实际应用中应通过短信发送
-    startCountdown();
-};
-// 显示错误信息函数
-const showError = (message) => {
-    errorMessage.textContent = message;
-    errorMessage.style.display = 'block';
-};
-// 开始倒计时函数
-const startCountdown = () => {
-    getCodeBtn.disabled = true;
-    getCodeBtn.textContent = `${countdown}s后重新获取`;
-    timer = setInterval(() => {
-        countdown--;
-        getCodeBtn.textContent = `${countdown}s后重新获取`;
-        if (countdown <= 0) {
-            clearInterval(timer);
-            getCodeBtn.disabled = false;
-            getCodeBtn.textContent = '获取验证码';
-            countdown = 60;
+    
+        // 初始化模态框关闭事件
+        function initModalCloseEvents() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
         }
-    }, 1000);
-};
-// 隐藏所有.content 元素的函数
-const hideAllContent = () => {
-    contentElements.forEach(c => c.style.display = 'none');
-};
-// 页面卸载时清除定时器
-window.addEventListener('beforeunload', () => {
-    clearInterval(timer);
-});
-// 验证码相关变量
-function sendVerifyCode() {
-  const phone = document.getElementById('phone').value;
-  const verifyBtn = document.getElementById('get-verify');
-  // 手机号格式验证
-  if (!/^1[3-9]\d{9}$/.test(phone)) {
-    showError('请输入正确的手机号');
-    return;
-  }
-  // 生成验证码
-  verifyCode = generateVerifyCode();
-  localStorage.setItem('verifyCode', verifyCode);
-  localStorage.setItem('verifyPhone', phone);
-  // 启动倒计时
-  verifyBtn.disabled = true;
-  verifyBtn.textContent = `${countdown}秒后重试`;
-  const timer = setInterval(() => {
-    countdown--;
-    verifyBtn.textContent = `${countdown}秒后重试`;
-    if (countdown <= 0) {
-      clearInterval(timer);
-      verifyBtn.disabled = false;
-      verifyBtn.textContent = '获取验证码';
-      countdown = 60;
-    }
-  }, 1000);
-  // 模拟发送短信
-  setTimeout(() => {
-    showSuccess('验证码已发送至您的手机');
-  }, 1500);
-}
-function handleLogin() {
-  const inputCode = document.getElementById('verify-code').value;
-  const storedCode = localStorage.getItem('verifyCode');
-  const phone = localStorage.getItem('verifyPhone');
-  if (!inputCode || inputCode !== storedCode) {
-    showError('验证码错误或已过期');
-    return;
-  }
-  // 模拟登录成功
-  localStorage.setItem('userPhone', phone);
-  showSuccess('登录成功！');
-  setTimeout(() => {
-    window.location.href = '#home';
-  }, 1000);
-}
-function generateVerifyCode() {
-  // 生成6位数字验证码
-  return Math.random().toString().slice(2, 8);
-}
-function showError(message) {
-  const errorDiv = document.createElement('div');
-  errorDiv.className = 'error-message';
-  errorDiv.textContent = message;
-  errorDiv.style.color = 'red';
-  errorDiv.style.textAlign = 'center';
-  errorDiv.style.margin = '10px 0';
-  document.querySelector('.login-form').prepend(errorDiv);
-  setTimeout(() => {
-    errorDiv.remove();
-  }, 3000);
-}
-function showSuccess(message) {
-  const successDiv = document.createElement('div');
-  successDiv.className = 'success-message';
-  successDiv.textContent = message;
-  successDiv.style.color = 'green';
-  successDiv.style.textAlign = 'center';
-  successDiv.style.margin = '10px 0';
-  document.querySelector('.login-form').prepend(successDiv);
-  setTimeout(() => {
-    successDiv.remove();
-  }, 2000);
-}
-// 真实发送验证码接口示例
-async function sendRealVerifyCode(phone) {
-  try {
-    const response = await fetch('/api/send-verify', {
-      method: 'POST',
-      body: JSON.stringify({ phone })
-    });
-    const data = await response.json();
-    if (!data.success) throw new Error(data.message);
-  } catch (error) {
-    showError(error.message);
-  }
-}
-  </script>
+    
+        // 切换标签页
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(c => c.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+    
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(n => n.classList.remove('active'));
+            document.querySelector(`[href="#${tabId}"]`).classList.add('active');
+        }
+    
+        // 切换下拉菜单
+        function toggleDropdownMenu() {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    
+            // 点击其他地方关闭下拉菜单
+            if (dropdownMenu.style.display === 'block') {
+                setTimeout(() => {
+                    document.addEventListener('click', closeDropdownOnClickOutside);
+                }, 0);
+            }
+        }
+    
+        function closeDropdownOnClickOutside(e) {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            if (!dropdownMenu.contains(e.target) && !e.target.classList.contains('menu-icon')) {
+                dropdownMenu.style.display = 'none';
+                document.removeEventListener('click', closeDropdownOnClickOutside);
+            }
+        }
+    
+        // 协议相关函数
+        function showAgreementModal() {
+            document.getElementById('agreement-modal').style.display = 'flex';
+        }
+    
+        function closeAgreementModal() {
+            document.getElementById('agreement-modal').style.display = 'none';
+        }
+    
+        function acceptAgreement() {
+            localStorage.setItem('agreementAccepted', 'true');
+            closeAgreementModal();
+            showMessage('success', '协议已接受');
+        }
+    
+        // 登录相关函数
+        function showLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+        }
+    
+        function closeLoginModal() {
+            document.getElementById('login-modal').style.display = 'none';
+        }
+    
+        function sendVerifyCode() {
+            const phone = document.getElementById('phone').value;
+            const verifyBtn = document.getElementById('get-verify');
+    
+            // 手机号验证
+            if (!/^1[3-9]\d{9}$/.test(phone)) {
+                showMessage('error', '请输入正确的手机号', 'login-message');
+                return;
+            }
+    
+            // 生成6位验证码
+            appState.verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
+            console.log('验证码:', appState.verifyCode); // 实际应用中应通过短信发送
+    
+            // 禁用按钮并开始倒计时
+            verifyBtn.disabled = true;
+            verifyBtn.textContent = `${appState.countdown}秒后重试`;
+    
+            appState.countdownTimer = setInterval(() => {
+                appState.countdown--;
+                verifyBtn.textContent = `${appState.countdown}秒后重试`;
+    
+                if (appState.countdown <= 0) {
+                    clearInterval(appState.countdownTimer);
+                    verifyBtn.disabled = false;
+                    verifyBtn.textContent = '获取验证码';
+                    appState.countdown = 60;
+                }
+            }, 1000);
+    
+            showMessage('success', '验证码已发送', 'login-message');
+        }
+    
+        function handleLogin() {
+            const phone = document.getElementById('phone').value;
+            const code = document.getElementById('verify-code').value;
+    
+            if (!phone || !code) {
+                showMessage('error', '请填写完整信息', 'login-message');
+                return;
+            }
+    
+            if (code !== appState.verifyCode) {
+                showMessage('error', '验证码错误', 'login-message');
+                return;
+            }
+    
+            // 登录成功
+            appState.isLoggedIn = true;
+            localStorage.setItem('userLoggedIn', 'true');
+            localStorage.setItem('userPhone', phone);
+    
+            closeLoginModal();
+            switchTab('profile');
+            showMessage('success', '登录成功');
+        }
+    
+        function logout() {
+            appState.isLoggedIn = false;
+            localStorage.removeItem('userLoggedIn');
+            switchTab('home');
+            showMessage('success', '已退出登录');
+        }
+    
+        // 反馈相关函数
+        function showFeedbackModal() {
+            document.getElementById('feedback-modal').style.display = 'flex';
+        }
+    
+        function closeFeedbackModal() {
+            document.getElementById('feedback-modal').style.display = 'none';
+        }
+    
+        function submitFeedback() {
+            const content = document.getElementById('feedback-content').value;
+            const email = document.getElementById('feedback-email').value;
+    
+            if (!content) {
+                showMessage('error', '请填写反馈内容');
+                return;
+            }
+    
+            // 这里应该是发送反馈到服务器的代码
+            console.log('反馈内容:', content);
+            console.log('联系邮箱:', email || '未提供');
+    
+            closeFeedbackModal();
+            showMessage('success', '反馈已提交，感谢您的支持！');
+        }
+    
+        // 其他功能
+        function uploadVideo() {
+            if (!appState.isLoggedIn) {
+                showLoginModal();
+                return;
+            }
+            alert('准备发布视频');
+        }
+    
+        function downloadApp() {
+            alert('APP下载功能即将开放，敬请期待！');
+        }
+    
+        function clearCache() {
+            localStorage.clear();
+            showMessage('success', '缓存已清除');
+        }
+    
+        function toggleDarkMode() {
+            appState.darkMode = !appState.darkMode;
+            document.body.classList.toggle('dark-mode', appState.darkMode);
+            localStorage.setItem('darkMode', appState.darkMode);
+            showMessage('success', `已${appState.darkMode ? '开启' : '关闭'}夜间模式`);
+        }
+    
+        function checkDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                appState.darkMode = true;
+            }
+        }
+    
+        // 个人资料相关功能
+        function showFollowList() {
+            if (!appState.isLoggedIn) {
+                showLoginModal();
+                return;
+            }
+            alert('显示关注列表');
+        }
+    
+        function showFansList() {
+            if (!appState.isLoggedIn) {
+                showLoginModal();
+                return;
+            }
+            alert('显示粉丝列表');
+        }
+    
+        function showWorks() {
+            if (!appState.isLoggedIn) {
+                showLoginModal();
+                return;
+            }
+            alert('显示作品列表');
+        }
+    
+        function showLikes() {
+            if (!appState.isLoggedIn) {
+                showLoginModal();
+                return;
+            }
+            alert('显示喜欢的内容');
+        }
+    
+        function showCollections() {
+            if (!appState.isLoggedIn) {
+                showLoginModal();
+                return;
+            }
+            alert('显示收藏内容');
+        }
+    
+        // 显示消息提示
+        function showMessage(type, text, containerId = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}-message`;
+            messageDiv.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${text}`;
+    
+            if (containerId) {
+                const container = document.getElementById(containerId);
+                container.innerHTML = '';
+                container.appendChild(messageDiv);
+            } else {
+                // 显示全局消息
+                const existingMessage = document.querySelector('.global-message');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+    
+                messageDiv.classList.add('global-message');
+                messageDiv.style.position = 'fixed';
+                messageDiv.style.top = '70px';
+                messageDiv.style.left = '50%';
+                messageDiv.style.transform = 'translateX(-50%)';
+                messageDiv.style.zIndex = '1000';
+                messageDiv.style.maxWidth = '90%';
+    
+                document.body.appendChild(messageDiv);
+    
+                // 3秒后自动消失
+                setTimeout(() => {
+                    messageDiv.remove();
+                }, 3000);
+            }
+        }
+    </script>
 </body>
 </html>
