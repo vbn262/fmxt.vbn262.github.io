@@ -415,12 +415,11 @@
   <header class="header">
     <div class="header-title"><i class="fas fa-video">vbn262</i></div>
     <div class="header-actions">
-        <i class="fas fa-search" onclick="showSearch()"></i>
         <i class="fas fa-ellipsis-v menu-icon" onclick="toggleDropdownMenu(event)"></i>
         <div class="dropdown-menu" id="dropdown-menu">
           <a href="javascript:location.reload()"><i class="fas fa-sync-alt"></i> 刷新</a>
+          <i class="fas fa-search" onclick="showSearch()"></i>
           <a href="#download" class="nav-item"><i class="fas fa-download" style="font-size:1rem; color: var(--text-color);"></i><span>DOWNLOAD</span></a>
-          <a href="javascript:downloadApp()"><i class="fas fa-download"></i> 下载APP</a>
           <a href="#profile" class="nav-item"><i class="fas fa-user" style="font-size:1rem; color: var(--text-color);"></i><span>Log in</span></a>
           <a href="javascript:logout()"><i class="fas fa-sign-out-alt"></i> 退出登录</a>
         </div>
@@ -467,44 +466,47 @@
         <div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
         <a href="https://space.bilibili.com/1414517639" target="_blank" class="btn"style="color: var(--text-color);"><i class="fab fa-bilibili"></i> 网页制作找我</a>
         <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI"target="_blank" class="btn"style="color: var(--text-color);"><i class="fab fa-tiktok"></i> 我的抖音账号</a>
-        <div class="profile-header">
-          <div class="profile-avatar"><img src="4587.jpg" style="width: 99px; height: 99px;" loading="lazy"></div>
-        </div>
-        <p class="profile-bio" id="username-display">用户名-这里可以写一些个人简介</p>
-        <div class="profile-stats">
-          <div class="profile-stats-item" onclick="showFollowList()">
-            <i class="fas fa-users"></i>
-            <p>关注 <span id="follow-count">123</span></p>
+        <div class="card" style="border-bottom:1px solid #000;">
+          <div class="profile-header">
+            <div class="profile-avatar"><img src="4587.jpg" style="width: 99px; height: 99px;" loading="lazy"></div>
           </div>
-          <div class="profile-stats-item" onclick="showFansList()">
-            <i class="fas fa-user-friends"></i>
-            <p>粉丝 <span id="fans-count">456</span></p>
+          <p class="profile-bio" id="username-display">用户名-这里可以写一些个人简介</p>
+          <div class="profile-stats">
+            <div class="profile-stats-item" onclick="showFollowList()">
+              <i class="fas fa-users"></i>
+              <p>关注 <span id="follow-count">123</span></p>
+            </div>
+            <div class="profile-stats-item" onclick="showFansList()">
+              <i class="fas fa-user-friends"></i>
+              <p>粉丝 <span id="fans-count">456</span></p>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <button onclick="uploadVideo()"style="width: 9%;height: auto;margin: 0px;background: var(--active-color);">
+            <i class="fas fa-video">发布视频</i>
+            </button>   
+            <a href="#history" class="profile-action"><i class="fas fa-clock"></i> 历史记录</a>
+            <a href="#settings" class="profile-action"><i class="fas fa-cog"></i> 设置</a>
+          </div>
+          <div class="profile-bottom"></div>
+          <div class="card">
+            <div class="profile-cards">
+                <div class="profile-card">
+                    <i class="fas fa-folder"></i>
+                    <p>作品</p>
+                </div>
+                <div class="profile-card">
+                    <i class="fas fa-thumbs-up"></i>
+                    <p>喜欢</p>
+                </div>
+                <div class="profile-card">
+                    <i class="fas fa-bookmark"></i>
+                    <p>收藏</p>
+                </div>
+            </div>
           </div>
         </div>
-        <div class="profile-actions">
-          <button onclick="uploadVideo()"style="width: 9%;height: auto;margin: 0px;background: var(--active-color);">
-          <i class="fas fa-video">发布视频</i>
-          </button>   
-          <a href="#history" class="profile-action"><i class="fas fa-clock"></i> 历史记录</a>
-          <a href="#settings" class="profile-action"><i class="fas fa-cog"></i> 设置</a>
-        </div>
-        <div class="profile-bottom"></div>
-        <div class="card">
-          <div class="profile-cards">
-              <div class="profile-card">
-                  <i class="fas fa-folder"></i>
-                  <p>作品</p>
-              </div>
-              <div class="profile-card">
-                  <i class="fas fa-thumbs-up"></i>
-                  <p>喜欢</p>
-              </div>
-              <div class="profile-card">
-                  <i class="fas fa-bookmark"></i>
-                  <p>收藏</p>
-              </div>
-          </div>
-        </div>
+
         <h1><a href="https://www.minecraft.net/zh-hans" target="_blank" style="color: var(--text-color);"><i class="fas fa-cube">Minecraft</i></a></h1>
         <div style="margin-top:20px;">
             <ul style="list-style:none; padding-left:0;">
@@ -519,12 +521,14 @@
     </div>
   </div>
   <div id="set" class="content">
+    
     <div class="card">
       <h2 style="margin-bottom:20px; color: var(--text-color);">设置</h2>
-      <button class="btn" onclick="showAgreementModal()"style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button>
+      <button class="btn" onclick="showAgreementModal()"><a href="javascript:downloadApp()" style="color: var(--text-color);"><i class="fas fa-download"></i> 下载APP</a></button>
       <button class="btn" onclick="showFeedbackModal()"><a href="https://space.bilibili.com/1414517639" target="_blank"style="color: var(--text-color);"><i class="fas fa-comment"></i> 反馈问题</a></button>
       <button class="btn" onclick="toggleDarkMode()"style="color: var(--text-color);"><i class="fas fa-moon"></i> 夜间模式</button>
       <button class="btn" onclick="clearCache()"style="color: var(--text-color);"><i class="fas fa-trash"></i> 清除缓存</button>
+      <button class="btn" onclick="showAgreementModal()"style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button>
     </div>
     <div class="card" style="border-bottom:1px solid #000; margin-top:20px;">
         <div style="margin-top:20px;">
