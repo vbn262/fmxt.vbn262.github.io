@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="vbn262官方网站 - 视频平台">
+    <title>vbn262.com</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <style>
@@ -411,10 +412,9 @@
         }
     </style>
 </head>
-
 <body>
     <header class="header">
-        <div class="header-title"><i class="fas fa-video">vbn262</i></div>
+        <div class="header-title"><i class="fas">vbn262.com</i></div>
         <div class="header-actions">
             <button onclick="downloadApp()"><i class="fas fa-download"></i> 下载APP</button>
             <i class="fas fa-ellipsis-v menu-icon" onclick="toggleDropdownMenu(event)"></i>
@@ -626,7 +626,6 @@
         function toggleDropdownMenu() {
             const dropdownMenu = document.getElementById('dropdown-menu');
             dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-
             // 点击其他地方关闭下拉菜单
             if (dropdownMenu.style.display === 'block') {
                 setTimeout(() => {
@@ -634,7 +633,6 @@
                 }, 0);
             }
         }
-
         function closeDropdownOnClickOutside(e) {
             const dropdownMenu = document.getElementById('dropdown-menu');
             if (!dropdownMenu.contains(e.target) && !e.target.classList.contains('menu-icon')) {
@@ -646,11 +644,9 @@
         function showAgreementModal() {
             document.getElementById('agreement-modal').style.display = 'flex';
         }
-
         function closeAgreementModal() {
             document.getElementById('agreement-modal').style.display = 'none';
         }
-
         function acceptAgreement() {
             localStorage.setItem('agreementAccepted', 'true');
             closeAgreementModal();
@@ -660,11 +656,9 @@
         function showLoginModal() {
             document.getElementById('login-modal').style.display = 'flex';
         }
-
         function closeLoginModal() {
             document.getElementById('login-modal').style.display = 'none';
         }
-
         function sendVerifyCode() {
             const phone = document.getElementById('phone').value;
             const verifyBtn = document.getElementById('get-verify');
@@ -682,7 +676,6 @@
             appState.countdownTimer = setInterval(() => {
                 appState.countdown--;
                 verifyBtn.textContent = `${appState.countdown}秒后重试`;
-
                 if (appState.countdown <= 0) {
                     clearInterval(appState.countdownTimer);
                     verifyBtn.disabled = false;
@@ -692,7 +685,6 @@
             }, 1000);
             showMessage('success', '验证码已发送', 'login-message');
         }
-
         function handleLogin() {
             const phone = document.getElementById('phone').value;
             const code = document.getElementById('verify-code').value;
@@ -712,7 +704,6 @@
             switchTab('profile');
             showMessage('success', '登录成功');
         }
-
         function logout() {
             appState.isLoggedIn = false;
             localStorage.removeItem('userLoggedIn');
@@ -723,11 +714,9 @@
         function showFeedbackModal() {
             document.getElementById('feedback-modal').style.display = 'flex';
         }
-
         function closeFeedbackModal() {
             document.getElementById('feedback-modal').style.display = 'none';
         }
-
         function submitFeedback() {
             const content = document.getElementById('feedback-content').value;
             const email = document.getElementById('feedback-email').value;
@@ -749,22 +738,16 @@
             }
             alert('准备发布视频');
         }
-
         function downloadApp() {
             alert('APP下载功能即将开放，敬请期待！');
         }
-
         function clearCache() {
             localStorage.clear();
             showMessage('success', '缓存已清除');
         }
-
         function toggleDarkMode() {
           alert('夜间模式功能即将开放，敬请期待！');
-          /*appState.darkMode = !appState.darkMode;document.body.classList.toggle('dark-mode', appState.darkMode);
-          localStorage.setItem('darkMode', appState.darkMode);showMessage('success', `已${appState.darkMode ? '开启' : '关闭'}夜间模式`);*/
         }
-
         function checkDarkMode() {
             const darkMode = localStorage.getItem('darkMode') === 'true';
             if (darkMode) {
@@ -780,7 +763,6 @@
             }
             alert('显示关注列表');
         }
-
         function showFansList() {
             if (!appState.isLoggedIn) {
                 showLoginModal();
@@ -788,7 +770,6 @@
             }
             alert('显示粉丝列表');
         }
-
         function showWorks() {
             if (!appState.isLoggedIn) {
                 showLoginModal();
@@ -796,7 +777,6 @@
             }
             alert('显示作品列表');
         }
-
         function showLikes() {
             if (!appState.isLoggedIn) {
                 showLoginModal();
@@ -804,7 +784,6 @@
             }
             alert('显示喜欢的内容');
         }
-
         function showCollections() {
             if (!appState.isLoggedIn) {
                 showLoginModal();
