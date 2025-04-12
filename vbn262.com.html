@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="vbn262官方网站 - 视频平台">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="vbn262官方网站 - 视频平台">
     <title>vbn262.com</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <style>
         /* 全局变量定义 */
         :root {
@@ -372,7 +369,7 @@
     <header class="header">
         <div class="header-title"><i class="fas">vbn262.com</i></div>
         <div class="header-actions">
-            <button onclick="downloadApp()"><i class="fas fa-download"></i> 下载APP</button>
+            <div onclick="downloadApp()" style="color: var(--text-color);"><i class="fas fa-download"> 下载APP</i></div>
             <i class="fas fa-ellipsis-v menu-icon" onclick="toggleDropdownMenu(event)"></i>
             <i class="fas fa-search" onclick="showSearch()"></i>
             <div class="dropdown-menu" id="dropdown-menu">
@@ -403,48 +400,14 @@
     <div id="home" class="content active">
         <div class="card" style="border-bottom:1px solid #000;">
             <div style="border-bottom:1px solid #000;"><h1>网页说明 2025/4/12</h1></div><div>我想做和微博 | 哔哩哔哩一样的软件和网页</div>
-            <a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-bilibili"></i> 网页制作找我</a>
-            <div class="crad" style="margin-top:99px;">
-                <div class="profile-header">
-                    <div class="profile-avatar">
-                        <div style="position: relative;">
-                            <img src="4587.jpg" alt="头像"><div style="position: absolute;top: 0;left: 0;z-index: 1;">默认头像</div>
-                        </div>
-                    </div>
-                </div>
-                <p class="profile-bio" id="username-display" style="margin-top:99px;">用户名-这里可以写一些个人简介</p>
-                <div class="profile-stats">
-                    <div class="profile-stats-item" onclick="showFollowList()">
-                        <i class="fas fa-users"></i>
-                        <p>关注 <span id="follow-count">27</span></p>
-                    </div>
-                    <div class="profile-stats-item" onclick="showFansList()">
-                        <i class="fas fa-user-friends"></i>
-                        <p>粉丝 <span id="fans-count">1</span></p>
-                    </div>
-                </div>
-                <div class="profile-actions" style="margin-top:99px;">
-                    <button onclick="uploadVideo()"><i class="fas fa-video"></i> 发布视频</button>
-                    <a href="#" class="profile-action"><i class="fas fa-clock"></i> 历史记录</a>
-                    <a href="#" class="profile-action"><i class="fas fa-cog"></i> 设置</a>
-                </div>
-                <div class="profile-bottom"></div>
-                <div class="profile-cards" style="margin-top:9px;">
-                    <div class="profile-card">
-                        <i class="fas fa-folder"></i>
-                        <p>作品</p>
-                    </div>
-                    <div class="profile-card">
-                        <i class="fas fa-thumbs-up"></i>
-                        <p>喜欢</p>
-                    </div>
-                    <div class="profile-card">
-                        <i class="fas fa-bookmark"></i>
-                        <p>收藏</p>
-                    </div>
-                </div>
+            <p class="btn" style="color: var(--text-color);" data-delay="0.2s"><i class="far fa-calendar-check"></i> 2024/9/1开始做网页</p><p class="btn" style="color: var(--text-color);" data-delay="0.2s"><i class="far fa-calendar-check"></i> 2025/4/11完成网页</p>
+            <div class="crad" style="background-color: #fef;margin-top:180px; text-align: center;">
+                <div class="profile-header"><div class="profile-avatar"><div style="position: relative;"><img src="4587.jpg" alt="头像"><div style="position: absolute;top: 0;left: 0;z-index: 1;">默认头像</div></div></div></div>
+                <p class="profile-bio" id="username-display">抖音哔哩哔哩的数据总和</p><a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-bilibili"></i> 网页制作找我</a>
+                <div class="profile-stats"><div onclick="uploadVideo()"><i class="fas fa-video"></i> 发布视频<span id="fans-count">0</span></p></div><div class="profile-stats-item" onclick="showFollowList()"><i class="fas fa-users"></i><p>我的关注 <span id="follow-count">31</span></p></div><div class="profile-stats-item" onclick="showFansList()"><i class="fas fa-user-friends"></i><p>粉丝 <span id="fans-count">1</span></p></div></div>
+                <div class="profile-cards"><div class="profile-card"><i class="fas fa-folder"></i><p>作品 <span id="fans-count">0</span></p></p></div><div class="profile-card"><i class="fas fa-thumbs-up"></i><p>喜欢 <span id="fans-count">69</span></p></div><div class="profile-card"><i class="fas fa-bookmark"></i><p>收藏 <span id="fans-count">99</span></p></div></div>
+                <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-tiktok"></i> 我的抖音账号</a>
             </div>
-            <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-tiktok"></i> 我的抖音账号</a>
         </div>
     </div>
     <div id="set" class="content">
@@ -480,14 +443,7 @@
         </div>
     </div>
     <div id="download" class="content" style="text-align: center;">暂无</div>
-    <footer class="footer">
-        <div class="social-links">
-            <a href="https://space.bilibili.com/1414517639" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a>
-            <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" title="抖音"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.weibo.com" target="_blank" title="微博"><i class="fab fa-weibo"></i></a>
-        </div>
-        <p class="copyright">COPYRIGHT &copy; 2025 vbn262.com 版权所有</p>
-    </footer>
+    <footer class="footer"><div class="social-links"><a href="https://space.bilibili.com/1414517639" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" title="抖音"><i class="fab fa-tiktok"></i></a><a href="https://www.weibo.com" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div><p class="copyright">COPYRIGHT &copy; 2025 vbn262.com 版权所有</p></footer>
     <script>
     /*全局状态*/
     const appState = {
