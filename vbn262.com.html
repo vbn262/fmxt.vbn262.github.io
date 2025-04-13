@@ -24,7 +24,7 @@
     <header class="header">
         <div class="header-title"><i class="fas">vbn262.com</i></div>
         <div class="header-actions">
-            <div onclick="downloadApp()" style="color: var(--text-color);"><i class="fas fa-download"> 下载APP</i></div>
+            <div onclick="downloadApp()" style="color: var(--text-color);"><i class="fas fa-download"></i>下载APP</div>
             <i class="fas fa-ellipsis-v menu-icon" onclick="toggleDropdownMenu(event)"></i>
             <i class="fas fa-search" onclick="showSearch()"></i>
             <div class="dropdown-menu" id="dropdown-menu">
@@ -40,9 +40,7 @@
             <h1 style="border-bottom:1px solid #000;">网页说明 - <i class="far fa-calendar-check">2025/4/13完成网页</i></h1><p style="color: var(--text-color);">本网站由我自己独立完成<i class="far fa-calendar-check"> 2024/9/1开始做网页</i></p><p style="margin:9px 0;">我想做和微博 | 哔哩哔哩一样的软件和网页</p>
             <div class="crad" style="background-color: #fef;margin-top:295px; text-align: center;">
                 <div class="profile-header">
-                    <div class="profile-avatar">
-                        <div style="position: relative;"><img src="4587.jpg" alt="头像"><div style="position: absolute;top: 0;left: 0;z-index: 1;">默认头像</div></div>
-                    </div>
+                    <div class="profile-avatar"><div style="position: relative;"><img src="4587.jpg" alt="头像"><div style="position: absolute;top: 0;left: 0;z-index: 1;">默认头像</div></div></div>
                     <p class="profile-bio" id="username-display">抖音哔哩哔哩的数据总和</p>
                 </div>
                 <div class="profile-stats-item" onclick="uploadVideo()"><i class="fas fa-video"></i>发布视频 <span id="fans-count">0</span></div>
@@ -58,10 +56,8 @@
         </div>
     </div>
     <div id="set" class="content">
-        <div style="border-bottom:1px solid #000;"><h2 style="margin-bottom:20px; color: var(--text-color);">设置</h2>
-            <div class="profile-cards"><button class="btn" onclick="clearCache()" style="color: var(--text-color);"><i class="fas fa-trash"></i> 清除缓存</button><button class="btn" onclick="showAgreementModal()" style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button></div>
-            <div class="profile-cards"><button class="btn" onclick="showFeedbackModal()"><a href="https://space.bilibili.com/1414517639" target="_blank" style="color: var(--text-color);"><i class="fas fa-comment"></i> 反馈问题</a></button><button class="btn" onclick="toggleDarkMode()" style="color: var(--text-color);"><i class="fas"></i> 功能暂无</button></div>
-        </div>
+        <div style="border-bottom:1px solid #000;"><h2 style="margin-bottom:20px; color: var(--text-color);">设置</h2><div class="profile-cards"><button class="btn" onclick="clearCache()" style="color: var(--text-color);"><i class="fas fa-trash"></i> 清除缓存</button><button class="btn" onclick="showAgreementModal()" style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button></div>
+            <div class="profile-cards"><button class="btn" onclick="showFeedbackModal()"><a href="https://space.bilibili.com/1414517639" target="_blank" style="color: var(--text-color);"><i class="fas fa-comment"></i> 反馈问题</a></button><button class="btn" onclick="toggleDarkMode()" style="color: var(--text-color);"><i class="fas"></i> 功能暂无</button></div></div>
         <div style="margin-top:9px;">
             <h1><a href="https://www.minecraft.net/zh-hans" target="_blank" style="color: var(--text-color);"><i class="fas fa-cube">Minecraft</i></a></h1>
             <h3 style="padding: 9px;"><a href="https://www.mcnav.net/" target="_blank" style="color: var(--text-color);"><i class="fas fa-map">MCNav</i></a> | <a href="https://www.mcmod.cn/" target="_blank" style="color: var(--text-color);"><i class="fas fa-book">MC百科</i></a></h3>
@@ -89,13 +85,9 @@
         /*其他功能*/
         function checkDarkMode() {const darkMode = localStorage.getItem('darkMode') === 'true';if (darkMode) {document.body.classList.add('dark-mode');appState.darkMode = true;}}
         function clearCache() {localStorage.clear();showMessage('success', '缓存已清除');}
-        function downloadApp() {alert('APP下载功能即将开放，敬请期待！');}
-        function toggleDarkMode() {alert('更多功能即将开放，敬请期待！');}
-        function uploadVideo() {alert('发布视频功能即将开放，敬请期待！');}
-        function showFollowList() {alert('显示关注列表');}
-        function showFansList() {alert('显示粉丝列表');}
-        function showWorks() {alert('显示作品列表');}
-        function showLikes() {alert('显示喜欢的内容');}
+        function downloadApp() {alert('APP下载功能即将开放，敬请期待！');}function toggleDarkMode() {alert('更多功能即将开放，敬请期待！');}
+        function uploadVideo() {alert('发布视频功能即将开放，敬请期待！');}function showFollowList() {alert('显示关注列表');}
+        function showFansList() {alert('显示粉丝列表');}function showWorks() {alert('显示作品列表');}function showLikes() {alert('显示喜欢的内容');}
         /*显示消息提示*/function showMessage(type, text, containerId = null) {const messageDiv = document.createElement('div');messageDiv.className = `message ${type}-message`;messageDiv.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${text}`;if (containerId) {const container = document.getElementById(containerId);container.innerHTML = '';container.appendChild(messageDiv);} else {const existingMessage = document.querySelector('.global-message');if (existingMessage) {existingMessage.remove();}messageDiv.classList.add('global-message');messageDiv.style.position = 'fixed';messageDiv.style.top = '70px';messageDiv.style.left = '50%';messageDiv.style.transform = 'translateX(-50%)';messageDiv.style.zIndex = '1000';messageDiv.style.maxWidth = '90%';document.body.appendChild(messageDiv);setTimeout(() => {messageDiv.remove();}, 3000);}
     }
   </script>
