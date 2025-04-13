@@ -1,30 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="vbn262官方网站 - 视频平台"><title>vbn262.com</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <style>
     /* 全局变量定义 */:root {--bilibili-pink: #fb7299;--douyin-black: #000;--weibo-orange: #ff8200;--nav-bg: white;--active-color: rgb(255, 176, 255);--text-color: #606770;--content-max-width: 800px;--bg-color: #f0f2f5;--card-bg: #f5f6f7;--dark-card-bg: rgba(30, 30, 30, 0.9);--shadow: 0 4px 8px rgba(0, 0, 0, 0.1);--bili-text-color: #333;--bili-link-color: #000;}/* 全局样式重置 */* {box-sizing: border-box;margin: 0;padding: 0;}body {font-family: 'Roboto', sans-serif;background-color: var(--bg-color);color: #1c1e21;margin-top: 42px;text-align: center;overscroll-behavior: contain;}
     /* 头部样式 */.header {z-index: 9;position: fixed;top: 0;left: 0;right: 0;padding: 9px 30px;display: flex;align-items: center;justify-content: space-between;background: linear-gradient(135deg, #fef 9%, pink 100%);box-shadow: var(--shadow);}.header-title {font-size: 20px;font-weight: bold;}.header-actions {display: flex;gap: 9px;}/* 底部导航头部样式 */.header1 {z-index: 1;width: 100%;bottom: 0;display: flex;position: fixed;background: linear-gradient(135deg, #fef 9%, pink 100%);justify-content: space-around;}.header1 i {font-size: 2rem;}/* 导航项样式 */.nav-item {display: flex;flex-direction: column;align-items: center;padding: 0px 99px 9px 0;text-decoration: none;color: var(--text-color);}.nav-item.active::after {content: "";position: absolute;bottom: -6px;width: 6px;height: 6px;background: var(--active-color);border-radius: 50%;}.nav-item span {font-size: 2rem;}
-    
     /* 内容区域样式 */.content {display: none;max-width: 1000px;margin: 0 auto;text-align: center;}.content.active {display: block;}/* 卡片样式 */.card {position: relative;background: var(--card-bg);padding-bottom: 9px;margin: 20px auto;border-radius: 16px;box-shadow: var(--shadow);text-align: center;}.card.dark-mode {background: var(--dark-card-bg);color: #fff;}
     /* 按钮样式 */.btn {display: block;width: 90%;margin: 20px auto;padding: 14px;background: var(--active-color);color: white;border-radius: 28px;border: none;font-size: 1rem;box-shadow: var(--shadow);cursor: pointer;}.btn:hover {background: #fff;}.btn:disabled {background: #ccc!important;cursor: not-allowed;}
-    /* 输入框样式 */
-    .input-field {width: 100%;padding: 14px;margin-bottom: 18px;border: 1px solid var(--border-color);border-radius: 12px;box-sizing: border-box;transition: border-color 0.3s;font-size: 1rem;}
+    /* 输入框样式 */.input-field {width: 100%;padding: 14px;margin-bottom: 18px;border: 1px solid var(--border-color);border-radius: 12px;box-sizing: border-box;transition: border-color 0.3s;font-size: 1rem;}
     .input-field::placeholder {color: #adb1b8;font-style: normal;}.input-field:focus {border-color: var(--active-color);outline: none;}
-    /* 菜单图标和下拉菜单样式 */
-    .menu-icon {font-size: 24px;cursor: pointer;}
+    /* 菜单图标和下拉菜单样式 */.menu-icon {font-size: 24px;cursor: pointer;}
     .dropdown-menu {display: none;position: absolute;top: 100%;left: 0;background-color: white;box-shadow: var(--shadow);border-radius: 8px;min-width: 100%;max-height: 50vh;overflow-y: auto;}
     .dropdown-menu a {display: block;padding: 12px 18px;text-decoration: none;color: var(--text-color);transition: background-color 0.3s;}
     .dropdown-menu a:hover {background-color: #f5f6f7;}
-
-    /* 模态框样式 */
-    .modal {display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);z-index: 1000;align-items: center;justify-content: center;}
+    /* 模态框样式 */.modal {display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);z-index: 1000;align-items: center;justify-content: center;}
     .modal-content {background: white;border-radius: 16px;box-shadow: var(--shadow);width: 90%;max-width: 400px;padding: 20px;position: relative;animation: modalFadeIn 0.3s ease;}
-    
     @keyframes fadeIn {from {opacity: 0;transform: translateY(-10px);}to {opacity: 1;transform: translateY(0);}}@media (max-width: 768px) {.header1 {position: fixed;bottom: 0;left: 0;right: 0;justify-content: space-around;}.header1 i {font-size: 2rem;}.nav-item {padding: 0 0 9px 0;}.nav-item span {font-size: 1.5rem;}.content {padding: 0 9px;}}
-    
     /* 个人资料卡片样式 */.profile-cards {display: flex;border-bottom: 1px solid #eee;}.profile-card {width: calc(33.33%);display: flex;flex-direction: column;align-items: center;text-align: center;}.profile-card:hover {background-color: #eaeaea;}.profile-card i {font-size: 20px;color: var(--bili-link-color);}.profile-card p {font-size: 0.9rem;color: var(--bili-text-color);}.profile-header {display: flex;margin: 20px;align-items: center;justify-content: space-around;border-bottom: 1px solid #eee;flex-direction: row;}.profile-avatar {width: 99px;height: 99px;border-radius: 0;background-color: #ccc;}.profile-avatar img {width: 100%;height: 100%;object-fit: cover;}.profile-info {text-align: center;}.profile-stats {display: flex;justify-content: space-around;margin-top: 10px;}.profile-stats-item {text-align: center;}.profile-stats-item span {font-size: 1.2rem;color: var(--bili-text-color);}.profile-stats-item p {font-size: 0.8rem;color: var(--text-color);}.profile-action {color: var(--text-color);text-decoration: none;}.profile-action:hover {color: var(--active-color);}
-
     /* 文本滑块样式 */.text-slider {position: relative;}.text-slider img {width: 100%;height: auto;}.slider-text {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);color: white;width: 100%;}
     .footer {background: linear-gradient(135deg, #ffd8ef, #ffe2ff, #fef 51%,  #ffe2ff, #ffd1ef, pink 99%);padding: 40px 20px;margin-bottom: 41px;margin-top: 30px;border-radius: 15px 15px 0 0;color: white;transition: all var(--transition-duration) ease;}.social-links {margin-bottom: 15px;}.social-links a {color: white;margin: 0 12px;font-size: 1.8rem;transition: all var(--transition-duration) ease;display: inline-block;text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}.social-links a:hover {transform: scale(1.1);}.fa-bilibili:hover {color: var(--bilibili-pink);}.fa-tiktok:hover {color: var(--douyin-black);}.fa-weibo:hover {color: var(--weibo-orange);}.copyright {font-size: 0.9rem;color: #666;}
     </style>
@@ -33,12 +24,12 @@
     <header class="header">
         <div class="header-title"><i class="fas">vbn262.com</i></div>
         <div class="header-actions">
-            <div onclick="downloadApp()" style="color: var(--text-color);"><i class="fas fa-download"> 下载APP</i></div>
+            <div  style="color: var(--text-color);"><i class="fas fa-download"> 下载APP</i></div>
             <i class="fas fa-ellipsis-v menu-icon" onclick="toggleDropdownMenu(event)"></i>
             <i class="fas fa-search" onclick="showSearch()"></i>
             <div class="dropdown-menu" id="dropdown-menu">
-                <a href="javascript:location.reload()"><i class="fas fa-sync-alt"></i> 刷新</a>
-                <a href="#download" class="nav-item"><i class="fas fa-download" style="font-size:1rem; color: var(--text-color);"></i><span>DOWNLOAD</span></a>
+                <a href=""><i class="fas fa-sync-alt"></i> 刷新</a>
+                <div onclick="downloadApp()" style="color: var(--text-color);"><i class="fas fa-download"></i>DOWNLOAD APP</div>
             </div>
         </div>
     </header>
@@ -46,32 +37,56 @@
     <div id="download" class="content" style="text-align: center;">暂无</div><div id="agreement-modal" class="modal"><div class="modal-content"><h2 style="color: var(--bili-text-color);"><i class="fas fa-file-contract">网页协议</i></h2><div style="text-align:left; margin:15px 0; color: var(--text-color);"><p>1. 用户在使用本网站服务时必须遵守相关法律法规</p><p>2. 用户不得利用本网站服务进行任何违法侵权行为</p><p>3. 本网站保留随时修改协议的权利</p><p>4. 用户发布内容需遵守社区规范</p></div><div class="modal-actions"><button onclick="acceptAgreement()">同意</button><button onclick="closeAgreementModal()">关闭</button></div></div></div>
     <div id="home" class="content active">
         <div class="card" style="border-bottom:1px solid #000;">
-            <p style="border-bottom:1px solid #000;"><h1>网页说明 2025/4/12</h1></p><p style="color: var(--text-color);">本网站由我自己独立完成</p><p>我想做和微博 | 哔哩哔哩一样的软件和网页</p><p class="btn" style="color: var(--text-color);" data-delay="0.2s"><i class="far fa-calendar-check"></i> 2024/9/1开始做网页</p><p class="btn" style="color: var(--text-color);" data-delay="0.2s"><i class="far fa-calendar-check"></i> 2025/4/11完成网页</p>
-            <div class="crad" style="background-color: #fef;margin-top:150px; text-align: center;">
-                <div class="profile-header"><div class="profile-avatar"><div style="position: relative;"><img src="4587.jpg" alt="头像"><div style="position: absolute;top: 0;left: 0;z-index: 1;">默认头像</div></div></div></div>
-                <p class="profile-bio" id="username-display">抖音哔哩哔哩的数据总和</p><a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-bilibili"></i> 网页制作找我</a>
-                <div class="profile-stats"><div onclick="uploadVideo()"><i class="fas fa-video"></i> 发布视频<span id="fans-count">0</span></p></div><div class="profile-stats-item" onclick="showFollowList()"><i class="fas fa-users"></i><p>我的关注 <span id="follow-count">31</span></p></div><div class="profile-stats-item" onclick="showFansList()"><i class="fas fa-user-friends"></i><p>粉丝 <span id="fans-count">1</span></p></div></div>
-                <div class="profile-cards"><div class="profile-card"><i class="fas fa-folder"></i><p>作品 <span id="fans-count">0</span></p></p></div><div class="profile-card"><i class="fas fa-thumbs-up"></i><p>喜欢 <span id="fans-count">69</span></p></div><div class="profile-card"><i class="fas fa-bookmark"></i><p>收藏 <span id="fans-count">99</span></p></div></div>
-                <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-tiktok"></i> 我的抖音账号</a>
+            <h1 style="border-bottom:1px solid #000;">网页说明 2025/4</h1><p style="color: var(--text-color);">本网站由我自己独立完成</p><p>我想做和微博 | 哔哩哔哩一样的软件和网页</p><p class="btn" style="color: var(--text-color);" data-delay="0.2s"><i class="far fa-calendar-check"></i> 2024/9/1开始做网页</p><p class="btn" style="color: var(--text-color);" data-delay="0.2s"><i class="far fa-calendar-check"></i> 2025/4/13完成网页</p>
+            <div class="crad" style="background-color: #fef;margin-top:295px; text-align: center;">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <div style="position: relative;"><img src="4587.jpg" alt="头像"><div style="position: absolute;top: 0;left: 0;z-index: 1;">默认头像</div></div>
+                    </div>
+                    <p class="profile-bio" id="username-display">抖音哔哩哔哩的数据总和</p>
+                </div>
+                <div class="profile-stats-item" onclick="uploadVideo()"><i class="fas fa-video"></i>发布视频 <span id="fans-count">0</span></div>
+                <div class="profile-stats">
+                    <div class="profile-stats-item" onclick="showFollowList()"><i class="fas fa-users"></i>我的关注 <span id="follow-count">31</span></div>
+                    <div class="profile-stats-item" onclick="showFansList()"><i class="fas fa-user-friends"></i>粉丝 <span id="fans-count">1</span></div>
+                    <div class="profile-stats-item" onclick="showWorks()"><i class="fas fa-folder"></i>作品 <span id="fans-count">0</span></div>
+                    <div class="profile-stats-item" onclick="showLikes()"><i class="fas fa-thumbs-up"></i>喜欢 <span id="fans-count">69</span></div>
+                </div>
+                <div class="profile-cards"><a href="https://space.bilibili.com/1414517639" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-bilibili"></i> 网页制作找我</a><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-tiktok"></i> 我的抖音账号</a></div>
             </div>
         </div>
     </div>
     <div id="set" class="content">
-        <div style="border-bottom:1px solid #000;">
-            <h2 style="margin-bottom:20px; color: var(--text-color);">设置</h2>
-            <button class="btn" onclick="showFeedbackModal()"><a href="https://space.bilibili.com/1414517639" target="_blank" style="color: var(--text-color);"><i class="fas fa-comment"></i> 反馈问题</a></button>
-            <button class="btn" onclick="toggleDarkMode()" style="color: var(--text-color);"><i class="fas fa-moon"></i> 夜间模式</button>
-            <button class="btn" onclick="clearCache()" style="color: var(--text-color);"><i class="fas fa-trash"></i> 清除缓存</button>
-            <button class="btn" onclick="showAgreementModal()" style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button>
+        <div style="border-bottom:1px solid #000;"><h2 style="margin-bottom:20px; color: var(--text-color);">设置</h2>
+            <div class="profile-cards">
+                <button class="btn" onclick="clearCache()" style="color: var(--text-color);"><i class="fas fa-trash"></i> 清除缓存</button><button class="btn" onclick="showAgreementModal()" style="color: var(--text-color);"><i class="fas fa-file-alt"></i> 查看网页协议</button>
+            </div>
+            <div class="profile-cards">
+                <button class="btn" onclick="showFeedbackModal()"><a href="https://space.bilibili.com/1414517639" target="_blank" style="color: var(--text-color);"><i class="fas fa-comment"></i> 反馈问题</a></button><button class="btn" onclick="toggleDarkMode()" style="color: var(--text-color);"><i class="fas"></i> 功能暂无</button></div>
+            </div>
+        <div style="margin-top:9px;">
+            <h1><a href="https://www.minecraft.net/zh-hans" target="_blank" style="color: var(--text-color);"><i class="fas fa-cube">Minecraft</i></a></h1>
+            <h3 style="padding: 9px;"><a href="https://www.mcnav.net/" target="_blank" style="color: var(--text-color);"><i class="fas fa-map">MCNav</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://www.mcmod.cn/" target="_blank" style="color: var(--text-color);"><i class="fas fa-book">MC百科</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://www.4399.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-gamepad">4399小游戏</i></a></h3>
+            <h3 style="padding: 9px;"><a href="http://aola.100bt.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-dragon">奥拉星</i></a></h3>
+            <h3 style="padding: 9px;"><a href="http://aoqi.100bt.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-chess">奥奇传说</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://store.steampowered.com/" target="_blank" style="color: var(--text-color);"><i class="fab fa-steam">Steam</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://flingtrainer.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-download">Fling Trainer</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://pvp.qq.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-mobile-alt">王者荣耀</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://rocom.qq.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-paw">洛克王国</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://tv.cctv.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-tv">CCTV</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://www.weibo.com" target="_blank" style="color: var(--text-color);"><i class="fab fa-weibo">微博</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://www.bilibili.com/" target="_blank" style="color: var(--text-color);"><i class="fab fa-bilibili">哔哩哔哩</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://www.douyin.com/" target="_blank" style="color: var(--text-color);"><i class="fab fa-tiktok">抖音</i></a></h3>
+            <h3 style="padding: 9px;"><a href="https://chat.deepseek.com/" target="_blank" style="color: var(--text-color);"><i class="fas fa-robot">DeepSeek</i></a></h3>
+            <h3 style="padding: 9px;""><a href="https://www.doubao.com/chat/" target="_blank" style="color: var(--text-color);"><i class="fas fa-comment">豆包</i></a></h3>
         </div>
-        <div style="border-bottom:1px solid #000;"><div style="margin-top:20px;"><h2 style="color: var(--text-color);">常用链接</h2><div style="margin-top:38px;"><h1><a href="https://www.minecraft.net/zh-hans" target="_blank" style="color: var(--text-color);"><i class="fas fa-cube">Minecraft</i></a></h1><h3><a href="https://www.mcnav.net/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-map"> MCNav</i></a></h3><h3><a href="https://www.mcmod.cn/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-book"> MC百科</i></a></h3></div><a href="https://www.4399.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-gamepad">4399小游戏</i></a><a href="http://aola.100bt.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-dragon">奥拉星</i></a><a href="http://aoqi.100bt.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-chess">奥奇传说</i></a><a href="https://store.steampowered.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-steam">Steam</i></a><a href="https://flingtrainer.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-download">Fling Trainer</i></a><a href="https://pvp.qq.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-mobile-alt">王者荣耀</i></a><a href="https://rocom.qq.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-paw">洛克王国</i></a><a href="https://tv.cctv.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-tv">CCTV</i></a><a href="https://www.weibo.com" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-weibo">微博</i></a><a href="https://www.bilibili.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-bilibili">哔哩哔哩</i></a><a href="https://www.douyin.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fab fa-tiktok">抖音</i></a><a href="https://chat.deepseek.com/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-robot">DeepSeek</i></a><a href="https://www.doubao.com/chat/" target="_blank" class="btn" style="color: var(--text-color);"><i class="fas fa-comment">豆包</i></a></div></div>
     </div>
     <footer class="footer"><div class="social-links"><a href="https://space.bilibili.com/1414517639" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" title="抖音"><i class="fab fa-tiktok"></i></a><a href="https://www.weibo.com" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div><p class="copyright">COPYRIGHT &copy; 2025 vbn262.com 版权所有</p></footer>
     <script>
     /*全局状态*/const appState = {isLoggedIn: localStorage.getItem('userLoggedIn') === 'true',verifyCode: '',countdown: 60,countdownTimer: null,darkMode: false};
-    /*DOM加载完成后初始化*/
-    document.addEventListener('DOMContentLoaded', () => {
-        /*检查协议*/if (!localStorage.getItem('agreementAccepted')) {showAgreementModal();}initTabSwitcher();initModalCloseEvents();});
+    /*DOM加载完成后初始化*/document.addEventListener('DOMContentLoaded', () => {/*检查协议*/if (!localStorage.getItem('agreementAccepted')) {showAgreementModal();}initTabSwitcher();initModalCloseEvents();});
         /*初始化标签页切换*/function initTabSwitcher() {const navItems = document.querySelectorAll('.nav-item');navItems.forEach(item => {item.addEventListener('click', (e) => {e.preventDefault();const target = item.getAttribute('href').substring(1);if (target === 'profile' && !appState.isLoggedIn) {showLoginModal();return;}switchTab(target);});});}
         /*初始化模态框关闭事件*/function initModalCloseEvents() {const modals = document.querySelectorAll('.modal');modals.forEach(modal => {modal.addEventListener('click', (e) => {if (e.target === modal) {modal.style.display = 'none';}});});}
         /*切换标签页*/function switchTab(tabId) {const contents = document.querySelectorAll('.content');contents.forEach(c => c.classList.remove('active'));document.getElementById(tabId).classList.add('active');const navItems = document.querySelectorAll('.nav-item');navItems.forEach(n => n.classList.remove('active'));document.querySelector(`[href="#${tabId}"]`).classList.add('active');}
@@ -81,14 +96,13 @@
         function checkDarkMode() {const darkMode = localStorage.getItem('darkMode') === 'true';
         if (darkMode) {document.body.classList.add('dark-mode');appState.darkMode = true;}}
         function clearCache() {localStorage.clear();showMessage('success', '缓存已清除');}
-        function uploadVideo() {alert('发布视频功能即将开放，敬请期待！');}
         function downloadApp() {alert('APP下载功能即将开放，敬请期待！');}
-        function toggleDarkMode() {alert('夜间模式功能即将开放，敬请期待！');}
+        function toggleDarkMode() {alert('更多功能即将开放，敬请期待！');}
+        function uploadVideo() {alert('发布视频功能即将开放，敬请期待！');}
         function showFollowList() {alert('显示关注列表');}
         function showFansList() {alert('显示粉丝列表');}
         function showWorks() {alert('显示作品列表');}
         function showLikes() {alert('显示喜欢的内容');}
-        function showCollections() {alert('显示收藏内容');}
         /*显示消息提示*/function showMessage(type, text, containerId = null) {const messageDiv = document.createElement('div');messageDiv.className = `message ${type}-message`;messageDiv.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${text}`;if (containerId) {const container = document.getElementById(containerId);container.innerHTML = '';container.appendChild(messageDiv);} else {const existingMessage = document.querySelector('.global-message');if (existingMessage) {existingMessage.remove();}messageDiv.classList.add('global-message');messageDiv.style.position = 'fixed';messageDiv.style.top = '70px';messageDiv.style.left = '50%';messageDiv.style.transform = 'translateX(-50%)';messageDiv.style.zIndex = '1000';messageDiv.style.maxWidth = '90%';document.body.appendChild(messageDiv);setTimeout(() => {messageDiv.remove();}, 3000);}
     }
   </script>
