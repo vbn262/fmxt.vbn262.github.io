@@ -100,9 +100,10 @@
                 .content {padding: 0 9px;
                 }
             }
-            /*个人资料卡片样式.profile-card {width: calc(33.33%);
-            display: flex;flex-direction: column;
-            align-items: center;text-align: center;}*/
+            /*个人资料卡片样式*/
+            .profile-card {width: calc(33.33%);display: flex;flex-direction: column;
+                align-items: center;text-align: center;
+            }
         </style>
     </head>
     <body>
@@ -121,16 +122,15 @@
             <a href="#set" class="nav-item"><i class="fas fa-cog"><span>SET</span></i></a>
             <a href="#whois" class="nav-item"><i class="fas fa-info-circle"><span>Whois查询</span></i></a>
         </header>
+        
         <div id="agreement-modal" class="modal">
-            <div class="modal-content">
-                <h2 style="color: var(--bili-text-color);"><i class="fas fa-file-contract">公告 | 个人网站</i></h2>
+            <div class="modal-content"><h2 style="color: var(--bili-text-color);"><i class="fas fa-file-contract">公告 | 个人网站</i></h2>
                 <div style="text-align:left; margin:15px 0; color: var(--text-color);">
-                    <p>1. 使用本网站必须遵守相关法律法规</p><p>2. 不得利用本网站进行任何违法侵权行为</p>
-                    <p>3. https://www.vbn262.com</p><p>4. 上面网站帮我宣传宣传 这是官网</p>
-                </div>
-                <div class="modal-actions"><button onclick="closeAgreementModal()">关闭</button></div>
+                    <p>1. 不得利用本网站进行任何违法侵权行为</p><p> https://www.vbn262.com</p><p>2. 上面网站帮我宣传宣传 这是官网</p>
+                </div><div class="modal-actions"><button onclick="closeAgreementModal()">关闭</button></div>
             </div>
         </div>
+        
         <div id="home" class="content active">
             <div class="card">
                 <h1 style="padding: 9px;">本网站由我自己独立完成</h1><h1 class="far fa-calendar-check">2024/9开始</h1>
@@ -140,6 +140,7 @@
         </div>
         <div id="set" class="content"><h2 style="border-bottom:1px solid #000; margin-bottom:20px; color: var(--text-color);">暂无设置</h2></div>
         <div id="whois" class="content"><a href="https://lookup.icann.org/" target="_blank" style="color: var(--text-color);" class="btn fab"><h2>Whois查询</h2></a></div>
+        
         <footer style="margin: 0 auto;max-width: 999px;border: 1px solid pink;margin-bottom: 41px;">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
             <a href="https://space.bilibili.com/1414517639" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #333;font-size: 2rem;"></i></a>
