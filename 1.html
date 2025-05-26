@@ -9,28 +9,23 @@
             :root {--nav-bg: white;--active-color: rgb(255, 176, 255);--text-color: #606770;--bg-color: #f0f2f5;--card-bg: #f5f6f7;
                 --dark-card-bg: rgba(30, 30, 30, 0.9);--shadow: 0 4px 8px rgba(0, 0, 0, 0.1);--bili-text-color: #333;--bili-link-color: #000;
             }
-    
             /*全局样式重置*/
             * {box-sizing: border-box;margin: 0;padding: 0;
             }
-    
             /* 基础样式 */
             body {background-color: var(--bg-color);color: #1c1e21;
                 overscroll-behavior: contain;margin: 0;color: #333;text-align: center;
             }
-    
             /*头部样式*/
             .header {display: flex;top: 0;left: 0;right: 0;padding: 9px;align-items: center;justify-content: space-between;
                 background: linear-gradient(135deg, #fef 9%, pink 100%);box-shadow: var(--shadow);
             }
-    
             /*底部导航头部样式*/
             .header1 {z-index: 1;width: 100%;bottom: 0;display: flex;position: fixed;
                 background: linear-gradient(135deg, #fef 9%, pink 100%);justify-content: space-around;
             }
             .header1 i {font-size: 2rem;
             }
-    
             /*导航项样式*/
             .nav-item {display: flex;flex-direction: column;align-items: center;
                 padding: 0px 99px 9px 0;text-decoration: none;color: var(--text-color);
@@ -40,46 +35,39 @@
             }
             .nav-item span {font-size: 2rem;
             }
-    
             /*内容区域样式*/
             .content {display: none;max-width: 1000px;margin: 0 auto;text-align: center;
             }
             .content.active {display: block;
             }
-    
             /* 卡片样式 */
             .card {position: relative;background: var(--card-bg);padding-bottom: 9px;
                 margin: 20px auto;border-radius: 16px;box-shadow: var(--shadow);text-align: center;
             }
             .card.dark-mode {background: var(--dark-card-bg);color: #fff;
             }
-    
             /*按钮样式*/
             .btn {display: block;width: 90%;margin: 20px auto;padding: 14px;background: var(--active-color);color: white;
                 border-radius: 28px;border: none;font-size: 1rem;box-shadow: var(--shadow);cursor: pointer;
             }
             .btn:hover {background: #fff;
             }
-    
             /*模态框样式*/
-            .modal {display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;
-                background: rgba(0, 0, 0, 0.5);z-index: 1000;align-items: center;justify-content: center;
+            .modal {display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);
+                z-index: 999;align-items: center;justify-content: center;
             }
             .modal-content {background: white;border-radius: 16px;box-shadow: var(--shadow);width: 90%;
                 max-width: 400px;padding: 20px;position: relative;animation: modalFadeIn 0.3s ease;
             }
-    
             /*菜单图标和下拉菜单样式*/
             .menu {display: flex;gap: 15px;
             }
             .menu-button {display: none;font-size: 24px;cursor: pointer;color: #555;
             }
-            .menu a {padding: 5px 10px;border-radius: 5px;
-                transition: background 0.3s ease, color 0.3s ease;
+            .menu a {padding: 5px 10px;border-radius: 5px;transition: background 1s ease,color 1s ease;
             }
             .menu a:hover {background: #ff80c2;color: #fff;
             }
-    
             @media (max-width: 768px) {
                 .menu-button {display: block;
                 }
@@ -101,8 +89,7 @@
                 }
             }
             /*个人资料卡片样式*/
-            .profile-card {width: calc(33.33%);display: flex;flex-direction: column;
-                align-items: center;text-align: center;
+            .profile-card {width: calc(33.33%);display: flex;flex-direction: column;align-items: center;text-align: center;
             }
         </style>
     </head>
@@ -118,11 +105,10 @@
             </div>
         </header>
         <header class="header1">
-            <a href="#home" class="nav-item active" aria-current="page"><i class="fas fa-home"><span>ONE</span></i></a>
-            <a href="#set" class="nav-item"><i class="fas fa-cog"><span>SET</span></i></a>
-            <a href="#whois" class="nav-item"><i class="fas fa-info-circle"><span>Whois查询</span></i></a>
+            <a href="#home" class="nav-item active" aria-current="page"><i class="fas fa-home"><span>one</span></i></a>
+            <a href="#set" class="nav-item"><i class="fas"><span>vbn262</span></i></a>
+            <a href="#whois" class="nav-item"><i class="fas fa-info-circle"><span>whois</span></i></a>
         </header>
-        
         <div id="agreement-modal" class="modal">
             <div class="modal-content"><h2 style="color: var(--bili-text-color);"><i class="fas fa-file-contract">公告 | 个人网站</i></h2>
                 <div style="text-align:left; margin:15px 0; color: var(--text-color);">
@@ -130,17 +116,20 @@
                 </div><div class="modal-actions"><button onclick="closeAgreementModal()">关闭</button></div>
             </div>
         </div>
-        
         <div id="home" class="content active">
+            <div class="card"><h1 style="padding: 9px;">本网站由我自己独立完成</h1></div>
             <div class="card">
-                <h1 style="padding: 9px;">本网站由我自己独立完成</h1><h1 class="far fa-calendar-check">2024/9开始</h1>
+                <h1 class="far fa-calendar-check">2024/9开始</h1>
                 <h1 class="far">2025/5/26完成</h1>
-                <p style="margin:9px 0;">我想做和微博 | 哔哩哔哩一样的软件和网页</p>
+            </div>
+            <div class="card"><p style="margin:9px 0;">我想做和微博 | 哔哩哔哩一样的软件和网页</p></div>
+            <div class="card">
+                暂无
             </div>
         </div>
-        <div id="set" class="content"><h2 style="border-bottom:1px solid #000; margin-bottom:20px; color: var(--text-color);">暂无设置</h2></div>
-        <div id="whois" class="content"><a href="https://lookup.icann.org/" target="_blank" style="color: var(--text-color);" class="btn fab"><h2>Whois查询</h2></a></div>
+        <div id="set" class="content"><h2 style="border-bottom:1px solid #000; margin-bottom:20px; color: var(--text-color);">暂无</h2></div>
         
+        <div id="whois" class="content"><a href="https://lookup.icann.org/" target="_blank" style="color: var(--text-color);" class="btn fab"><h2>Whois查询</h2></a></div>
         <footer style="margin: 0 auto;max-width: 999px;border: 1px solid pink;margin-bottom: 41px;">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
             <a href="https://space.bilibili.com/1414517639" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #333;font-size: 2rem;"></i></a>
@@ -150,28 +139,21 @@
                 © 2025 vbn262.com 版权所有<a href="https://beian.miit.gov.cn" target="_blank"><h5>鲁ICP备2025163733号-1</h5></a>
             </h5>
         </footer>
-    
         <script>
             /*切换菜单显示状态*/
             function toggleMenu() {const menu = document.getElementById("menu");menu.classList.toggle("active");}
             /*点击菜单项后关闭菜单*/
             function closeMenu() {const menu = document.getElementById("menu");menu.classList.remove("active");}
-    
             /*全局状态*/
-            const appState = {isLoggedIn: localStorage.getItem('userLoggedIn') === 'true',
-                verifyCode: '',countdown: 60,countdownTimer: null,darkMode: false};
-    
+            const appState = {isLoggedIn: localStorage.getItem('userLoggedIn') === 'true',verifyCode: '',countdown: 60,countdownTimer: null,darkMode: false};
             /*DOM加载完成后初始化*/
             document.addEventListener('DOMContentLoaded', () => {
-                /*检查协议*/
-                if (!localStorage.getItem('agreementAccepted')) {showAgreementModal();}
+                /*检查协议*/if (!localStorage.getItem('agreementAccepted')) {showAgreementModal();}
                 initTabSwitcher();initModalCloseEvents();
             });
-
             /*初始化模态框关闭事件*/
             function initModalCloseEvents() {const modals = document.querySelectorAll('.modal');
             modals.forEach(modal => {modal.addEventListener('click', (e) => {if (e.target === modal) {modal.style.display = 'none';}});});}
-    
             /*初始化标签页切换*/
             function initTabSwitcher() {const navItems = document.querySelectorAll('.nav-item');
                 navItems.forEach(item => {item.addEventListener('click', (e) => {e.preventDefault();
@@ -179,22 +161,18 @@
                     if (target === 'profile' && !appState.isLoggedIn) {showLoginModal();return;}switchTab(target);});
                 });
             }
-    
             /*切换标签页*/
-            function switchTab(tabId) {
-                const contents = document.querySelectorAll('.content');
+            function switchTab(tabId) {const contents = document.querySelectorAll('.content');
                 contents.forEach(c => c.classList.remove('active'));
                 document.getElementById(tabId).classList.add('active');
                 const navItems = document.querySelectorAll('.nav-item');
                 navItems.forEach(n => n.classList.remove('active'));
                 document.querySelector(`[href="#${tabId}"]`).classList.add('active');
             }
-    
             /*协议相关函数*/
             function showAgreementModal() {document.getElementById('agreement-modal').style.display = 'flex';}
             function closeAgreementModal() {document.getElementById('agreement-modal').style.display = 'none';}
             function acceptAgreement() {localStorage.setItem('agreementAccepted', 'true');closeAgreementModal();showMessage('success', '协议已接受');}
-    
             /*其他功能*/
             function checkDarkMode() {const darkMode = localStorage.getItem('darkMode') === 'true';
                 if (darkMode) {document.body.classList.add('dark-mode');appState.darkMode = true;}
