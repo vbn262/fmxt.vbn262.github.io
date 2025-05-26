@@ -134,7 +134,7 @@
             }
             .profile-header {align-items: center;justify-content: space-around;border-top: 1px solid #000;flex-direction: row;
             }
-            .profile-stats {display: flex;justify-content: space-around;text-align: center;
+            .profile-stats {text-align: left;
             }
             .profile-stats-item {text-align: center;
             }
@@ -223,22 +223,18 @@
             function toggleMenu() {const menu = document.getElementById("menu");menu.classList.toggle("active");}
             /*点击菜单项后关闭菜单*/
             function closeMenu() {const menu = document.getElementById("menu");menu.classList.remove("active");}
-    
             /*全局状态*/
             const appState = {isLoggedIn: localStorage.getItem('userLoggedIn') === 'true',
                 verifyCode: '',countdown: 60,countdownTimer: null,darkMode: false};
-    
             /*DOM加载完成后初始化*/
             document.addEventListener('DOMContentLoaded', () => {
                 /*检查协议*/
                 if (!localStorage.getItem('agreementAccepted')) {showAgreementModal();}
                 initTabSwitcher();initModalCloseEvents();
             });
-
             /*初始化模态框关闭事件*/
             function initModalCloseEvents() {const modals = document.querySelectorAll('.modal');
             modals.forEach(modal => {modal.addEventListener('click', (e) => {if (e.target === modal) {modal.style.display = 'none';}});});}
-    
             /*初始化标签页切换*/
             function initTabSwitcher() {const navItems = document.querySelectorAll('.nav-item');
                 navItems.forEach(item => {item.addEventListener('click', (e) => {e.preventDefault();
@@ -246,7 +242,6 @@
                     if (target === 'profile' && !appState.isLoggedIn) {showLoginModal();return;}switchTab(target);});
                 });
             }
-    
             /*切换标签页*/
             function switchTab(tabId) {
                 const contents = document.querySelectorAll('.content');
@@ -256,12 +251,10 @@
                 navItems.forEach(n => n.classList.remove('active'));
                 document.querySelector(`[href="#${tabId}"]`).classList.add('active');
             }
-    
             /*协议相关函数*/
             function showAgreementModal() {document.getElementById('agreement-modal').style.display = 'flex';}
             function closeAgreementModal() {document.getElementById('agreement-modal').style.display = 'none';}
             function acceptAgreement() {localStorage.setItem('agreementAccepted', 'true');closeAgreementModal();showMessage('success', '协议已接受');}
-    
             /*其他功能*/
             function checkDarkMode() {const darkMode = localStorage.getItem('darkMode') === 'true';
                 if (darkMode) {document.body.classList.add('dark-mode');appState.darkMode = true;}
