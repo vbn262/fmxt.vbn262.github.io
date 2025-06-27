@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>风鸣玄太工作室www.vbn262.com</title>
+  <meta name="description" content="风鸣玄太工作室www.vbn262.com风鸣玄太工作室成立于2025年，主业网页开发，游戏开发，动漫制作，干销售只要能销售不触犯法律的都卖">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-  
   <!-- Tailwind配置 -->
   <script>
     tailwind.config = {
@@ -31,7 +31,6 @@
       }
     }
   </script>
-  
   <!-- 自定义工具类 -->
   <style type="text/tailwindcss">
     @layer utilities {
@@ -53,7 +52,6 @@
       }
     }
   </style>
-  
   <!-- 基础样式 -->
   <style>
     :root {
@@ -230,38 +228,7 @@
     .download i {
       margin-right: 8px;
     }
-    
-    /* 返回顶部按钮 */
-    .back-to-top {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      background-color: var(--primary);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 40;
-      box-shadow: var(--card);
-    }
-    
-    .back-to-top:hover {
-      background-color: #ff99ff;
-      transform: translateY(-2px);
-    }
-    
-    .back-to-top.active {
-      opacity: 1;
-      visibility: visible;
-    }
-  </style>
+   </style>
 </head>
 <body>
   <!-- 头部导航 -->
@@ -325,6 +292,10 @@
   <main class="content-container">
     <!-- 首页 -->
     <section id="home" class="page-content active">
+<div class="bg-white rounded-2xl shadow-card p-6 mb-8">
+        <h1 style="font-size: 24px; font-weight: bold; color: var(--primary);">网站名字: 风鸣玄太</h1>
+      </div>
+
       <div class="bg-white rounded-2xl shadow-card p-6 mb-8">
         <h2 class="text-xl font-bold mb-4">工作室历程</h2>
         <div class="project-timeline">
@@ -531,18 +502,13 @@
           </a>
         </div>
         
-        <div class="mt-8 bg-white rounded-2xl shadow-card p-6">
+        <div class="mt-8 p-6">
           <h2 class="text-xl font-bold mb-4">关于我们</h2>
-          <p class="text-text mb-4">风鸣玄太工作室成立于2025年，我们致力于通过优质的产品和服务，连接创作者与粉丝，打造独特的数字娱乐体验</p>
+          <p class="text-text mb-4">风鸣玄太工作室成立于2025年，主业网页开发，游戏开发，动漫制作，干销售只要能销售不触犯法律的都卖</p>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- 返回顶部按钮 -->
-  <div class="back-to-top" id="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-  </div>
 
   <!-- 页脚 -->
   <footer style="margin: 0 auto;max-width: 999px;border: 1px solid pink;margin-bottom: 99px;">
@@ -586,24 +552,6 @@
       const modal = document.getElementById('agreement-modal');
       modal.classList.add('hidden');
     }
-    
-    // 返回顶部按钮
-    window.addEventListener('scroll', function() {
-      const backToTopButton = document.getElementById('back-to-top');
-      if (window.scrollY > 300) {
-        backToTopButton.classList.add('active');
-      } else {
-        backToTopButton.classList.remove('active');
-      }
-    });
-    
-    // 点击返回顶部
-    document.getElementById('back-to-top').addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
     
     // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
