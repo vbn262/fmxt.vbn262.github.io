@@ -288,15 +288,15 @@
 <body>
   <!-- 头部导航 -->
   <header class="header">
-    <div class="logo" style="font-size: 24px; font-weight: bold; color: #FFB0FF;">F风M鸣X玄T太</div>
+    <div class="logo" style="font-size: 24px; font-weight: bold; color: #FFB0FF;">F风M鸣X玄T太 工作室</div>
     <button onclick="showAgreementModal()" class="text-text hover:text-primary transition-colors"><i class="fas fa-file-alt mr-1"></i><span class="mobile-hidden">公告</span></button>
     <button class="menu-button" onclick="toggleMenu()" aria-label="菜单"><i class="fas fa-bars"></i></button>
     <div class="menu" id="menu">
+      <a href="" target="_blank" class="menu-item">www.vbn262.com/fmxt/1.html</a>
       <a href="#home" class="menu-item" onclick="closeMenu()">首页</a>
       <a href="#product" class="menu-item" onclick="closeMenu()">产品</a>
       <a href="#vbn262" class="menu-item" onclick="closeMenu()">vbn262</a>
       <a href="#about" class="menu-item" onclick="closeMenu()">关于</a>
-      <a href="https://space.bilibili.com/1414517639" target="_blank" rel="noopener noreferrer" class="menu-item">反馈问题</a>
     </div>
   </header>
   <!-- 底部导航 -->
@@ -318,11 +318,11 @@
   <main class="content-container">
     <!-- 首页 -->
     <section id="home" class="page-content active">
-      <div class="bg-white rounded-2xl shadow-card p-6 mb-8"><h1 style="font-size: 24px; font-weight: bold; color: #FFB0FF;">网站名字: 风鸣玄太</h1></div>
+      <div class="bg-white rounded-2xl shadow-card p-6 mb-8"><h1 style="font-size: 24px; font-weight: bold; color: #FFB0FF;">网站名字: 风鸣玄太工作室</h1></div>
       <div class="bg-white rounded-2xl shadow-card p-6 mb-8">
         <h2 class="text-xl font-bold mb-4">网页历程</h2>
         <div class="project-timeline">
-          <div class="timeline-item"><div class="timeline-content"><h3 class="font-bold text-gray-800">2024/9 制作风鸣玄太 - 2025/4 网站上线</h3></div></div>
+          <div class="timeline-item"><div class="timeline-content"><h3 class="font-bold text-gray-800">2024/9 制作风鸣玄太工作室 - 2025/4 网站上线</h3></div></div>
           <div class="timeline-item">
             <div class="timeline-content">
               <h3 class="font-bold text-gray-800">2025/7/3 网页更新</h3>
@@ -332,7 +332,7 @@
       </div>
       
       <div class="bg-white rounded-2xl shadow-card p-6">
-        <h2 class="text-xl font-bold mb-4">关注我们</h2><p class="text-text mb-4">在各大平台搜索"风鸣玄太"或"冖井"关注我们</p>
+        <h2 class="text-xl font-bold mb-4">关注我们</h2><p class="text-text mb-4">在各大平台搜索"风鸣玄太工作室"或"冖井"关注我们</p>
         <div class="social-icons flex justify-center gap-4">
           <a href="https://space.bilibili.com/1414517639" target="_blank" rel="noopener noreferrer" class="social-icon w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:scale-110 transition-all">
             <i class="fab fa-bilibili text-primary text-xl"></i>
@@ -353,7 +353,7 @@
         <h2 class="text-2xl font-bold text-gray-800 mb-6">工作室产品</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div class="bg-white rounded-2xl shadow-card overflow-hidden card-hover">
-            <img src="https://picsum.photos/600/400?random=1" alt="风鸣玄太直播" class="w-full h-48 object-cover" loading="lazy">
+            <img src="https://picsum.photos/600/400" alt="风鸣玄太直播" class="w-full h-48 object-cover" loading="lazy">
             <div class="p-6">
               <h3 class="text-lg font-bold text-gray-800 mb-2">风鸣玄太直播</h3>
               <p class="text-text mb-4">风鸣玄太工作室打造支持高清直播，支持高清视频、直播工作</p>
@@ -362,7 +362,7 @@
           </div>
 
           <div class="bg-white rounded-2xl shadow-card overflow-hidden card-hover">
-            <img src="https://picsum.photos/600/400?random=6" alt="游戏" class="w-full h-48 object-cover" loading="lazy">
+            <img src="https://picsum.photos/600/400" alt="游戏" class="w-full h-48 object-cover" loading="lazy">
             <div class="p-6">
               <h3 class="text-lg font-bold text-gray-800 mb-2">冖井之旅</h3>
               <p class="text-text mb-4">修仙游戏融合了道教文化与创新游戏机制，为玩家带来不同的游戏体验</p>
@@ -473,11 +473,7 @@
             </div>
           </a>
         </div>
-        
-        <div class="mt-8 p-6">
-          <h2 class="text-xl font-bold mb-4">关于我们</h2>
-          <p class="text-text mb-4">风鸣玄太工作室成立于2025年，主业网页开发，游戏开发，动漫制作，干销售只要能销售不触犯法律的都卖</p>
-        </div>
+        <div class="mt-8 p-6"><h2 class="text-xl font-bold mb-4">关于我们</h2><p class="text-text mb-4">风鸣玄太工作室成立于2025年，主业网页开发，游戏开发，动漫制作，干销售只要能销售不触犯法律的都卖</p></div>
       </div>
     </section>
   </main>
@@ -498,60 +494,45 @@
       // 激活当前页面
       document.getElementById(targetId).classList.add('active');
       document.querySelector(`.nav-item[href="#${targetId}"]`).classList.add('active');
-      /*关闭菜单*/closeMenu();
-      /*滚动到顶部*/window.scrollTo({ top: 0, behavior: 'smooth' });
+      /*关闭菜单*/closeMenu();/*滚动到顶部*/window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     // 移动端菜单切换
-    function toggleMenu() {const menu = document.getElementById('menu');
-      menu.classList.toggle('active');
-    }
+    function toggleMenu() {const menu = document.getElementById('menu');menu.classList.toggle('active');}
     // 关闭菜单
-    function closeMenu() {const menu = document.getElementById('menu');
-      menu.classList.remove('active');
-    }
+    function closeMenu() {const menu = document.getElementById('menu');menu.classList.remove('active');}
     // 显示协议模态框
     function showAgreementModal() {const modal = document.getElementById('agreement-modal');
       modal.classList.remove('hidden');document.body.style.overflow = 'hidden';
     }
     // 关闭协议模态框
-    function closeAgreementModal() {
-      const modal = document.getElementById('agreement-modal');
+    function closeAgreementModal() {const modal = document.getElementById('agreement-modal');
       modal.classList.add('hidden');document.body.style.overflow = '';
     }
-    
     // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
       // 设置导航链接点击事件
       document.querySelectorAll('.nav-item').forEach(link => {
         link.addEventListener('click', function(e) {e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          switchPage(targetId);
+          const targetId = this.getAttribute('href').substring(1);switchPage(targetId);
         });
       });
       // 设置菜单链接点击事件
       document.querySelectorAll('.menu a').forEach(link => {
         link.addEventListener('click', function(e) {
           if(this.getAttribute('href').startsWith('#')) {e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            switchPage(targetId);
+            const targetId = this.getAttribute('href').substring(1);switchPage(targetId);
           }
         });
       });
       // 平滑滚动
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
+        anchor.addEventListener('click', function(e) {const targetId = this.getAttribute('href');if (targetId === '#') return;
           const targetElement = document.querySelector(targetId);
-          if (targetElement) {e.preventDefault();
-            targetElement.scrollIntoView({behavior: 'smooth'});
-          }
+          if (targetElement) {e.preventDefault();targetElement.scrollIntoView({behavior: 'smooth'});}
         });
       });
       // 点击模态框外部关闭
-      document.getElementById('agreement-modal').addEventListener('click', function(e) {
-        if(e.target === this) {closeAgreementModal();}
-      });
+      document.getElementById('agreement-modal').addEventListener('click', function(e) {if(e.target === this) {closeAgreementModal();}});
       /*初始化显示首页*/switchPage('home');
     });
   </script>
