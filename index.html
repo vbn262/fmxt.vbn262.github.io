@@ -97,48 +97,36 @@
   <header class="fixed top-0 left-0 right-0 flex items-center justify-between bg-gradient-to-br from-white to-secondary py-2.5 px-4 shadow-sm z-30">
     <button class="md:hidden text-gray-600 text-2xl" onclick="toggleMobileMenu()" aria-label="菜单" aria-expanded="false"><i class="fas fa-bars"></i></button>
     <div class="text-2xl font-bold text-primary md:text-left text-center">F风M鸣X玄T太</div>
-    <a href="#about" class="nav-item" onclick="closeMobileMenu()">关于</a>
+    <button onclick="showAgreementModal()" class="text-text hover:text-primary transition-colors">
+      <i class="fas fa-file-alt mr-1"></i><span class="hidden sm:inline">公告</span>
+    </button>
     <!-- 桌面导航 -->
     <div class="hidden md:flex gap-4">
-      <a href="#home" class="px-3 py-1 rounded hover:bg-primary/20 nav-item">www.vbn262.com/f</a>
-      <a href="#about" class="px-3 py-1 rounded hover:bg-primary/20 nav-item">关于</a>
-      <button onclick="showAgreementModal()" class="text-text hover:text-primary transition-colors">
-        <i class="fas fa-file-alt mr-1"></i><span class="hidden sm:inline">公告</span>
-      </button>
+      <a href="" class="px-3 py-1 rounded hover:bg-primary/20 nav-item">www.vbn262.com/f</a>
     </div>
     <!-- 移动端菜单 -->
     <div id="mobile-menu" class="mobile-menu">
       <a href="#home" class="nav-item" onclick="closeMobileMenu()">首页www.vbn262.com/f</a>
-      <a href="#product" class="nav-item" onclick="closeMobileMenu()">产品</a>
-      <a href="#vbn262" class="nav-item" onclick="closeMobileMenu()">vbn262</a>
+      <a href="" class="nav-item" onclick="closeMobileMenu()">2024/9制作风鸣玄太工作室</a>
+      <a href="" class="nav-item" onclick="closeMobileMenu()">2025/4网站上线</a>
+      <a href="#about" class="nav-item" onclick="closeMobileMenu()"><i class="fas fa-info-circle text-xl mb-1"></i><span class="text-xs hidden sm:block">关于</span></a>
     </div>
   </header>
 
   <!-- 底部导航 -->
-  <nav class="fixed bottom-0 left-0 right-0 flex justify-around bg-gradient-to-br from-white to-secondary h-14 z-30 shadow-sm">
-    <a href="#home" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item">
-      <i class="fas fa-home text-xl mb-1"></i>
-      <span class="text-xs hidden sm:block">首页</span>
-    </a>
-    <a href="#product" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item">
-      <i class="fas fa-boxes text-xl mb-1"></i>
-      <span class="text-xs hidden sm:block">产品</span>
-    </a>
-    <a href="#vbn262" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item">
-      <i class="fas fa-shopping-bag text-xl mb-1"></i>
-      <span class="text-xs hidden sm:block">vbn262</span>
-    </a>
-    <a href="#about" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item">
-      <i class="fas fa-info-circle text-xl mb-1"></i>
-      <span class="text-xs hidden sm:block">关于</span>
-    </a>
+  <nav class="fixed bottom-0 left-0 right-0 flex justify-around bg-gradient-to-br from-white to-secondary h-13 z-30 shadow-sm">
+    <a href="#home" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item"><i class="fas fa-home text-xl"></i><span>首页</span></a>
+    <a href="#product" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item"><i class="fas fa-boxes text-xl"></i><span>产品</span></a>
+    <a href="#vbn262" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item"><i class="fas fa-shopping-bag text-xl"></i><span>vbn262</span></a>
+    <a href="#about" class="flex flex-col items-center justify-center text-gray-600 transition-all flex-1 min-w-[60px] nav-item"><i class="fas fa-info-circle text-xl"></i><span>关于</span></a>
   </nav>
 
   <!-- 协议模态框 -->
   <div id="agreement-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] p-4 hidden">
     <div class="bg-white rounded-xl p-6 max-w-md w-full shadow-lg animate-fade-in">
       <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center"><i class="fas fa-file-contract text-primary mr-2"></i>风鸣玄太工作室</h2>
-      <div class="text-text mb-6 text-left"><p class="mb-2">欢迎来到风鸣玄太工作室官方网站</p><p class="mb-2">www.vbn262.com 帮我宣传宣传网站</p></div>
+      <div class="text-text mb-6 text-left"><p class="mb-2">欢迎来到风鸣玄太工作室官方网站</p><p class="mb-2"><a href="https://www.vbn262.com" target="_blank" rel="noopener noreferrer">www.vbn262.com</a> 帮我宣传宣传网站</p></div>
+
       <div class="flex justify-end"><button onclick="closeAgreementModal()" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-gray-300 transition-colors">关闭</button></div>
     </div>
   </div>
@@ -154,7 +142,6 @@
       <div class="bg-white rounded-2xl shadow-md p-6 mb-8">
         <h2 class="text-xl font-bold mb-4">网页历程</h2>
         <div class="relative pl-6">
-          <div class="relative mb-6 pl-4"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary"></div><h3 class="font-bold text-gray-800">2024/9 制作风鸣玄太工作室\2025/4 网站上线</h3></div>
           <div class="relative pl-4">
             <div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary"></div>
             <h3 class="font-bold text-gray-800">2025/7/12 网页更新</h3>
