@@ -69,12 +69,10 @@
 <body class="font-sans bg-light pb-[56px] overscroll-contain">
   <!-- 头部导航 -->
   <header class="fixed top-0 left-0 right-0 flex items-center justify-between bg-gradient-to-br from-white to-secondary py-2.5 px-4 shadow-sm z-30">
+    <button onclick="showAgreementModal()" class="text-text hover:text-primary transition-colors"><i class="fas fa-file-alt mr-1"></i><span class="hidden sm:inline">公告</span></button>
     <div class="text-2xl font-tech md:text-left text-center">
       F<a class="text-2xl font-tech text-primary md:text-left text-center">风</a>M<a class="text-2xl font-tech text-primary md:text-left text-center">鸣</a>X<a class="text-2xl font-tech text-primary md:text-left text-center">玄</a>T<a class="text-2xl font-tech text-primary md:text-left text-center">太</a>
     </div>
-    <button onclick="showAgreementModal()" class="text-text hover:text-primary transition-colors">
-      <i class="fas fa-file-alt mr-1"></i><span class="hidden sm:inline">公告</span>
-    </button>
     <button class="md:hidden text-gray-600 text-2xl" onclick="toggleMobileMenu()" aria-label="菜单" aria-expanded="false"><i class="fas fa-bars"></i></button>
     <!-- 桌面导航 -->
     <div class="hidden md:flex gap-4">
@@ -99,7 +97,7 @@
   <div id="agreement-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] p-4 hidden">
     <div class="bg-white rounded-xl p-6 max-w-md w-full shadow-lg animate-fade-in">
       <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center"><i class="fas fa-file-contract text-primary mr-2"></i>风鸣玄太工作室</h2>
-      <div class="text-text mb-6 text-left"><p class="mb-2">欢迎来到风鸣玄太工作室官方网站</p><p class="mb-2"><a href="https://www.vbn262.com" target="_blank" rel="noopener noreferrer">www.vbn262.com</a> 帮我宣传宣传网站</p></div>
+      <div class="text-text mb-6 text-left"><p class="mb-2">欢迎来到风鸣玄太工作室官方网站</p><a href="https://www.vbn262.com" target="_blank">www.vbn262.com帮我宣传宣传网站</a></div>
       <div class="flex justify-end"><button onclick="closeAgreementModal()" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-gray-300 transition-colors">关闭</button></div>
     </div>
   </div>
@@ -113,7 +111,7 @@
         <h2 class="text-xl font-bold mb-4">网页历程</h2>
         <div class="relative pl-4">
           <div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary"></div>
-          <h3 class="font-bold text-gray-800">2025/7/20 网页更新</h3>
+          <h3 class="font-bold text-gray-800">2025/7/23 网页更新</h3>
         </div>
       </div>
       <div class="bg-white rounded-2xl shadow-md p-6">
@@ -130,7 +128,6 @@
             <i class="fab fa-weibo text-primary text-xl"></i>
           </a>
         </div>
-        <div class="mt-6 text-center"><img src="4587.jpg" width="99" height="99" alt="风鸣玄太Logo" class="mx-auto object-cover rounded-lg" loading="lazy"></div>
       </div>
     </section>
     <!-- 产品页 -->
@@ -239,6 +236,7 @@
         <footer class="max-w-[999px] mx-auto border border-secondary text-center">
           <P class="text-4xl font-bold mb-6 text-center mt-12">关于我们</P>
           <p class="text-text mb-4">风鸣玄太工作室成立于2025年，主业网页开发，游戏开发，动漫制作，干销售只要能销售不触犯法律的都卖</p>
+          <div class="mt-6 text-center"><img src="4587.jpg" width="99" height="99" alt="风鸣玄太Logo" class="mx-auto object-cover rounded-lg" loading="lazy"></div>
           <div class="flex justify-center gap-6 mb-4">
             <a href="https://space.bilibili.com/1414517639" target="_blank" rel="noopener noreferrer" title="Bilibili"><i class="fab fa-bilibili text-3xl text-gray-800 hover:text-live transition-colors"></i></a>
             <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" rel="noopener noreferrer" title="抖音"><i class="fab fa-tiktok text-3xl text-gray-800 hover:text-live transition-colors"></i></a>
