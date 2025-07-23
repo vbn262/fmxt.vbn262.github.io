@@ -41,6 +41,13 @@
     }
   </script>
   <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+      .card-hover { transition: all 0.3s ease; }
+      .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+    }
     @keyframes modalFadeIn {from { opacity: 0; }to { opacity: 1; }
     }
     .animate-fade-in {animation: modalFadeIn 0.3s ease-out forwards;
@@ -236,7 +243,7 @@
         <footer class="max-w-[999px] mx-auto border border-secondary text-center">
           <P class="text-4xl font-bold mb-6 text-center mt-12">关于我们</P>
           <p class="text-text mb-4">风鸣玄太工作室成立于2025年，主业网页开发，游戏开发，动漫制作，干销售只要能销售不触犯法律的都卖</p>
-          <div class="mt-6 text-center"><img src="4587.jpg" width="99" height="99" alt="风鸣玄太Logo" class="mx-auto object-cover rounded-lg" loading="lazy"></div>
+          <img src="4581.jpg" width="300" height="300" alt="宣传图" class="relative rounded-2xl shadow-xl mx-auto max-w-full h-auto animate-float" loading="lazy">
           <div class="flex justify-center gap-6 mb-4">
             <a href="https://space.bilibili.com/1414517639" target="_blank" rel="noopener noreferrer" title="Bilibili"><i class="fab fa-bilibili text-3xl text-gray-800 hover:text-live transition-colors"></i></a>
             <a href="https://www.douyin.com/user/MS4wLjABAAAAkPR1XF2VE55aaQjvYg47s4EFKYlcaE1qV2GbxTGrwTI" target="_blank" rel="noopener noreferrer" title="抖音"><i class="fab fa-tiktok text-3xl text-gray-800 hover:text-live transition-colors"></i></a>
